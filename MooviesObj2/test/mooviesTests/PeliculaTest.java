@@ -13,6 +13,7 @@ public class PeliculaTest {
 	public void setUp throws exception() {
 		generos = new ArrayList<String>;
 		generos.add("Drama");
+		generos.add("Suspenso");
 		peli1 = new Pelicula("El dia despues de mañana", 2010, 15276, generos);
 	}
 	
@@ -32,6 +33,14 @@ public class PeliculaTest {
 	public void test003UnaPeliculaRecienCreadaTieneUnaIdDeIDMB() {
 		Int id = 15276;
 		selfAssert(peli1.getId(), id);
+	}
+	
+	@Test
+	public void test004UnaPeliculaRecienCreadaTieneVariosGeneros() {
+		String genero1 = "Drama";
+		String genero2 = "Suspenso";
+		selfAssert(peli1.getGeneros().contains(genero1));
+		selfAssert(peli1.getGeneros().contains(genero2));
 	}
 
 }
