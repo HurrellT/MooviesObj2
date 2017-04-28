@@ -17,8 +17,21 @@ public class PeliculaTest {
 	}
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void test001UnaPeliculaRecienCreadaTieneUnNombre() {
+		String nombreDePeli = "El dia despues de mañana";
+		selfAssert(peli1.getNombre(), nombreDePeli);
+	}
+	
+	@Test
+	public void test002UnaPeliculaRecienCreadaTieneUnAñoDeEstreno() {
+		Int añoDeEstreno = 2010;
+		selfAssert(peli1.getAñoDeEstreno(), añoDeEstreno);
+	}
+	
+	@Test
+	public void test003UnaPeliculaRecienCreadaTieneUnaIdDeIDMB() {
+		Int id = 15276;
+		selfAssert(peli1.getId(), id);
 	}
 
 }
