@@ -39,8 +39,12 @@ import java.util.Map;
 			return pelisVistas;
 		}
 
-		public void calificarPelicula(Integer puntaje,int pelicula){
-
+		//agrega el par (id de la pelicula, puntaje) a la lista de pelisVistas del usuario
+		//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
+		public void calificarPelicula(Integer puntaje, Pelicula pelicula){
+			Integer i = pelicula.getId(); //hay que hacer esto porque pelisVistas requiere un Integer
+			this.pelisVistas.put(i, puntaje);
+			pelicula.addRating(puntaje, this.id); //double dispatching			
 		}
 
 		//agrega la id de un usuario a la lista de amigos
