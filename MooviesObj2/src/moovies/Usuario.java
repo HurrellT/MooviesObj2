@@ -47,7 +47,12 @@ public class Usuario {
 	* Getters de la clase Usuario. ¿No son necesarios los demas getters?
 	*
 	*/
-		
+	
+	//retorna la id del usuario
+	public int getId(){
+		return id;
+	}
+	
 	//retorna la lista de amigos
 	public ArrayList<Integer> getAmigos() {
 		return amigos;
@@ -65,21 +70,25 @@ public class Usuario {
 	*/
 		
 	//agrega la id de un usuario a la lista de amigos
-	public void agregarAmigo(Integer idAmigo){
+	public void agregarAmigo(Usuario amigo){
+		Integer idAmigo = new Integer(amigo.getId());
 		this.amigos.add(idAmigo);
 	}
 
 	//elimina la id de un usuario de la lista de amigos
 	//la id del usuario debe estar incluida en la lista de amigos
-	public void eliminarAmigo(Integer idAmigo){
+	public void eliminarAmigo(Usuario amigo){
+		Integer idAmigo = new Integer(amigo.getId());
 		this.amigos.remove(idAmigo);
 	}
 		
 	//agrega el par (id de la pelicula, puntaje) a la lista de pelisVistas del usuario
 	//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
-	public void calificarPelicula(Integer puntaje, Pelicula pelicula){
-		Integer i = pelicula.getId(); //hay que hacer esto porque pelisVistas requiere un Integer
-		this.pelisVistas.put(i, puntaje);
+	public void calificarPelicula(int puntaje, Pelicula pelicula){
+		Integer rating = new Integer(puntaje);
+		Integer idPeli = new Integer(pelicula.getId()); 
+		//hay que hacer esto porque pelisVistas requiere dos Integer
+		this.pelisVistas.put(idPeli, rating);
 		pelicula.addRating(puntaje, this.id); //double dispatching			
 	}
 
