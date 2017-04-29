@@ -6,12 +6,21 @@ import java.util.Map;
 
 /*
  * Clase que define una Pelicula.
- * 		La misma tiene nombre, anio de estreno, un id, sus generos,
- * 		y los puntajes que usuarios le dan. 
+ * La misma tiene nombre, anio de estreno, un id, sus generos,
+ * y los puntajes que usuarios le dan. 
  * @author TLH
  */
 
 public class Pelicula {
+	
+	/*
+ 	* 
+ 	* Colaboradores internos (variables de instancia) de la clase Pelicula
+ 	*  
+ 	*/
+	
+	//id de la pelicula
+	private Integer id;
 	
 	// nombre de la pelicula
 	private String nombre;
@@ -19,8 +28,8 @@ public class Pelicula {
 	// anio de estreno
 	private Integer anioDeEstreno;
 	
-	// ID
-	private Integer id;
+	// IDMb
+	private Integer idmb;
 	
 	// generos
 	private ArrayList<String> generos;
@@ -29,22 +38,36 @@ public class Pelicula {
 	private Map<Integer,Integer> puntajes;
 	
 	
-	// Constructor de Pelicula
-	public Pelicula(String name,
+	/*
+ 	* 
+ 	* Constructor de Pelicula
+ 	*  
+ 	*/
+	
+	public Pelicula(Integer id,
+			String name,
 			Integer year,
-			Integer idNum, 
+			Integer idmbNum, 
 			ArrayList<String> genres
 			//Map<Integer, Integer> score
 			) {
-		
+		this.id = id;
 		this.nombre = name;
 		this.anioDeEstreno = year;
-		this.id = idNum;
+		this.idmb = idmbNum;
 		this.generos = genres;
 		//this.puntajes = score;
 	}
 	
-	//Getters
+	/*
+ 	* 
+ 	* Getters de Pelicula
+ 	*  
+ 	*/
+	
+	public Integer getId(){
+		return id;
+	}
 	
 	public String getNombre(){
 		return nombre;
@@ -54,8 +77,8 @@ public class Pelicula {
 		return anioDeEstreno;
 	}
 	
-	public Integer getId() {
-		return id;
+	public Integer getIdmb() {
+		return idmb;
 	}
 	
 	public ArrayList<String> getGeneros() {
