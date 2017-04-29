@@ -6,7 +6,7 @@ import java.util.Map;
 
 /*
  * Clase que define una Pelicula.
- * 		La misma tiene nombre, año de estreno, un id, sus generos,
+ * 		La misma tiene nombre, anio de estreno, un id, sus generos,
  * 		y los puntajes que usuarios le dan. 
  * @author TLH
  */
@@ -16,8 +16,8 @@ public class Pelicula {
 	// nombre de la pelicula
 	private String nombre;
 	
-	// año de estreno
-	private Integer añoDeEstreno;
+	// anio de estreno
+	private Integer anioDeEstreno;
 	
 	// ID
 	private Integer id;
@@ -33,14 +33,15 @@ public class Pelicula {
 	public Pelicula(String name,
 			Integer year,
 			Integer idNum, 
-			ArrayList<String> genres,
-			Map<Integer, Integer> score) {
+			ArrayList<String> genres
+			//Map<Integer, Integer> score
+			) {
 		
-		name 	= nombre;
-		year 	= añoDeEstreno;
-		idNum 	= id;
-		genres	= generos;
-		score	= puntajes;
+		this.nombre = name;
+		this.anioDeEstreno = year;
+		this.id = idNum;
+		this.generos = genres;
+		//this.puntajes = score;
 	}
 	
 	//Getters
@@ -49,8 +50,8 @@ public class Pelicula {
 		return nombre;
 	}
 	
-	public Integer getAñoDeEstreno() {
-		return añoDeEstreno;
+	public Integer getAnioDeEstreno() {
+		return anioDeEstreno;
 	}
 	
 	public Integer getId() {

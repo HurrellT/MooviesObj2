@@ -20,36 +20,36 @@ import java.util.Map;
 		private String generoFavorito;
 		
 		//amigos del usuarios
-		private ArrayList<Interger> amigos;
+		private ArrayList<Integer> amigos;
 		
 		//peliculas vistas con el puntaje dado por el usuario actual
 		//Si no fue puntuado, el valor es 0 (El puntaje valido va de 1 a 5)
-		private Map<Interger,Interger> pelisVistas;
+		private Map<Integer,Integer> pelisVistas;
 		
 		//id
 		private int id;
 
 
 		
-		public ArrayList<Interger> getAmigos() {
+		public ArrayList<Integer> getAmigos() {
 			return amigos;
 		}
 
-		public Map<Interger, Interger> getPelis() {
-			return Pelis;
+		public Map<Integer, Integer> getPelis() {
+			return pelisVistas;
 		}
 
-		public void calificarPelicula(Interger,int){
+		public void calificarPelicula(Integer puntaje,int pelicula){
 
 		}
 
 		
-		public void agregarAmigo(Interger){
+		public void agregarAmigo(Integer idAmigo){
 		
 		}
 
 
-		public void eliminarAmigo(Interger){
+		public void eliminarAmigo(Integer idAmigo){
 
 		}
 
