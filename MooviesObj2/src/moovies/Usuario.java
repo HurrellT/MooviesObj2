@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 	public class Usuario {
+		/*
+		* Colaboradores internos (variables de instancia) de la clase Usuario
+		*/
 		
 		//id del usuario
 		private int id;
@@ -27,26 +30,27 @@ import java.util.Map;
 		private ArrayList<Integer> amigos;
 		
 		//peliculas vistas con el puntaje dado por el usuario actual
-		//Si no fue puntuado, el valor es 0 (El puntaje valido va de 1 a 5)
+		//si no fue puntuado, el valor es 0 (el puntaje valido va de 1 a 5)
 		private Map<Integer,Integer> pelisVistas;
 		
+		/*
+		* Getters de la clase Usuario. ¿No son necesarios los demas getters?
+		*/
 		
+		//retorna la lista de amigos
 		public ArrayList<Integer> getAmigos() {
 			return amigos;
 		}
 
+		//retorna la lista de pares (id de pelicula, puntaje)
 		public Map<Integer, Integer> getPelis() {
 			return pelisVistas;
 		}
 
-		//agrega el par (id de la pelicula, puntaje) a la lista de pelisVistas del usuario
-		//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
-		public void calificarPelicula(Integer puntaje, Pelicula pelicula){
-			Integer i = pelicula.getId(); //hay que hacer esto porque pelisVistas requiere un Integer
-			this.pelisVistas.put(i, puntaje);
-			pelicula.addRating(puntaje, this.id); //double dispatching			
-		}
-
+		/*
+		* Otros metodos
+		*/
+		
 		//agrega la id de un usuario a la lista de amigos
 		public void agregarAmigo(Integer idAmigo){
 			this.amigos.add(idAmigo);
@@ -56,6 +60,14 @@ import java.util.Map;
 		//la id del usuario debe estar incluida en la lista de amigos
 		public void eliminarAmigo(Integer idAmigo){
 			this.amigos.remove(idAmigo);
+		}
+		
+		//agrega el par (id de la pelicula, puntaje) a la lista de pelisVistas del usuario
+		//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
+		public void calificarPelicula(Integer puntaje, Pelicula pelicula){
+			Integer i = pelicula.getId(); //hay que hacer esto porque pelisVistas requiere un Integer
+			this.pelisVistas.put(i, puntaje);
+			pelicula.addRating(puntaje, this.id); //double dispatching			
 		}
 
 }
