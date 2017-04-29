@@ -3,10 +3,9 @@ package mooviesTests;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
-
 import java.util.ArrayList;
 import moovies.Pelicula;
-//import java.lang.reflect.Array;
+
 
 public class PeliculaTest {
 
