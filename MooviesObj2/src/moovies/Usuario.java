@@ -43,9 +43,9 @@ import java.util.Map;
 
 		}
 
-		
+		//agrega la id de un usuario a la lista de amigos
 		public void agregarAmigo(Integer idAmigo){
-		
+			this.amigos.add(idAmigo);
 		}
 
 
