@@ -30,13 +30,13 @@ public class PeliculaTest {
 	@Test
 	public void test002UnaPeliculaRecienCreadaTieneUnAnioDeEstreno() {
 		int anioDeEstreno = 2010;
-		assertEquals(peli1.getAnioDeEstreno(), anioDeEstreno);
+		assertEquals(peli1.getAnioDeEstreno().intValue(), anioDeEstreno);
 	}
 	
 	@Test
 	public void test003UnaPeliculaRecienCreadaTieneUnaIdDeIDMB() {
 		int id = 15276;
-		assertEquals(peli1.getId(), id);
+		assertEquals(peli1.getId().intValue(), id);
 	}
 	
 	@Test
