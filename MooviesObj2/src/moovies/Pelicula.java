@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /*
- * Clase que define una Pelicula.
- * La misma tiene una id, un nombre, un anio de estreno, 
- * un codigo  de idmb, una lista de generos, y una
- * lista de los puntajes que los usuarios le dan. 
- * @author TLH
- */
+* Clase que define una Pelicula.
+* La misma tiene una id, un nombre, un anio de estreno, 
+* un codigo  de idmb, una lista de generos, y una
+* lista de los puntajes que los usuarios le dan. 
+* @author TLH
+*/
 
 public class Pelicula {
 	
