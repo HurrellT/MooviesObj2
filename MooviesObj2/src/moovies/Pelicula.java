@@ -6,8 +6,9 @@ import java.util.Map;
 
 /*
  * Clase que define una Pelicula.
- * La misma tiene nombre, anio de estreno, un id, sus generos,
- * y los puntajes que usuarios le dan. 
+ * La misma tiene una id, un nombre, un anio de estreno, 
+ * un codigo  de idmb, una lista de generos, y una
+ * lista de los puntajes que los usuarios le dan. 
  * @author TLH
  */
 
