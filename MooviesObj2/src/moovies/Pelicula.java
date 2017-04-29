@@ -21,16 +21,16 @@ public class Pelicula {
  	*/
 	
 	//id de la pelicula
-	private Integer id;
+	private int id;
 	
 	// nombre de la pelicula
 	private String nombre;
 	
 	// anio de estreno
-	private Integer anioDeEstreno;
+	private int anioDeEstreno;
 	
 	// IDMb
-	private Integer idmb;
+	private int idmb;
 	
 	// generos
 	private ArrayList<String> generos;
@@ -45,10 +45,10 @@ public class Pelicula {
  	*  
  	*/
 	
-	public Pelicula(Integer id,
+	public Pelicula(int id,
 			String name,
-			Integer year,
-			Integer idmbNum, 
+			int year,
+			int idmbNum, 
 			ArrayList<String> genres
 			//Map<Integer, Integer> score
 			) {
@@ -66,7 +66,7 @@ public class Pelicula {
  	*  
  	*/
 	
-	public Integer getId(){
+	public int getId(){
 		return id;
 	}
 	
@@ -74,11 +74,11 @@ public class Pelicula {
 		return nombre;
 	}
 	
-	public Integer getAnioDeEstreno() {
+	public int getAnioDeEstreno() {
 		return anioDeEstreno;
 	}
 	
-	public Integer getIdmb() {
+	public int getIdmb() {
 		return idmb;
 	}
 	
