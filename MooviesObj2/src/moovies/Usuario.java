@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 	public class Usuario {
+		
+		//id del usuario
+		private int id;
+		
 		// nombre y apellido
 		private String nyap;
 		
@@ -26,10 +30,6 @@ import java.util.Map;
 		//Si no fue puntuado, el valor es 0 (El puntaje valido va de 1 a 5)
 		private Map<Integer,Integer> pelisVistas;
 		
-		//id
-		private int id;
-
-
 		
 		public ArrayList<Integer> getAmigos() {
 			return amigos;
