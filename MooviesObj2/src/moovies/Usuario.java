@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /*
- * Clase que define un Usuario.
- * El mismo tiene una id, un nombre y apellido, una edad,
- * una ocupacion, un codigo postal, una lista de generos favoritos,
- * una lista de amigos y una lista de peliculas vistas. 
- */
+* Clase que define un Usuario.
+* El mismo tiene una id, un nombre y apellido, una edad,
+* una ocupacion, un codigo postal, una lista de generos favoritos,
+* una lista de amigos y una lista de peliculas vistas. 
+*/
 
 public class Usuario {
 	/*
