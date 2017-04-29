@@ -1,11 +1,38 @@
 package moovies;
 
+import java.util.ArrayList;
+import moovies.Usuario;
+import moovies.Pelicula;
+
+/*
+* Clase que define Moovies.
+* La misma tiene la lista de los usuarios, y
+* la lista de las peliculas.
+*/
+
 public class Moovies {
   
-    //lista de usuarios
-    private ArrayList<Usuario> usuarios;
+  /*
+ 	* 
+ 	* Colaboradores internos (variables de instancia) de la clase Moovies
+ 	*  
+ 	*/
   
-    //lista de peliculas
-    private ArrayList<Pelicula> peliculas;
+  //lista de usuarios
+  private ArrayList<Usuario> usuarios;
+  
+  //lista de peliculas
+  private ArrayList<Pelicula> peliculas;
 
 }
+
+
+
+
+
+
+
+	
+
+	
+
