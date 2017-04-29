@@ -48,9 +48,10 @@ import java.util.Map;
 			this.amigos.add(idAmigo);
 		}
 
-
+		//elimina la id de un usuario de la lista de amigos
+		//la id del usuario debe estar incluida en la lista de amigos
 		public void eliminarAmigo(Integer idAmigo){
-
+			this.amigos.remove(idAmigo);
 		}
 
 }
