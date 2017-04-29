@@ -51,6 +51,8 @@ public class Pelicula {
 			int idmbNum, 
 			ArrayList<String> genres
 			//Map<Integer, Integer> score
+			//la pelicula no deberia recibir los puntajes al ser creada
+			//estos los agregan los usuarios a medida que califican la pelicula
 			) {
 		this.id = id;
 		this.nombre = name;
