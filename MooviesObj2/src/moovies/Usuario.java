@@ -5,7 +5,9 @@ import java.util.Map;
 
 	public class Usuario {
 		/*
+		*
 		* Colaboradores internos (variables de instancia) de la clase Usuario
+		*
 		*/
 		
 		//id del usuario
@@ -34,7 +36,9 @@ import java.util.Map;
 		private Map<Integer,Integer> pelisVistas;
 		
 		/*
+		*
 		* Getters de la clase Usuario. ¿No son necesarios los demas getters?
+		*
 		*/
 		
 		//retorna la lista de amigos
@@ -48,7 +52,9 @@ import java.util.Map;
 		}
 
 		/*
+		*
 		* Otros metodos
+		*
 		*/
 		
 		//agrega la id de un usuario a la lista de amigos
