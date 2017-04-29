@@ -31,6 +31,8 @@ public class PeliculaTest {
 	public void test002UnaPeliculaRecienCreadaTieneUnAnioDeEstreno() {
 		int anioDeEstreno = 2010;
 		assertEquals(peli1.getAnioDeEstreno().intValue(), anioDeEstreno);
+		//Cuidado con esto: como los Integer son un objeto que guarda un int,
+		//en los tests hay que usar intValue() para que devuelva el int que tiene
 	}
 	
 	@Test
