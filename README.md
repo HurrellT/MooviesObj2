@@ -8,3 +8,7 @@ lo que es mucho más facil de manejar. Tambien es mejor que los mensajes reciban
 las peliculas), y que en la implementacion lo transforme en un Integer y lo agrege a la coleccion correspondiente.
 Aunque, se que el Map necesita Integer si o si, pero ¿es necesario que los ArrayList usen Integer? ¿No funcionarían
 igual con Int?
+
+BRIAN: Además cree las clases CSVFileReader y una de las subclases (UsuarioFileReader), que vamos a necesitar para 
+leer los archivos. Las adapte pero todavía no funcionan (también cree el test para UsuarioFileReader). Habria que crear 
+subclases de CSVFileReader para peliculas, ratings y amigos (ya que los archivos que hay que leer son de esa informacion).
