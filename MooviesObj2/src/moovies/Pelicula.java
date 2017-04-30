@@ -21,6 +21,8 @@ public class Pelicula {
  	*/
 	
 	//id de la pelicula
+	//¿esta variable de instancia es necesaria?
+	//lo mismo con la id del usuario
 	private int id;
 	
 	// nombre de la pelicula
