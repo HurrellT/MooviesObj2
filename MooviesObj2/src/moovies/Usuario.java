@@ -18,6 +18,8 @@ public class Usuario {
 	*/
 		
 	//id del usuario
+	//¿esta variable de instancia es necesaria?
+	//porque el UsuarioFileReader tira la id y no la mira
 	private int id;
 		
 	// nombre y apellido
