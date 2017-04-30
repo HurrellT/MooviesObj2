@@ -16,6 +16,7 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
     @Override
     protected Usuario parseLine(String[] line) {
         //Get rid of the id, line[0]
+        //aca me surgio una duda: ¿la id del usuario se tira? ¿No habria que usarla?
 
         //Format of the string
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -23,6 +24,7 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
         // Convert from String to LocalDate
         LocalDate registerDate = LocalDate.parse(line[4], formatter);
 
+        //aca habria que usar el constructor de usuario con los parametros correspondientes
         return new Usuario(line[1], line[2], line[3], registerDate, line[5]);
     }
 
