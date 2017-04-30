@@ -14,4 +14,4 @@ leer los archivos. Las adapte pero todavía no funcionan (también cree el test 
 subclases de CSVFileReader para peliculas, ratings y amigos (ya que los archivos que hay que leer son de esa informacion).
 
 BRIAN: Mirando de nuevo el codigo de UsuarioFileReader me surgio una duda: ¿la id del usuario y de la pelicula deben ser
-variables de instancia que se usan, o son datos que vienen en los archivos a leer y por lo tanto no debe haber variable de instancia id para ninguno de los dos?
+variables de instancia que se usan, o son datos que vienen en los archivos a leer y no importan, y por lo tanto no debe haber variable de instancia id para ninguno de los dos?
