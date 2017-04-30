@@ -48,14 +48,13 @@ public class Pelicula {
  	*/
 	
 	public Pelicula(int id,
-			String name,
-			int year,
-			int idmbNum, 
-			ArrayList<String> genres
-			//Map<Integer, Integer> score
-			//la pelicula no deberia recibir los puntajes al ser creada
-			//estos los agregan los usuarios a medida que califican la pelicula
-			) {
+					String name,
+					int year,
+					int idmbNum, 
+					ArrayList<String> genres) {
+		//Map<Integer, Integer> score
+		//la pelicula no deberia recibir los puntajes al ser creada
+		//estos los agregan los usuarios a medida que califican la pelicula
 		this.id = id;
 		this.nombre = name;
 		this.anioDeEstreno = year;
@@ -92,6 +91,17 @@ public class Pelicula {
 	
 	public Map<Integer, Integer> getPuntajes() {
 		return puntajes;
+	}
+	
+	/*
+	*
+	* Otros metodos
+	*
+	*/
+	
+	public void addRating(int puntaje, int id){
+		
+	
 	}
 	
 }

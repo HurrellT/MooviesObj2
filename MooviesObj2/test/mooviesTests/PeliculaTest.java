@@ -17,7 +17,7 @@ public class PeliculaTest {
 		generos = new ArrayList<String>();
 		generos.add("Drama");
 		generos.add("Suspenso");
-		peli1 = new Pelicula("El dia despues de maniana", 2010, 15276, generos);
+		peli1 = new Pelicula(143, "El dia despues de maniana", 2010, 15276, generos);
 	}
 	
 	@Test
@@ -29,7 +29,7 @@ public class PeliculaTest {
 	@Test
 	public void test002UnaPeliculaRecienCreadaTieneUnAnioDeEstreno() {
 		int anioDeEstreno = 2010;
-		assertEquals(peli1.getAnioDeEstreno().intValue(), anioDeEstreno);
+		assertEquals(peli1.getAnioDeEstreno(), anioDeEstreno);
 		//Cuidado con esto: como los Integer son un objeto que guarda un int,
 		//en los tests hay que usar intValue() para que devuelva el int que tiene
 	}
@@ -37,7 +37,7 @@ public class PeliculaTest {
 	@Test
 	public void test003UnaPeliculaRecienCreadaTieneUnaIdDeIDMB() {
 		int id = 15276;
-		assertEquals(peli1.getId().intValue(), id);
+		assertEquals(peli1.getId(), id);
 	}
 	
 	@Test

@@ -18,7 +18,7 @@ public class Usuario {
 	*/
 		
 	//id del usuario
-	//Â¿esta variable de instancia es necesaria?
+	//¿esta variable de instancia es necesaria?
 	//porque el UsuarioFileReader tira la id y no la mira
 	private int id;
 		
@@ -43,6 +43,25 @@ public class Usuario {
 	//peliculas vistas con el puntaje dado por el usuario actual
 	//si no fue puntuado, el valor es 0 (el puntaje valido va de 1 a 5)
 	private Map<Integer,Integer> pelisVistas;
+	
+	/*
+ 	* 
+ 	* Constructor de Usuario
+ 	*  
+ 	*/
+	
+	public Usuario(int id,
+				   String nyap,
+				   int edad,
+				   String ocupacion, 
+				   int codPos) {
+		this.id = id;
+		this.nyap = nyap;
+		this.edad = edad;
+		this.ocupacion = ocupacion;
+		this.codPos = codPos;
+		//this.puntajes = score;
+	}
 		
 	/*
 	*
