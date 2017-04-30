@@ -70,15 +70,15 @@ public class Usuario {
 	*/
 		
 	//agrega la id de un usuario a la lista de amigos
-	public void agregarAmigo(Usuario amigo){
-		Integer idAmigo = new Integer(amigo.getId());
+	public void agregarAmigo(int id){
+		Integer idAmigo = new Integer(id);
 		this.amigos.add(idAmigo);
 	}
 
 	//elimina la id de un usuario de la lista de amigos
 	//la id del usuario debe estar incluida en la lista de amigos
-	public void eliminarAmigo(Usuario amigo){
-		Integer idAmigo = new Integer(amigo.getId());
+	public void eliminarAmigo(int id){
+		Integer idAmigo = new Integer(id);
 		this.amigos.remove(idAmigo);
 	}
 		
