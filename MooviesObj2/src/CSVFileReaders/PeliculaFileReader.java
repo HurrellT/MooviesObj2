@@ -10,7 +10,7 @@ public class PeliculaFileReader extends CSVFileReader<Pelicula> {
 	
 	/**
      * @param filePath the absolute path of the file to be read.
-     */
+    */
     public PeliculaFileReader(String filePath) {
         super(filePath);
     }
@@ -36,6 +36,4 @@ public class PeliculaFileReader extends CSVFileReader<Pelicula> {
    
 
 }
-
-
 
