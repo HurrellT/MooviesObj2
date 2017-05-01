@@ -8,7 +8,7 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
 
     /**
      * @param filePath the absolute path of the file to be read.
-     */
+    */
     public UsuarioFileReader(String filePath) {
         super(filePath);
     }
@@ -27,6 +27,7 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
 
     @Override
     protected String getSeparator() {
-        return ",";
+        return "|";
     }
 }
+
