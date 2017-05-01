@@ -12,11 +12,11 @@ import moovies.Pelicula;
 
 public class Moovies {
   
-  /*
- 	* 
- 	* Colaboradores internos (variables de instancia) de la clase Moovies
- 	*  
- 	*/
+ /*
+ * 
+ * Colaboradores internos (variables de instancia) de la clase Moovies
+ *  
+ */
   
   //lista de usuarios
   private ArrayList<Usuario> usuarios;
