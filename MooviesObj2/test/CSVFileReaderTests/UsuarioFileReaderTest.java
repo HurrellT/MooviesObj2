@@ -15,18 +15,21 @@ public class UsuarioFileReaderTest {
 	@Before
     public void setUp(){
         // Inicializamos la clase con la ubicacion del archivo
-        reader = new UsuarioFileReader("/home/usuario/usuarios.csv");
+        reader = new UsuarioFileReader("C:\\Users\\brian\\Desktop\\u.user.csv");
     }
 	
 	@Test
     public void readFileUsuariosReturnsAListWithTenObjects() {
-        int expectedSize        = 10;
+        int expectedSize = 10;
         
        // Leemos el archivo y obtenemos la lista de objetos.
-        List<Usuario> usuarios  = reader.readFile();
+        List<Usuario> usuarios = reader.readFile();
 
         assertEquals(expectedSize, usuarios.size());
     }
+	
+	//EL ERROR QUE SURGE DE ESTE TEST ESTA EN EL getSeparator()
+	//No parte bien cada linea en un array de Strings
 
 }
 
