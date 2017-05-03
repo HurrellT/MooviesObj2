@@ -36,8 +36,10 @@ public class PeliculaTest {
 	
 	@Test
 	public void test003UnaPeliculaRecienCreadaTieneUnaIdDeIDMB() {
-		int id = 15276;
-		assertEquals(peli1.getId(), id);
+		int idmb = 15276;
+		assertEquals(peli1.getIdmb(), idmb);
+		//Tomas: getId da el id de pelicula, no el id de IDMB.
+		//Corregi el test y cree un test nuevo (test005) para el id normal.
 	}
 	
 	@Test
@@ -48,4 +50,9 @@ public class PeliculaTest {
 		assert(peli1.getGeneros().contains(genero2));
 	}
 
+	@Test
+	public void test005UnaPeliculaRecienCreadaTieneLaId143() {
+		int id = 143;
+		assertEquals(peli1.getId(), id);
+	}
 }

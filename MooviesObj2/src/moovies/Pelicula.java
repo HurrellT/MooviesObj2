@@ -23,6 +23,11 @@ public class Pelicula {
 	//id de la pelicula
 	//Â¿esta variable de instancia es necesaria?
 	//lo mismo con la id del usuario
+	/**
+	 * Tomas: Yo considero que si, porque sino ¿como identificamos
+	 * 			a una pelicula como unica?
+	 */
+	
 	private int id;
 	
 	// nombre de la pelicula
@@ -55,6 +60,9 @@ public class Pelicula {
 		//Map<Integer, Integer> score
 		//la pelicula no deberia recibir los puntajes al ser creada
 		//estos los agregan los usuarios a medida que califican la pelicula
+		
+		//Tomas: Entiendo entiendo. Es algo que se modifica por separado.
+		
 		this.id = id;
 		this.nombre = name;
 		this.anioDeEstreno = year;
