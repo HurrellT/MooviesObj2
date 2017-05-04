@@ -17,11 +17,6 @@ public class Usuario {
 	*
 	*/
 		
-	//id del usuario
-	//¿esta variable de instancia es necesaria?
-	//porque el UsuarioFileReader tira la id y no la mira
-	private int id;
-		
 	// nombre y apellido
 	private String nyap;
 		
@@ -50,8 +45,7 @@ public class Usuario {
  	*  
  	*/
 	
-	public Usuario(int id,
-		       String nyap,
+	public Usuario(String nyap,
 		       int edad,
 		       String ocupacion, 
 		       int codPos) {
@@ -64,13 +58,28 @@ public class Usuario {
 		
 	/*
 	*
-	* Getters de la clase Usuario. ¿No son necesarios los demas getters?
+	* Getters de la clase Usuario. 
 	*
 	*/
 	
-	//retorna la id del usuario
-		public int getId(){
-			return id;
+	//retorna el nombre y apellido
+	public String getNyap(){
+		return nyap;
+	}
+	
+	//retorna la edad
+	public int getEdad(){
+		return edad;
+	}
+	
+	//retorna la ocupacion
+	public String getOcupacion(){
+		return ocupacion;
+	}
+	
+	//retorna el codigo postal
+	public int getCodPos(){
+		return codPos;
 	}
 		
 	//retorna la lista de amigos
