@@ -7,6 +7,7 @@ import java.util.List;
 import CSVFileReaders.PeliculaFileReader;
 import CSVFileReaders.RatingsFileReader;
 import CSVFileReaders.UsuarioFileReader;
+import CSVFileReaders.AmigosFileReader;
 
 public class Adapter {
 
@@ -21,10 +22,15 @@ public class Adapter {
 	private List<RatingData> ratingData;
 	
 	private List<AmigosData> friendsData;
-	
+
 	/*
-	 * 	Metodos
+	 * Getters
 	 */
+	
+	public List<RatingData> getRatingData() {
+		
+		return ratingData;
+	}
 	
 	/*
 	 * Setters
@@ -77,13 +83,13 @@ public class Adapter {
 			//Guardar info
 			int userId 	= ratingData.get(index).getUserId();
 			int movieId = ratingData.get(index).getMovieId();
-			int score 	= ratingData.get(index).getScore();
+			int score 	= ratingData.get(index).getRating();
 			
 			//Buscar usuario
 			int indexU = 0;
 			
 			UsuarioData user = userData.get(indexU);
-			while (not (user.getId() == userId)) {
+			while (! (user.getId() == userId)) {
 				indexU++;
 				user = userData.get(indexU);
 			}
@@ -93,7 +99,7 @@ public class Adapter {
 			int indexP = 0;
 			
 			PeliculaData movie = movieData.get(indexP);
-			while (not (movie.getId() == movieId)) {
+			while (! (movie.getId() == movieId)) {
 				indexP++;
 				movie = movieData.get(indexP);
 			}
@@ -114,12 +120,4 @@ public class Adapter {
 
 	}
 	
-	/*
-	 * Getters
-	 */
-	
-	public List<RatingData> getRatingData() {
-		
-		return ratingData;
-	}
 }

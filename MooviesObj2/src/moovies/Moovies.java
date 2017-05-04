@@ -45,7 +45,25 @@ public class Moovies {
   
   //retorna una colección con las 10 películas que tienen el 
   //promedio de rating mayor, ordenada en forma descendente
-  public ArrayList<Pelicula> mejoresPelículas(){
+  public Collection<Pelicula> mejoresPelículas(){
+	  //Crea una nueva lista para ordenar a las peliculas
+	  List<Pelicula> orderedList = peliculas;
+	  //establece la comparacion entre peliculas
+	  Comparator<Pelicula> comparator = new Comparator<Pelicula>() {
+	      @Override
+	      public int compare(Pelicula movie1, Pelicula movie2) {
+	          return movie1.compareTo(movie2); 
+	      }
+	  };
+	  //Ordena la lista de mayor a menor
+	  Collections.sort(orderedList, comparator); 
+	  int index = 10;
+	  List<Pelicula> finalList = new ArrayList<>();
+	  //Crea una nueva lista con las 10 primeras peliculas
+	  for(int i = 0; i < 10; i++){
+	    finalList.add(orderedList.get(index));
+	  }
+	  return finalList;
 	  
   }
 
@@ -71,7 +89,6 @@ public class Moovies {
 	    finalList.add(orderedList.get(index));
 	  }
 	  return finalList;
-	  
   }
 
 }

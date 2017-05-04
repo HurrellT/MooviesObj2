@@ -90,4 +90,31 @@ public class Pelicula {
 		this.puntajes.put(user, score);	
 	}
 	
+	public int promedio(){
+		int total = 0;
+		int cant = 0;
+		for (Map.Entry<Usuario, Integer> entry : puntajes.entrySet())
+		{
+		    if(entry.getValue().intValue() > 0){
+		    	total = total + entry.getValue().intValue();
+		    	cant++;
+		    };
+		}
+		return (total / cant); 
+	}
+	
+	public int compareTo(Pelicula movie){
+		int res = 0;
+		if(this.promedio() == movie.promedio()){
+			res = 0;
+		}
+		if(this.promedio() < movie.promedio()){
+			res = -1;
+		}
+		if(this.promedio() > movie.promedio()){
+			res = 1;
+		}
+		return res;
+	}
+	
 }

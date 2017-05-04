@@ -13,5 +13,14 @@ public class PeliculaData {
 		this.id = id;
 		this.pelicula = pelicula;
 	}
+	
+	public int getId(){
+		
+		return id;
+	}
+	public Pelicula getMovie(){
+		
+		return pelicula;
+	}
 
 }

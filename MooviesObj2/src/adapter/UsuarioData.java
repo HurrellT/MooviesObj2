@@ -14,4 +14,14 @@ public class UsuarioData {
 		this.usuario = usuario;
 		
 	}
+	
+	public int getId(){
+		
+		return id;
+	}
+
+	public Usuario getUser(){
+		
+		return usuario;
+	}
 }
