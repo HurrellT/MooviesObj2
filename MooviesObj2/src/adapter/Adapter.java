@@ -104,6 +104,20 @@ public class Adapter {
 		
 	}
 
+	public void registrarAmigos() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	public void integrarEnMoovies() {
+		// TODO Auto-generated method stub
+
+	}
+	
+	/*
+	 * Getters
+	 */
+	
 	public List<RatingData> getRatingData() {
 		
 		return ratingData;

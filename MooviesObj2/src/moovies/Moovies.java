@@ -18,6 +18,9 @@ public class Moovies {
  *  
  */
   
+	//HACER PELICULAS MAS VISTAS
+	// Y USUARIOS MAS ACTIVOS.
+	
   //lista de usuarios
   private ArrayList<Usuario> usuarios;
   
