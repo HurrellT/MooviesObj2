@@ -1,6 +1,5 @@
 package moovies;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
@@ -10,7 +9,6 @@ import java.util.Map;
 * La misma tiene un nombre, un anio de estreno, 
 * un codigo  de idmb, una lista de generos, y una
 * lista de los puntajes que los usuarios le dan. 
-* @author TLH
 */
 
 public class Pelicula {
@@ -63,7 +61,7 @@ public class Pelicula {
 		return nombre;
 	}
 	
-	public LocalDate getAnioDeEstreno() {
+	public LocalDate getFechaDeEstreno() {
 		return anioDeEstreno;
 	}
 	

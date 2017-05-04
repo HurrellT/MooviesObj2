@@ -5,12 +5,13 @@ import org.junit.Test;
 import org.junit.Before;
 import CSVFileReaders.CSVFileReader;
 import CSVFileReaders.UsuarioFileReader;
+import adapter.UsuarioData;
 import moovies.Usuario;
 import java.util.*;
 
 public class UsuarioFileReaderTest {
 
-	private CSVFileReader<Usuario> reader;
+	private CSVFileReader<UsuarioData> reader;
 	
 	@Before
     public void setUp(){
@@ -23,13 +24,11 @@ public class UsuarioFileReaderTest {
         int expectedSize = 51;
         
        // Leemos el archivo y obtenemos la lista de objetos.
-        List<Usuario> usuarios = reader.readFile();
+        List<UsuarioData> usuarios = reader.readFile();
 
         assertEquals(expectedSize, usuarios.size());
     }
-	
-	//EL ERROR QUE SURGE DE ESTE TEST ESTA EN EL getSeparator()
-	//No parte bien cada linea en un array de Strings
+
 
 }
 
