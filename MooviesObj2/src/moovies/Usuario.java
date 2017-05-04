@@ -42,7 +42,7 @@ public class Usuario {
 		
 	//peliculas vistas con el puntaje dado por el usuario actual
 	//si no fue puntuado, el valor es 0 (el puntaje valido va de 1 a 5)
-	private Map<Integer,Integer> pelisVistas;
+	private Map<Pelicula,Integer> pelisVistas;
 	
 	/*
  	* 
@@ -79,7 +79,7 @@ public class Usuario {
 	}
 
 	//retorna la lista de pares (id de pelicula, puntaje)
-	public Map<Integer, Integer> getPelis() {
+	public Map<Pelicula, Integer> getPelis() {
 		return pelisVistas;
 	}
 
@@ -103,14 +103,34 @@ public class Usuario {
 		//hay que hacer double dispatching
 	}
 			
-	//agrega el par (id de la pelicula, puntaje) a la lista de pelisVistas del usuario
-	//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
 	public void calificarPelicula(int puntaje, Pelicula pelicula){
-		Integer rating = new Integer(puntaje);
-		Integer idPeli = new Integer(pelicula.getIdmb()); 
-		//hay que hacer esto porque pelisVistas requiere dos Integer
-		this.pelisVistas.put(idPeli, rating);
-		pelicula.addRating(puntaje, this.id); //double dispatching			
+		this.pelisVistas.put(pelicula, puntaje);
+		pelicula.addRating(this, puntaje); //double dispatching			
+	}
+	
+	public int pelisClasificadas(){
+		int total = 0;
+		for (Map.Entry<Pelicula, Integer> entry : pelisVistas.entrySet())
+		{
+		    if(entry.getValue().intValue() > 0){
+		    	total++;
+		    };
+		}
+		return total; 
+	}
+	
+	public int compareTo(Usuario user){
+		int res = 0;
+		if(this.pelisClasificadas() == user.pelisClasificadas()){
+			res = 0;
+		}
+		if(this.pelisClasificadas() < user.pelisClasificadas()){
+			res = -1;
+		}
+		if(this.pelisClasificadas() > user.pelisClasificadas()){
+			res = 1;
+		}
+		return res;
 	}
 
 }
