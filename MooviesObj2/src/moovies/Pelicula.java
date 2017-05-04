@@ -6,7 +6,7 @@ import java.util.Map;
 
 /*
 * Clase que define una Pelicula.
-* La misma tiene una id, un nombre, un anio de estreno, 
+* La misma tiene un nombre, un anio de estreno, 
 * un codigo  de idmb, una lista de generos, y una
 * lista de los puntajes que los usuarios le dan. 
 * @author TLH
@@ -19,16 +19,6 @@ public class Pelicula {
  	* Colaboradores internos (variables de instancia) de la clase Pelicula
  	*  
  	*/
-	
-	//id de la pelicula
-	//Â¿esta variable de instancia es necesaria?
-	//lo mismo con la id del usuario
-	/**
-	 * Tomas: Yo considero que si, porque sino ¿como identificamos
-	 * 			a una pelicula como unica?
-	 */
-	
-	private int id;
 	
 	// nombre de la pelicula
 	private String nombre;
@@ -52,8 +42,7 @@ public class Pelicula {
  	*  
  	*/
 	
-	public Pelicula(int id,
-			String name,
+	public Pelicula(String name,
 			int year,
 			int idmbNum, 
 			ArrayList<String> genres) {
@@ -63,7 +52,6 @@ public class Pelicula {
 		
 		//Tomas: Entiendo entiendo. Es algo que se modifica por separado.
 		
-		this.id = id;
 		this.nombre = name;
 		this.anioDeEstreno = year;
 		this.idmb = idmbNum;
@@ -76,10 +64,6 @@ public class Pelicula {
  	* Getters de Pelicula
  	*  
  	*/
-	
-	public int getId(){
-		return id;
-	}
 	
 	public String getNombre(){
 		return nombre;
