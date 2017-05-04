@@ -4,6 +4,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import CSVFileReaders.PeliculaFileReader;
+import CSVFileReaders.RatingsFileReader;
+import CSVFileReaders.UsuarioFileReader;
+
 public class Adapter {
 
 	/*
@@ -22,7 +26,49 @@ public class Adapter {
 	 * 	Metodos
 	 */
 	
-	public void setRating() {
+	/*
+	 * Setters
+	 */
+	
+	public void procesarUsuario(String filePath) {
+		//Crear un RatingFileReader
+		UsuarioFileReader usuarioReader = new UsuarioFileReader(filePath);
+		
+		//Guarda en su variable de instancia el
+		//reultado de procesar el archivo.
+		this.userData = usuarioReader.readFile();
+	}
+	
+	public void procesarPelicula(String filePath) {
+		//Crear un RatingFileReader
+		PeliculaFileReader peliculaReader = new PeliculaFileReader(filePath);
+		
+		//Guarda en su variable de instancia el
+		//reultado de procesar el archivo.
+		this.movieData = peliculaReader.readFile();
+	}
+	
+	public void procesarRatings(String filePath) {
+		//Crear un RatingFileReader
+		RatingsFileReader ratingReader = new RatingsFileReader(filePath);
+		
+		//Guarda en su variable de instancia el
+		//reultado de procesar el archivo.
+		this.ratingData = ratingReader.readFile();
+	}
+	
+	public void procesarAmigos(String filePath) {
+		//Crear un RatingFileReader
+		AmigosFileReader amigosReader = new AmigosFileReader(filePath);
+		
+		//Guarda en su variable de instancia el
+		//reultado de procesar el archivo.
+		this.friendsData = amigosReader.readFile();
+	}
+	
+	//Precondicion: Ya se cargaron los datos.
+	//
+	public void registrarRatings() {
 		
 		int index = 0;
 		
@@ -56,5 +102,10 @@ public class Adapter {
 			user.getUser().calificarPelicula(score,movie.getMovie());
 		}
 		
+	}
+
+	public List<RatingData> getRatingData() {
+		
+		return ratingData;
 	}
 }

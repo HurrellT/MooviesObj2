@@ -1,6 +1,7 @@
 package moovies;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class Pelicula {
 	private String nombre;
 	
 	// anio de estreno
-	private int anioDeEstreno;
+	private LocalDate anioDeEstreno;
 	
 	// IDMb
 	private int idmb;
@@ -43,7 +44,7 @@ public class Pelicula {
  	*/
 	
 	public Pelicula(String name,
-			int year,
+			LocalDate year,
 			int idmbNum, 
 			ArrayList<String> genres) {
 		//Map<Integer, Integer> score
@@ -69,7 +70,7 @@ public class Pelicula {
 		return nombre;
 	}
 	
-	public int getAnioDeEstreno() {
+	public LocalDate getAnioDeEstreno() {
 		return anioDeEstreno;
 	}
 	

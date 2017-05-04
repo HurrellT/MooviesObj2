@@ -1,10 +1,9 @@
 package CSVFileReaders;
 
-import java.time.LocalDate; 
-import java.time.format.*;
+import adapter.UsuarioData;
 import moovies.Usuario;
 
-public class UsuarioFileReader extends CSVFileReader<Usuario> {
+public class UsuarioFileReader extends CSVFileReader<UsuarioData> {
 
     /**
      * @param filePath the absolute path of the file to be read.
@@ -14,7 +13,7 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
     }
 
     @Override
-    protected Usuario parseLine(String[] line) {
+    protected UsuarioData parseLine(String[] line) {
     	int id = Integer.parseInt(line[0]);
     	String nyap = line[5] + line[6];
     	int edad = Integer.parseInt(line[1]);
@@ -22,7 +21,9 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
     	String ocupacion = line[3];
     	int codPos = Integer.parseInt(line[4]);
 
-        return new Usuario(id, nyap, edad, ocupacion, codPos);
+    	Usuario usuario = new Usuario(id, nyap, edad, ocupacion, codPos);
+    	
+        return new UsuarioData(id, usuario);
     }
 
     @Override
