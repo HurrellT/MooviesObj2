@@ -91,6 +91,8 @@ public class Pelicula {
 	*
 	*/
 	
+	
+	//Esto deberia cambiar, ya que no recibe la id
 	public void addRating(int puntaje, int id){
 		Integer rating = new Integer(puntaje);
 		Integer idUsuario = new Integer(id); 
