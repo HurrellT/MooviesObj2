@@ -1,10 +1,11 @@
 # MooviesObj2
 Trabajo gral de la materia de Programacion con Objetos 2 UNQ
 
-BRIAN: Pense en usar el README para que cada uno deje comentarios de lo que va haciendo. Estuve mirando lo que hicimos el viernes, y ya nos quedaba diferente lo que implementamos de lo que hay en el diagrama. A mi me parece que seria mejor que las variables de instancia de Pelicula y Usuario que no son colecciones (id, codPostal, idmb, edad) sean directamente Int, lo que es mucho más facil de manejar. Tambien es mejor que los mensajes reciban Int (las id de los usuarios y de las peliculas), y que en la implementacion lo transforme en un Integer y lo agrege a la coleccion correspondiente. Se que el Map necesita Integer si o si, pero ¿es necesario que los ArrayList usen Integer? ¿No funcionarían igual con Int? Otra cosa, es necesario hacer double dispatching en los metodos agregarAmigo() y eliminarAmigo() de la clase usuario, pero si no le pasamos el Usuario como parametro, ¿como hacemos para buscar el usuario a partir de su id?
-
-  TOMAS: Respondo a lo primero, algo del id de usuarios me habia comentado uno de los profes, diciendome que podiamos usar id directamente para evitar entrar al objeto Usuario, que es mas complejo. Tendriamos que ver que seria lo mejor. Ahora voy a retocar lo que me comentas de Int y voy a probar lo de los Array. 
-
-BRIAN: Además cree las clases CSVFileReader y dos de las subclases (UsuarioFileReader y PeliculaFileReader), que vamos a necesitar para leer los archivos. Las adapte pero me surge un error porque no esta dividiendo bien las lineas en un array de Strings. Faltan crear subclases de CSVFileReader para ratings y amigos. Tengo una duda con algo: ¿la id del usuario y de la pelicula deben ser variables de instancia que se usan, o son datos que vienen en los archivos a leer y no importan, y por lo tanto no debe haber variable de instancia id para ninguno de los dos? Yo las puse como variables de instancia, pero cualquier cosa las eliminamos.
-
-  TOMAS: Yo considero que son variables de instancia tambien.
+Por hacer:
+  Adapter
+  AmigosFileReader
+  
+  Acomodar el diagrama
+  
+  
+  Revisar los comentarios en el codigo (Pelicula)
