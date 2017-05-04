@@ -1,6 +1,6 @@
 package adapter;
 
-public class RatingIds {
+public class RatingData {
 
 	/*
 	 * Colaboradores internos
@@ -16,7 +16,7 @@ public class RatingIds {
 	 * Constructor de RatingIds
 	 */
 	
-	public RatingIds(int uId, int mId, int score) {
+	public RatingData(int uId, int mId, int score) {
 		
 		this.userId 	= uId;
 		this.movieId 	= mId;
