@@ -2,9 +2,9 @@
 Trabajo gral de la materia de Programacion con Objetos 2 UNQ
 
 Por hacer:
-Adapter
-AmigosFileReader
+- Adapter
+- AmigosFileReader
 
-Acomodar el diagrama
+- Acomodar el diagrama
 
-Revisar los comentarios en el codigo (Pelicula)
+-- Revisar los comentarios en el codigo (Pelicula)
