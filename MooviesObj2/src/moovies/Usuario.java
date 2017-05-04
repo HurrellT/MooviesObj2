@@ -107,7 +107,7 @@ public class Usuario {
 	//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
 	public void calificarPelicula(int puntaje, Pelicula pelicula){
 		Integer rating = new Integer(puntaje);
-		Integer idPeli = new Integer(pelicula.getId()); 
+		Integer idPeli = new Integer(pelicula.getIdmb()); 
 		//hay que hacer esto porque pelisVistas requiere dos Integer
 		this.pelisVistas.put(idPeli, rating);
 		pelicula.addRating(puntaje, this.id); //double dispatching			

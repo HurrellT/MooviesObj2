@@ -25,6 +25,7 @@ public class PeliculaFileReader extends CSVFileReader<Pelicula> {
         
        //hay que poner todos los generos en el ArrayList
 
+        //HAY QUE HACER UN MAP CON ID y PELICULA (EL OBJETO)
         return new Pelicula(id, nombre, year, idmb, generos);
     }
     
