@@ -27,7 +27,7 @@ public class UsuarioFileReader extends CSVFileReader<Usuario> {
 
     @Override
     protected String getSeparator() {
-        return "|";
+        return "\\|";
     }
 }
 

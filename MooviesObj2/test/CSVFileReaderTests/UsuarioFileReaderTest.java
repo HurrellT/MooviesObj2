@@ -15,12 +15,12 @@ public class UsuarioFileReaderTest {
 	@Before
     public void setUp(){
         // Inicializamos la clase con la ubicacion del archivo
-        reader = new UsuarioFileReader(); //el parametro de UsuarioFileReader es el string con la ubicacion del archivo
+        reader = new UsuarioFileReader("c:\\Users\\mega_\\UNQUI\\Objetos 2\\Trabajos Obj2\\Archivos para FileReader\\u.userB.csv"); //el parametro de UsuarioFileReader es el string con la ubicacion del archivo
     }
 	
 	@Test
     public void readFileUsuariosReturnsAListWithTenObjects() {
-        int expectedSize = 10;
+        int expectedSize = 51;
         
        // Leemos el archivo y obtenemos la lista de objetos.
         List<Usuario> usuarios = reader.readFile();
