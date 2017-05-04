@@ -17,11 +17,6 @@ public class Usuario {
 	*
 	*/
 		
-	//id del usuario
-	//¿esta variable de instancia es necesaria?
-	//porque el UsuarioFileReader tira la id y no la mira
-	private int id;
-		
 	// nombre y apellido
 	private String nyap;
 		
@@ -50,12 +45,10 @@ public class Usuario {
  	*  
  	*/
 	
-	public Usuario(int id,
-		       String nyap,
+	public Usuario(String nyap,
 		       int edad,
 		       String ocupacion, 
 		       int codPos) {
-		this.id = id;
 		this.nyap = nyap;
 		this.edad = edad;
 		this.ocupacion = ocupacion;
@@ -64,13 +57,28 @@ public class Usuario {
 		
 	/*
 	*
-	* Getters de la clase Usuario. ¿No son necesarios los demas getters?
+	* Getters de la clase Usuario. 
 	*
 	*/
 	
-	//retorna la id del usuario
-		public int getId(){
-			return id;
+	//retorna el nombre y apellido
+	public String getNyap(){
+		return nyap;
+	}
+	
+	//retorna la edad
+	public int getEdad(){
+		return edad;
+	}
+	
+	//retorna la ocupacion
+	public String getOcupacion(){
+		return ocupacion;
+	}
+	
+	//retorna el codigo postal
+	public int getCodPos(){
+		return codPos;
 	}
 		
 	//retorna la lista de amigos
@@ -90,19 +98,20 @@ public class Usuario {
 	*/
 		
 	//agrega la id de un usuario a la lista de amigos
-	public void agregarAmigo(int id){
-		Integer idAmigo = new Integer(id);
-		this.amigos.add(idAmigo);
-		//hay que hacer double dispatching
+	public void agregarAmigo(Usuario amigo){
+		this.amigos.add(amigo);
+		//amigo.addAmigo(this);
+		//Como hago que el Usuario se envie a si mismo en el Double Dispatching?
 	}
 
 	//elimina la id de un usuario de la lista de amigos
-	public void eliminarAmigo(int id){
-		Integer idAmigo = new Integer(id);
-		this.amigos.remove(idAmigo);
-		//hay que hacer double dispatching
+	public void eliminarAmigo(Usuario amigo){
+		this.amigos.remove(amigo);
+		//amigo.removeAmigo(this);
+		//Como hago que el Usuario se envie a si mismo en el Double Dispatching?
 	}
 			
+	//ESTO NO IRÏA???
 	//agrega el par (id de la pelicula, puntaje) a la lista de pelisVistas del usuario
 	//agrega el par (id del usuario, puntaje) a la lista de puntajes de la pelicula
 	public void calificarPelicula(int puntaje, Pelicula pelicula){

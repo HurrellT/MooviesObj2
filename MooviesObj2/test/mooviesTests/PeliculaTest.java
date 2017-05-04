@@ -17,7 +17,7 @@ public class PeliculaTest {
 		generos = new ArrayList<String>();
 		generos.add("Drama");
 		generos.add("Suspenso");
-		peli1 = new Pelicula(143, "El dia despues de maniana", 2010, 15276, generos);
+		peli1 = new Pelicula("El dia despues de maniana", 2010, 15276, generos);
 	}
 	
 	@Test
@@ -50,9 +50,4 @@ public class PeliculaTest {
 		assert(peli1.getGeneros().contains(genero2));
 	}
 
-	@Test
-	public void test005UnaPeliculaRecienCreadaTieneLaId143() {
-		int id = 143;
-		assertEquals(peli1.getId(), id);
-	}
 }
