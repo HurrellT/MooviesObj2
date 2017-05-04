@@ -49,7 +49,6 @@ public class Usuario {
 		       int edad,
 		       String ocupacion, 
 		       int codPos) {
-		this.id = id;
 		this.nyap = nyap;
 		this.edad = edad;
 		this.ocupacion = ocupacion;
