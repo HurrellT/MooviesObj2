@@ -54,8 +54,8 @@ public class FileReaderManager {
 	 * Getters complejos (devuelven los datos finales)
 	 */
 	
-	private Collection<Pelicula> getPeliculas() {
-		Collection<Pelicula> nuevasPeliculas = new ArrayList<Pelicula>();
+	private List<Pelicula> getPeliculas() {
+		List<Pelicula> nuevasPeliculas = new ArrayList<Pelicula>();
 		int index = 0;
 		for(int i = 0; i < movieData.size(); i++){
 			nuevasPeliculas.add(movieData.get(index).getMovie());
@@ -64,8 +64,8 @@ public class FileReaderManager {
 		return nuevasPeliculas;
 	}
 	
-	private Collection<Usuario> getUsuarios() {
-		Collection<Usuario> nuevosUsuarios = new ArrayList<Usuario>();
+	private List<Usuario> getUsuarios() {
+		List<Usuario> nuevosUsuarios = new ArrayList<Usuario>();
 		int index = 0;
 		for(int i = 0; i < userData.size(); i++){
 			nuevosUsuarios.add(userData.get(index).getUser());
@@ -180,8 +180,8 @@ public class FileReaderManager {
 	}
 	
 	public void integrarEnMoovies(Moovies mov) {
-		Collection<Pelicula> pelis = this.getPeliculas();
-		Collection<Usuario> users = this.getUsuarios();
+		List<Pelicula> pelis = this.getPeliculas();
+		List<Usuario> users = this.getUsuarios();
 		mov.getPeliculas().addAll(pelis);
 		mov.getUsuarios().addAll(users);
 	}
