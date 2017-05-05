@@ -23,7 +23,9 @@ public class PeliculaFileReader extends CSVFileReader<PeliculaData> {
     public PeliculaFileReader(String filePath) {
         super(filePath);
     }
-    
+    /*
+     * Metodo a corregir por no poder partir bien el array string
+     * 
     private List<String> procesarGeneros(String[] copyOfRange) {
 		List<String> generos = new ArrayList<String>();
 		generos.add(0, "unknown");
@@ -56,7 +58,7 @@ public class PeliculaFileReader extends CSVFileReader<PeliculaData> {
 		
 		return generosDePeli;
 	}
-    
+    */
     @Override
     protected PeliculaData parseLine(String[] line) {
     	int id = Integer.parseInt(line[0]);
