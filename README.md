@@ -15,6 +15,8 @@ Lo que falta:
 7) En la clase PeliculaFileReader, ver como carajo leer los generos del archivo para pasarselo al PeliculaData.
 8) Volver a corregir el diagrama!!!
 9) Revisar en CSVFileReader la Resource Leak
+
+
 IMPORTANTE: habria que aclarar que nosotros asumimos que toda pelicula vista por un usuario es calificada.
 Lo que habiamos supuesto al inicio (que si el usuario ve la pelicula pero no la califica esta lleva un score
 de cero) novale, porque no tenemos metodo que permita ver la pelicula sin calificarla. Revisar la nota en el 
