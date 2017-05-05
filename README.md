@@ -8,5 +8,6 @@ Por hacer:
 
 -- Revisar los comentarios en el codigo (Pelicula)
 
-BRIAN: implmente los mensajes mejoresPeliculas y usuariosMasActivos en Moovies. Hice algunas correcciones en los tests
-e implemente los getters que faltaban en UsuarioData, RatingData, AmigosData, etc.
+BRIAN: en el branch Adapter, implemente los mensajes mejoresPeliculas y usuariosMasActivos en Moovies. 
+Hice algunas correcciones en los tests e implemente los getters que faltaban en UsuarioData, RatingData, 
+AmigosData, etc.
