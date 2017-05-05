@@ -21,7 +21,7 @@ public class UsuarioFileReader extends CSVFileReader<UsuarioData> {
     	String ocupacion = line[3];
     	int codPos = Integer.parseInt(line[4]);
 
-    	Usuario usuario = new Usuario(id, nyap, edad, ocupacion, codPos);
+    	Usuario usuario = new Usuario(nyap, edad, ocupacion, codPos);
     	
         return new UsuarioData(id, usuario);
     }

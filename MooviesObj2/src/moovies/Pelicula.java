@@ -93,6 +93,7 @@ public class Pelicula {
 		int cant = 0;
 		for (Map.Entry<Usuario, Integer> entry : puntajes.entrySet())
 		{
+			//Si asumimos que no hay puntuacion 0, este if se puede ir
 		    if(entry.getValue().intValue() > 0){
 		    	total = total + entry.getValue().intValue();
 		    	cant++;

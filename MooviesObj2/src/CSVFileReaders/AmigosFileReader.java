@@ -13,7 +13,6 @@ public class AmigosFileReader extends CSVFileReader<AmigosData> {
 
     @Override
     protected AmigosData parseLine(String[] line) {
-        //user id | movie id | rating
     	int userA 	= Integer.parseInt(line[0]);
         int userB	= Integer.parseInt(line[1]);
     	

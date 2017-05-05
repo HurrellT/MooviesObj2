@@ -68,7 +68,7 @@ public ArrayList<Usuario> getUsuarios(){
   
   //retorna una colección con las 10 películas que tienen el 
   //promedio de rating mayor, ordenada en forma descendente
-  public Collection<Pelicula> mejoresPelículas(){
+  public Collection<Pelicula> mejoresPeliculas(){
 	  //Crea una nueva lista para ordenar a las peliculas
 	  //List<Pelicula> orderedList = peliculas;
 	  //establece la comparacion entre peliculas

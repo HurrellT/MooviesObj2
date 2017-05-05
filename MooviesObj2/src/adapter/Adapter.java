@@ -75,7 +75,7 @@ public class Adapter {
 	}
 	
 	/*
-	 * Procesadores (extraen la informacion de los archivos y la
+	 * Setters (extraen la informacion de los archivos y la
 	 * guardan en los colaboradores internos)
 	 */
 	

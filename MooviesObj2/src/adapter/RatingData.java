@@ -13,7 +13,7 @@ public class RatingData {
 	private int rating;
 	
 	/*
-	 * Constructor de RatingIds
+	 * Constructor de RatingData
 	 */
 	
 	public RatingData(int uId, int mId, int score) {
