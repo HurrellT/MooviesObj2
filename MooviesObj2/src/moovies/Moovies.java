@@ -38,14 +38,27 @@ public class Moovies {
    * Getters
    *  
    */
-  
-  public ArrayList<Usuario> getUsuarios(){
+ 
+
+public ArrayList<Usuario> getUsuarios(){
 	  return usuarios;
   }
   
   public ArrayList<Pelicula> getPeliculas(){
 	  return peliculas;
   }
+  
+  /*
+   * 
+   * Constructor
+   *  
+   */
+  
+  public Moovies(Adapter adapter) {
+	this.adapter = adapter;
+	this.usuarios = new ArrayList<Usuario>();
+	this.peliculas = new ArrayList<Pelicula>();
+}
   
   /*
    * 

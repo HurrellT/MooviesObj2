@@ -22,6 +22,6 @@ public class AmigosFileReader extends CSVFileReader<AmigosData> {
 
     @Override
     protected String getSeparator() {
-        return "|";
+        return "\\|";
     }
 }

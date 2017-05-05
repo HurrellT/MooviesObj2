@@ -2,7 +2,6 @@ package adapter;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import CSVFileReaders.PeliculaFileReader;
@@ -30,6 +29,7 @@ public class Adapter {
 	/*
 	 * Getters
 	 */
+	
 	public List<UsuarioData> getUserData() {
 		
 		return userData;
@@ -75,7 +75,8 @@ public class Adapter {
 	}
 	
 	/*
-	 * Procesadores (extraen la informacion de los archivos)
+	 * Procesadores (extraen la informacion de los archivos y la
+	 * guardan en los colaboradores internos)
 	 */
 	
 	public void procesarUsuario(String filePath) {
@@ -134,21 +135,25 @@ public class Adapter {
 				user = userData.get(indexU);
 			}
 			//Buscar pelicula
-			//REFACTORIZAR EN UNA SUBTAREA
-			int indexP = 0;
-			PeliculaData movie = movieData.get(indexP);
-			while (! (movie.getId() == movieId)) {
-				indexP++;
-				movie = movieData.get(indexP);
-			}
+			PeliculaData movie = this.findPeliculaData(movieData, movieId);
 			//Registrar la calificacion del usuario
-			user.getUser().calificarPelicula(score,movie.getMovie());
+			user.getUser().calificarPelicula(score, movie.getMovie());
 		}
 		
 	}
+	
+	private PeliculaData findPeliculaData(List<PeliculaData> movieData, int movieId){
+		int indexP = 0;
+		PeliculaData movie = movieData.get(indexP);
+		while (! (movie.getId() == movieId)) {
+			indexP++;
+			movie = movieData.get(indexP);
+		}
+		return movie;
+	}
 
 	public void registrarAmigos() {
-		// FALTA IMPLEMENTAR
+		// FALTA IMPLEMENTAR!!!
 
 	}
 	
