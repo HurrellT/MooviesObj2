@@ -1,9 +1,5 @@
 # MooviesObj2
-Trabajo gral de la materia de Programacion con Objetos 2 UNQ
-
-BRIAN: en el branch Adapter, implemente los mensajes mejoresPeliculas y usuariosMasActivos en Moovies. 
-Hice algunas correcciones en los tests e implemente los getters que faltaban en UsuarioData, RatingData, 
-AmigosData, etc. Ademas cree la clase MooviesTest. 
+Trabajo gral de la materia de Programacion con Objetos 2 UNQ 
 
 Lo que falta:
 1) Hacer un Merge de Master con Adapter.
