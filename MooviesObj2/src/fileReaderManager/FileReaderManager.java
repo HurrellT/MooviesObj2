@@ -1,7 +1,6 @@
 package fileReaderManager;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import CSVFileReaders.PeliculaFileReader;
@@ -54,7 +53,7 @@ public class FileReaderManager {
 	 * Getters complejos (devuelven los datos finales)
 	 */
 	
-	private List<Pelicula> getPeliculas() {
+	public List<Pelicula> getPeliculas() {
 		List<Pelicula> nuevasPeliculas = new ArrayList<Pelicula>();
 		int index = 0;
 		for(int i = 0; i < movieData.size(); i++){
@@ -64,7 +63,7 @@ public class FileReaderManager {
 		return nuevasPeliculas;
 	}
 	
-	private List<Usuario> getUsuarios() {
+	public List<Usuario> getUsuarios() {
 		List<Usuario> nuevosUsuarios = new ArrayList<Usuario>();
 		int index = 0;
 		for(int i = 0; i < userData.size(); i++){
@@ -142,7 +141,7 @@ public class FileReaderManager {
 		
 	}
 	
-	private PeliculaData findPeliculaData(int id){
+	public PeliculaData findPeliculaData(int id){
 		int index = 0;
 		PeliculaData movie = movieData.get(index);
 		while (! (movie.getId() == id)) {
@@ -169,7 +168,7 @@ public class FileReaderManager {
 
 	}
 	
-	private UsuarioData findUsuarioData(int id){
+	public UsuarioData findUsuarioData(int id){
 		int index = 0;
 		UsuarioData user = userData.get(index);
 		while (! (user.getId() == id)) {

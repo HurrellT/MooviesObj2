@@ -2,6 +2,8 @@ package fileReaderManagerTest;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,7 +19,7 @@ public class FileReaderManagerTest {
 		
 		frMan.procesarRatings("/home/tomas/Escritorio/Objetos 2/Trabajos Obj2/Archivos para FileReader/u.data.new.csv");
 		frMan.procesarUsuario("/home/tomas/Escritorio/Objetos 2/Trabajos Obj2/Archivos para FileReader/u.user2.csv");
-		frMan.procesarPelicula("/home/tomas/Escritorio/Objetos 2/Trabajos Obj2/Archivos para FileReader/u.item.new.csv");
+		frMan.procesarPelicula("/home/tomas/Escritorio/Objetos 2/Trabajos Obj2/Archivos para FileReader/u.item.new2.csv");
 		frMan.procesarAmigos("/home/tomas/Escritorio/Objetos 2/Trabajos Obj2/Archivos para FileReader/u.connection.csv");
 	}
 	
@@ -28,5 +30,12 @@ public class FileReaderManagerTest {
 				
 		assert(frMan.getRatingData().contains(esperado));
 	}
-
+	
+/*	@Test
+	public void test002_LaPeliculaMightyAphroditeEsDeComedia() {
+		List<String> mighty = frMan.findPeliculaData(13).getMovie().getGeneros();
+				
+		assert(mighty.contains("Comedy"));
+	}
+*/
 }
