@@ -1,6 +1,6 @@
 package moovies;
 
-import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -9,7 +9,6 @@ import java.util.Map;
 * La misma tiene un nombre, un anio de estreno, 
 * un codigo  de idmb, una lista de generos, y una
 * lista de los puntajes que los usuarios le dan. 
-* @author TLH
 */
 
 public class Pelicula {
@@ -24,7 +23,7 @@ public class Pelicula {
 	private String nombre;
 	
 	// anio de estreno
-	private int anioDeEstreno;
+	private LocalDate anioDeEstreno;
 	
 	// IDMb
 	private int idmb;
@@ -33,7 +32,7 @@ public class Pelicula {
 	private ArrayList<String> generos;
 	
 	// puntajes
-	private Map<Integer,Integer> puntajes;
+	private Map<Usuario, Integer> puntajes;
 	
 	
 	/*
@@ -43,20 +42,13 @@ public class Pelicula {
  	*/
 	
 	public Pelicula(String name,
-			int year,
-			int idmbNum, 
-			ArrayList<String> genres) {
-		//Map<Integer, Integer> score
-		//la pelicula no deberia recibir los puntajes al ser creada
-		//estos los agregan los usuarios a medida que califican la pelicula
-		
-		//Tomas: Entiendo entiendo. Es algo que se modifica por separado.
-		
+					LocalDate year,
+					int idmbNum, 
+					ArrayList<String> genres) {
 		this.nombre = name;
 		this.anioDeEstreno = year;
 		this.idmb = idmbNum;
 		this.generos = genres;
-		//this.puntajes = score;
 	}
 	
 	/*
@@ -69,7 +61,7 @@ public class Pelicula {
 		return nombre;
 	}
 	
-	public int getAnioDeEstreno() {
+	public LocalDate getFechaDeEstreno() {
 		return anioDeEstreno;
 	}
 	
@@ -81,7 +73,7 @@ public class Pelicula {
 		return generos;
 	}
 	
-	public Map<Integer, Integer> getPuntajes() {
+	public Map<Usuario, Integer> getPuntajes() {
 		return puntajes;
 	}
 	
@@ -91,11 +83,37 @@ public class Pelicula {
 	*
 	*/
 	
-	public void addRating(int puntaje, int id){
-		Integer rating = new Integer(puntaje);
-		Integer idUsuario = new Integer(id); 
-		//hay que hacer esto porque puntajes requiere dos Integer
-		this.puntajes.put(idUsuario, rating);	
+	public void addRating(Usuario user, int puntaje){
+		Integer score = new Integer(puntaje);
+		this.puntajes.put(user, score);	
+	}
+	
+	public int promedio(){
+		int total = 0;
+		int cant = 0;
+		for (Map.Entry<Usuario, Integer> entry : puntajes.entrySet())
+		{
+			//Si asumimos que no hay puntuacion 0, este if se puede ir
+		    if(entry.getValue().intValue() > 0){
+		    	total = total + entry.getValue().intValue();
+		    	cant++;
+		    };
+		}
+		return (total / cant); 
+	}
+	
+	public int compareTo(Pelicula movie){
+		int res = 0;
+		if(this.promedio() == movie.promedio()){
+			res = 0;
+		}
+		if(this.promedio() < movie.promedio()){
+			res = -1;
+		}
+		if(this.promedio() > movie.promedio()){
+			res = 1;
+		}
+		return res;
 	}
 	
 }

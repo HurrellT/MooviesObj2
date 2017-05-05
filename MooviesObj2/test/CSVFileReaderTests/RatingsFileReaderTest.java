@@ -9,10 +9,10 @@ import org.junit.Test;
 
 import CSVFileReaders.CSVFileReader;
 import CSVFileReaders.RatingsFileReader;
-import adapter.RatingIds;
+import adapter.RatingData;
 
 public class RatingsFileReaderTest {
-    private CSVFileReader<RatingIds> reader;
+    private CSVFileReader<RatingData> reader;
 
     @Before
     public void setUp(){
@@ -21,11 +21,11 @@ public class RatingsFileReaderTest {
     }
 
     @Test
-    public void readFileStudentsReturnsAListWithTenObjects() {
+    public void test001_UnRatingFileReaderCreaUnaListaDeRatingDataAlLeerUnArchivo() {
         int expectedSize        = 100000;
         
        // Leemos el archivo y obtenemos la lista de objetos.
-        List<RatingIds> ratings  = reader.readFile();
+        List<RatingData> ratings  = reader.readFile();
 
         assertEquals(expectedSize, ratings.size());
     }
