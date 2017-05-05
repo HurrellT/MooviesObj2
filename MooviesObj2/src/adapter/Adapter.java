@@ -135,26 +135,48 @@ public class Adapter {
 				user = userData.get(indexU);
 			}
 			//Buscar pelicula
-			PeliculaData movie = this.findPeliculaData(movieData, movieId);
+			PeliculaData movie = this.findPeliculaData(movieId);
 			//Registrar la calificacion del usuario
 			user.getUser().calificarPelicula(score, movie.getMovie());
 		}
 		
 	}
 	
-	private PeliculaData findPeliculaData(List<PeliculaData> movieData, int movieId){
-		int indexP = 0;
-		PeliculaData movie = movieData.get(indexP);
-		while (! (movie.getId() == movieId)) {
-			indexP++;
-			movie = movieData.get(indexP);
+	private PeliculaData findPeliculaData(int id){
+		int index = 0;
+		PeliculaData movie = movieData.get(index);
+		while (! (movie.getId() == id)) {
+			index++;
+			movie = movieData.get(index);
 		}
 		return movie;
 	}
 
 	public void registrarAmigos() {
-		// FALTA IMPLEMENTAR!!!
+		//Precondicion: Ya se cargaron los datos.
+		int index = 0;
+		for (int i = 0; i < friendsData.size(); i++) {			
+			//Guardar info
+			int user1Id = friendsData.get(index).getAmigoId1();
+			int user2Id = friendsData.get(index).getAmigoId2();
+			//Buscar primer usuario
+			UsuarioData user1 = this.findUsuarioData(user1Id);
+			//Buscar segundo usuario
+			UsuarioData user2 = this.findUsuarioData(user2Id);
+			//Hacer amigos a los usuarios
+			user1.getUser().agregarAmigo(user2.getUser());
+		}
 
+	}
+	
+	private UsuarioData findUsuarioData(int id){
+		int index = 0;
+		UsuarioData user = userData.get(index);
+		while (! (user.getId() == id)) {
+			index++;
+			user = userData.get(index);
+		}
+		return user;
 	}
 	
 	public void integrarEnMoovies(Moovies mov) {
