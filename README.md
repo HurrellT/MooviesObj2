@@ -6,7 +6,7 @@ Hice algunas correcciones en los tests e implemente los getters que faltaban en 
 AmigosData, etc. Ademas cree la clase MooviesTest. 
 
 Lo que falta:
-1) Hacer un Merge de Master con Adapter.
+1) Hacer un Merge de Master con Adapter. Ya no hace falta hacer el Merge con la otra rama (Eliminar-id).
 2) Implementar registrarAmigos() en Adapter.
 3) Arreglar el texto de los test para UsuarioFileReader y RatingFileReader (quedo como en el ejemplo del campus).
 4) Crear test para PeliculaFileReader y AmigoFileReader (son casi identicos al de UsuarioFileReader).
