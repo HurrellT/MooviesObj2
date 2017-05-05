@@ -1,6 +1,6 @@
 package CSVFileReaders;
 
-import adapter.RatingData;
+import fileReaderManager.RatingData;
 
 public class RatingsFileReader extends CSVFileReader<RatingData> {
 

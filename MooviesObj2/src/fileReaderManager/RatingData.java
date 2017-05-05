@@ -1,4 +1,4 @@
-package adapter;
+package fileReaderManager;
 
 public class RatingData {
 

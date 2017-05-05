@@ -20,7 +20,7 @@ public class PeliculaTest {
 		generos.add("Drama");
 		generos.add("Suspenso");
 		LocalDate date = LocalDate.now();
-		peli1 = new Pelicula("El dia despues de maniana", date, 15276, generos);
+		peli1 = new Pelicula("El dia despues de maniana", date, "tt15276", generos);
 	}
 	
 	@Test

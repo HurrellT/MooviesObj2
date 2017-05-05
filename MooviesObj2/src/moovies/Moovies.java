@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import adapter.Adapter;
+import fileReaderManager.FileReaderManager;
 import moovies.Usuario;
 import moovies.Pelicula;
 
@@ -25,13 +25,13 @@ public class Moovies {
  */
 	
   //lista de usuarios
-  private ArrayList<Usuario> usuarios;
+  private List<Usuario> usuarios;
   
   //lista de peliculas
-  private ArrayList<Pelicula> peliculas;
+  private List<Pelicula> peliculas;
   
-  //adapter
-  private Adapter adapter;
+  //frMan
+  private FileReaderManager frMan;
   
   /*
    * 
@@ -40,11 +40,11 @@ public class Moovies {
    */
  
 
-public ArrayList<Usuario> getUsuarios(){
+public List<Usuario> getUsuarios(){
 	  return usuarios;
   }
   
-  public ArrayList<Pelicula> getPeliculas(){
+  public List<Pelicula> getPeliculas(){
 	  return peliculas;
   }
   
@@ -54,8 +54,8 @@ public ArrayList<Usuario> getUsuarios(){
    *  
    */
   
-  public Moovies(Adapter adapter) {
-	this.adapter = adapter;
+  public Moovies(FileReaderManager frMan) {
+	this.frMan = frMan;
 	this.usuarios = new ArrayList<Usuario>();
 	this.peliculas = new ArrayList<Pelicula>();
 }
@@ -68,7 +68,7 @@ public ArrayList<Usuario> getUsuarios(){
   
   //retorna una colecci�n con las 10 pel�culas que tienen el 
   //promedio de rating mayor, ordenada en forma descendente
-  public Collection<Pelicula> mejoresPeliculas(){
+  public List<Pelicula> mejoresPeliculas(){
 	  //Crea una nueva lista para ordenar a las peliculas
 	  //List<Pelicula> orderedList = peliculas;
 	  //establece la comparacion entre peliculas
@@ -93,7 +93,7 @@ public ArrayList<Usuario> getUsuarios(){
   //retorna una colecci�n con los 10 usuarios que han realizado 
   //el mayor n�mero de clasificaciones de pel�culas, ordenada 
   //en forma descendente
-  public Collection<Usuario> usuariosMasActivos(){
+  public List<Usuario> usuariosMasActivos(){
 	  //Crea una nueva lista para ordenar a los usuarios
 	  //List<Usuario> orderedList = usuarios;
 	  //establece la comparacion entre usuarios
@@ -116,7 +116,7 @@ public ArrayList<Usuario> getUsuarios(){
   
   //Actualiza la informacion en Moovies
   public void actualizarInfo(){
-	  this.adapter.integrarEnMoovies(this);
+	  this.frMan.integrarEnMoovies(this);
   }
 
 }

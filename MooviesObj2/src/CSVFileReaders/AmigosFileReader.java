@@ -1,6 +1,6 @@
 package CSVFileReaders;
 
-import adapter.AmigosData;
+import fileReaderManager.AmigosData;
 
 public class AmigosFileReader extends CSVFileReader<AmigosData> {
 

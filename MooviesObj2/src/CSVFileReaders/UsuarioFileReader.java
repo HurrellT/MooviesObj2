@@ -1,6 +1,6 @@
 package CSVFileReaders;
 
-import adapter.UsuarioData;
+import fileReaderManager.UsuarioData;
 import moovies.Usuario;
 
 public class UsuarioFileReader extends CSVFileReader<UsuarioData> {

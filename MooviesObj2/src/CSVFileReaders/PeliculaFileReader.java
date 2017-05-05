@@ -3,8 +3,9 @@ package CSVFileReaders;
 import java.time.LocalDate; 
 import java.time.format.*;
 import java.util.ArrayList;
+import java.util.Locale;
 
-import adapter.PeliculaData;
+import fileReaderManager.PeliculaData;
 import moovies.Pelicula;
 
 public class PeliculaFileReader extends CSVFileReader<PeliculaData> {
@@ -21,9 +22,9 @@ public class PeliculaFileReader extends CSVFileReader<PeliculaData> {
     	int id = Integer.parseInt(line[0]);
     	String nombre = line[1];
     	//Date year = Date(line[2]);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.US);
         LocalDate registerDate = LocalDate.parse(line[2], formatter);
-    	int idmb = Integer.parseInt(line[3]);
+    	String idmb = line[3];
         ArrayList<String> generos = new ArrayList<String>();
         
        //hay que poner todos los generos en el ArrayList

@@ -1,6 +1,6 @@
 package moovies;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -34,11 +34,10 @@ public class Usuario {
 	//private String generoFavorito;
 		
 	//amigos del usuarios
-	private ArrayList<Usuario> amigos;
+	private List<Usuario> amigos;
 		
-	//peliculas vistas con el puntaje dado por el usuario actual
-	//si no fue puntuado, el valor es 0 (el puntaje valido va de 1 a 5)
-	private Map<Pelicula,Integer> pelisVistas;
+	//lista de calificaciones dadas a las peliculas
+	private List<Calificacion> calificaciones;
 	
 	/*
  	* 
@@ -83,13 +82,13 @@ public class Usuario {
 	}
 	
 	//retorna la lista de amigos
-	public ArrayList<Usuario> getAmigos() {
+	public List<Usuario> getAmigos() {
 		return amigos;
 	}
 
-	//retorna la lista de pares (Pelicula, puntaje)
-	public Map<Pelicula, Integer> getPelis() {
-		return pelisVistas;
+	//retorna la lista de calificaciones
+	public List<Calificacion> getCalificaciones() {
+		return calificaciones;
 	}
 
 	/*
@@ -119,20 +118,13 @@ public class Usuario {
 	}
 			
 	public void calificarPelicula(int puntaje, Pelicula pelicula){
-		this.pelisVistas.put(pelicula, puntaje);
-		pelicula.addRating(this, puntaje); //double dispatching			
+		Calificacion calif = new Calificacion(this, pelicula, puntaje);
+		calificaciones.add(calif);
+		pelicula.addRating(calif);
 	}
 	
 	public int pelisClasificadas(){
-		int total = 0;
-		for (Map.Entry<Pelicula, Integer> entry : pelisVistas.entrySet())
-		{
-			//Si asumimos que no hay voto 0, este if no iria
-		    if(entry.getValue().intValue() > 0){
-		    	total++;
-		    };
-		}
-		return total; 
+		return calificaciones.size(); 
 	}
 	
 	public int compareTo(Usuario user){

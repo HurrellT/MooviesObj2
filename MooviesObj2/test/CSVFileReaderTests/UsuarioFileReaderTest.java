@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.Before;
 import CSVFileReaders.CSVFileReader;
 import CSVFileReaders.UsuarioFileReader;
-import adapter.UsuarioData;
+import fileReaderManager.UsuarioData;
 import moovies.Usuario;
 import java.util.*;
 

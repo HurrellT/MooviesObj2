@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import CSVFileReaders.CSVFileReader;
 import CSVFileReaders.RatingsFileReader;
-import adapter.RatingData;
+import fileReaderManager.RatingData;
 
 public class RatingsFileReaderTest {
     private CSVFileReader<RatingData> reader;

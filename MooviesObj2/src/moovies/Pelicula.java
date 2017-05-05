@@ -1,7 +1,7 @@
 package moovies;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -26,13 +26,13 @@ public class Pelicula {
 	private LocalDate anioDeEstreno;
 	
 	// IDMb
-	private int idmb;
+	private String idmb;
 	
 	// generos
-	private ArrayList<String> generos;
+	private List<String> generos;
 	
 	// puntajes
-	private Map<Usuario, Integer> puntajes;
+	private List<Calificacion> calificaciones;
 	
 	
 	/*
@@ -43,11 +43,11 @@ public class Pelicula {
 	
 	public Pelicula(String name,
 					LocalDate year,
-					int idmbNum, 
-					ArrayList<String> genres) {
+					String string, 
+					List<String> genres) {
 		this.nombre = name;
 		this.anioDeEstreno = year;
-		this.idmb = idmbNum;
+		this.idmb = string;
 		this.generos = genres;
 	}
 	
@@ -65,16 +65,16 @@ public class Pelicula {
 		return anioDeEstreno;
 	}
 	
-	public int getIdmb() {
+	public String getIdmb() {
 		return idmb;
 	}
 	
-	public ArrayList<String> getGeneros() {
+	public List<String> getGeneros() {
 		return generos;
 	}
 	
-	public Map<Usuario, Integer> getPuntajes() {
-		return puntajes;
+	public List<Calificacion> getCalificaciones() {
+		return calificaciones;
 	}
 	
 	/*
@@ -83,23 +83,17 @@ public class Pelicula {
 	*
 	*/
 	
-	public void addRating(Usuario user, int puntaje){
-		Integer score = new Integer(puntaje);
-		this.puntajes.put(user, score);	
+	public void addRating(Calificacion calif){
+		calificaciones.add(calif);	
 	}
 	
 	public int promedio(){
 		int total = 0;
-		int cant = 0;
-		for (Map.Entry<Usuario, Integer> entry : puntajes.entrySet())
-		{
-			//Si asumimos que no hay puntuacion 0, este if se puede ir
-		    if(entry.getValue().intValue() > 0){
-		    	total = total + entry.getValue().intValue();
-		    	cant++;
-		    };
-		}
-		return (total / cant); 
+		int cant = calificaciones.size();
+		for (int i = 0; i < cant; i++) {
+		    total = total + calificaciones.get(i).getPuntaje();
+		    }
+		return (total / cant);
 	}
 	
 	public int compareTo(Pelicula movie){

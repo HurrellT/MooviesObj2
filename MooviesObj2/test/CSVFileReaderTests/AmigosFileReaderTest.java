@@ -6,7 +6,7 @@ import org.junit.Before;
 
 import CSVFileReaders.AmigosFileReader;
 import CSVFileReaders.CSVFileReader;
-import adapter.AmigosData;
+import fileReaderManager.AmigosData;
 
 import java.util.*;
 

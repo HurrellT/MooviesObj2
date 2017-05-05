@@ -1,4 +1,4 @@
-package adapter;
+package fileReaderManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,7 +12,7 @@ import moovies.Pelicula;
 import moovies.Usuario;
 import CSVFileReaders.AmigosFileReader;
 
-public class Adapter {
+public class FileReaderManager {
 
 	/*
 	 *	Colaboradores Internos 
