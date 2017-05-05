@@ -20,7 +20,7 @@ public class UsuarioFileReaderTest {
     }
 	
 	@Test
-    public void readFileUsuariosReturnsAListWithTenObjects() {
+    public void test001_UnUsuarioFileReaderCreaUnaListaDeUsuariosDataAlLeerUnArchivo() {
         int expectedSize = 51;
         
        // Leemos el archivo y obtenemos la lista de objetos.

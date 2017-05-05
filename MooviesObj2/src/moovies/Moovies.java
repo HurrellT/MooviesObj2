@@ -66,7 +66,7 @@ public ArrayList<Usuario> getUsuarios(){
    *  
    */
   
-  //retorna una colección con las 10 películas que tienen el 
+  //retorna una colecciï¿½n con las 10 pelï¿½culas que tienen el 
   //promedio de rating mayor, ordenada en forma descendente
   public Collection<Pelicula> mejoresPeliculas(){
 	  //Crea una nueva lista para ordenar a las peliculas
@@ -90,10 +90,10 @@ public ArrayList<Usuario> getUsuarios(){
 	  
   }
 
-  //retorna una colección con los 10 usuarios que han realizado 
-  //el mayor número de clasificaciones de películas, ordenada 
+  //retorna una colecciï¿½n con los 10 usuarios que han realizado 
+  //el mayor nï¿½mero de clasificaciones de pelï¿½culas, ordenada 
   //en forma descendente
-  public Collection<Usuario> usuariosMásActivos(){
+  public Collection<Usuario> usuariosMasActivos(){
 	  //Crea una nueva lista para ordenar a los usuarios
 	  //List<Usuario> orderedList = usuarios;
 	  //establece la comparacion entre usuarios

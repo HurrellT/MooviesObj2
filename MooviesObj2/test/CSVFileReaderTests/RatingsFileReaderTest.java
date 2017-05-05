@@ -21,7 +21,7 @@ public class RatingsFileReaderTest {
     }
 
     @Test
-    public void readFileStudentsReturnsAListWithTenObjects() {
+    public void test001_UnRatingFileReaderCreaUnaListaDeRatingDataAlLeerUnArchivo() {
         int expectedSize        = 100000;
         
        // Leemos el archivo y obtenemos la lista de objetos.
