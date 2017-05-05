@@ -1,5 +1,5 @@
 # MooviesObj2
-Trabajo gral de la materia de Programacion con Objetos 2 UNQ
+Trabajo gral de la materia de Programacion con Objetos 2 UNQ 
 
 BRIAN: en el branch Adapter, implemente los mensajes mejoresPeliculas y usuariosMasActivos en Moovies. 
 Hice algunas correcciones en los tests e implemente los getters que faltaban en UsuarioData, RatingData, 
@@ -15,4 +15,3 @@ IMPORTANTE: habria que aclarar que nosotros asumimos que toda pelicula vista por
 Lo que habiamos supuesto al inicio (que si el usuario ve la pelicula pero no la califica esta lleva un score
 de cero) novale, porque no tenemos metodo que permita ver la pelicula sin calificarla. Revisar la nota en el 
 metodo promedio de la clase Pelicula.
-
