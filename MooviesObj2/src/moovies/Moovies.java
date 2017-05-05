@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import adapter.Adapter;
 import moovies.Usuario;
 import moovies.Pelicula;
 
@@ -29,6 +30,9 @@ public class Moovies {
   //lista de peliculas
   private ArrayList<Pelicula> peliculas;
   
+  //adapter
+  private Adapter adapter;
+  
   /*
    * 
    * Getters
@@ -43,11 +47,17 @@ public class Moovies {
 	  return peliculas;
   }
   
+  /*
+   * 
+   * Otros metodos
+   *  
+   */
+  
   //retorna una colección con las 10 películas que tienen el 
   //promedio de rating mayor, ordenada en forma descendente
   public Collection<Pelicula> mejoresPelículas(){
 	  //Crea una nueva lista para ordenar a las peliculas
-	  List<Pelicula> orderedList = peliculas;
+	  //List<Pelicula> orderedList = peliculas;
 	  //establece la comparacion entre peliculas
 	  Comparator<Pelicula> comparator = new Comparator<Pelicula>() {
 	      @Override
@@ -56,12 +66,12 @@ public class Moovies {
 	      }
 	  };
 	  //Ordena la lista de mayor a menor
-	  Collections.sort(orderedList, comparator); 
+	  Collections.sort(peliculas, comparator); 
 	  int index = 10;
 	  List<Pelicula> finalList = new ArrayList<>();
 	  //Crea una nueva lista con las 10 primeras peliculas
 	  for(int i = 0; i < 10; i++){
-	    finalList.add(orderedList.get(index));
+	    finalList.add(peliculas.get(index));
 	  }
 	  return finalList;
 	  
@@ -72,7 +82,7 @@ public class Moovies {
   //en forma descendente
   public Collection<Usuario> usuariosMásActivos(){
 	  //Crea una nueva lista para ordenar a los usuarios
-	  List<Usuario> orderedList = usuarios;
+	  //List<Usuario> orderedList = usuarios;
 	  //establece la comparacion entre usuarios
 	  Comparator<Usuario> comparator = new Comparator<Usuario>() {
 	      @Override
@@ -81,14 +91,19 @@ public class Moovies {
 	      }
 	  };
 	  //Ordena la lista de mayor a menor
-	  Collections.sort(orderedList, comparator); 
+	  Collections.sort(usuarios, comparator); 
 	  int index = 10;
 	  List<Usuario> finalList = new ArrayList<>();
 	  //Crea una nueva lista con los primeros 10 usuarios
 	  for(int i = 0; i < 10; i++){
-	    finalList.add(orderedList.get(index));
+	    finalList.add(usuarios.get(index));
 	  }
 	  return finalList;
+  }
+  
+  //Actualiza la informacion en Moovies
+  public void actualizarInfo(){
+	  this.adapter.integrarEnMoovies(this);
   }
 
 }

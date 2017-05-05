@@ -1,5 +1,6 @@
 package adapter;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -7,6 +8,9 @@ import java.util.List;
 import CSVFileReaders.PeliculaFileReader;
 import CSVFileReaders.RatingsFileReader;
 import CSVFileReaders.UsuarioFileReader;
+import moovies.Moovies;
+import moovies.Pelicula;
+import moovies.Usuario;
 import CSVFileReaders.AmigosFileReader;
 
 public class Adapter {
@@ -26,14 +30,52 @@ public class Adapter {
 	/*
 	 * Getters
 	 */
+	public List<UsuarioData> getUserData() {
+		
+		return userData;
+	}
 	
+	public List<PeliculaData> getMovieData() {
+		
+		return movieData;
+	}
+
 	public List<RatingData> getRatingData() {
 		
 		return ratingData;
 	}
 	
+	public List<AmigosData> getFriendsData() {
+		
+		return friendsData;
+	}
+	
 	/*
-	 * Setters
+	 * Getters complejos (devuelven los datos finales)
+	 */
+	
+	private Collection<Pelicula> getPeliculas() {
+		Collection<Pelicula> nuevasPeliculas = new ArrayList<Pelicula>();
+		int index = 0;
+		for(int i = 0; i < movieData.size(); i++){
+			nuevasPeliculas.add(movieData.get(index).getMovie());
+			index++;
+		}
+		return nuevasPeliculas;
+	}
+	
+	private Collection<Usuario> getUsuarios() {
+		Collection<Usuario> nuevosUsuarios = new ArrayList<Usuario>();
+		int index = 0;
+		for(int i = 0; i < userData.size(); i++){
+			nuevosUsuarios.add(userData.get(index).getUser());
+			index++;
+		}
+		return nuevosUsuarios;
+	}
+	
+	/*
+	 * Procesadores (extraen la informacion de los archivos)
 	 */
 	
 	public void procesarUsuario(String filePath) {
@@ -72,38 +114,33 @@ public class Adapter {
 		this.friendsData = amigosReader.readFile();
 	}
 	
-	//Precondicion: Ya se cargaron los datos.
-	//
+	/*
+	 * Otros metodos
+	 */
+	
 	public void registrarRatings() {
-		
+	//Precondicion: Ya se cargaron los datos.
 		int index = 0;
-		
 		for (int i = 0; i < ratingData.size(); i++) {			
-			
 			//Guardar info
 			int userId 	= ratingData.get(index).getUserId();
 			int movieId = ratingData.get(index).getMovieId();
 			int score 	= ratingData.get(index).getRating();
-			
 			//Buscar usuario
 			int indexU = 0;
-			
 			UsuarioData user = userData.get(indexU);
 			while (! (user.getId() == userId)) {
 				indexU++;
 				user = userData.get(indexU);
 			}
-			
 			//Buscar pelicula
 			//REFACTORIZAR EN UNA SUBTAREA
 			int indexP = 0;
-			
 			PeliculaData movie = movieData.get(indexP);
 			while (! (movie.getId() == movieId)) {
 				indexP++;
 				movie = movieData.get(indexP);
 			}
-			
 			//Registrar la calificacion del usuario
 			user.getUser().calificarPelicula(score,movie.getMovie());
 		}
@@ -111,13 +148,15 @@ public class Adapter {
 	}
 
 	public void registrarAmigos() {
-		// TODO Auto-generated method stub
+		// FALTA IMPLEMENTAR
 
 	}
 	
-	public void integrarEnMoovies() {
-		// TODO Auto-generated method stub
-
+	public void integrarEnMoovies(Moovies mov) {
+		Collection<Pelicula> pelis = this.getPeliculas();
+		Collection<Usuario> users = this.getUsuarios();
+		mov.getPeliculas().addAll(pelis);
+		mov.getUsuarios().addAll(users);
 	}
 	
 }
