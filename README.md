@@ -2,7 +2,7 @@
 Trabajo gral de la materia de Programacion con Objetos 2 UNQ 
 
 Lo que falta:
-1) Hacer un Merge de Master con Adapter.
+1) Hacer un Merge de Master con Adapter. Ya no hace falta hacer el Merge con la otra rama (Eliminar-id).
 2) Implementar registrarAmigos() en Adapter.
 3) Arreglar el texto de los test para UsuarioFileReader y RatingFileReader (quedo como en el ejemplo del campus).
 4) Crear test para PeliculaFileReader y AmigoFileReader (son casi identicos al de UsuarioFileReader).
