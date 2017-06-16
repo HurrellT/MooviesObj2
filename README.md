@@ -1,6 +1,8 @@
 # MooviesObj2
 Trabajo gral de la materia de Programacion con Objetos 2 UNQ 
 
+TOMAS 16-6: Diego Torres me dijo que hay que hacer los ultimos 2 puntos (Suscripciones a géneros y subgéneros, Recomendaciones)
+
 BRIAN: en el branch Adapter, implemente los mensajes mejoresPeliculas y usuariosMasActivos en Moovies. 
 Hice algunas correcciones en los tests e implemente los getters que faltaban en UsuarioData, RatingData, 
 AmigosData, etc. Ademas cree la clase MooviesTest. 
