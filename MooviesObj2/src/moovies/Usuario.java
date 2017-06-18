@@ -1,5 +1,6 @@
 package moovies;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -45,14 +46,13 @@ public class Usuario {
  	*  
  	*/
 	
-	public Usuario(String nyap,
-		       int edad,
-		       String ocupacion, 
-		       int codPos) {
-		this.nyap = nyap;
-		this.edad = edad;
-		this.ocupacion = ocupacion;
-		this.codPos = codPos;
+	public Usuario(String nyap, int edad, String ocupacion, int codPos) {
+		this.nyap 			= nyap;
+		this.edad 			= edad;
+		this.ocupacion 		= ocupacion;
+		this.codPos 		= codPos;
+		this.amigos			= new ArrayList<Usuario>();
+		this.calificaciones	= new ArrayList<Calificacion>();
 	}
 		
 	/*
@@ -100,20 +100,20 @@ public class Usuario {
 	//agrega la id de un usuario a la lista de amigos
 	public void agregarAmigo(Usuario user){
 		this.amigos.add(user);
-		user.addAmigo(this);
+		user.agregarmeComoAmigo(this);
 	}
 	
-	public void addAmigo(Usuario user){
+	private void agregarmeComoAmigo(Usuario user){
 		this.amigos.add(user);
 	}
 
 	//elimina la id de un usuario de la lista de amigos
 	public void eliminarAmigo(Usuario user){
 		this.amigos.remove(user);
-		user.removeAmigo(this);
+		user.eliminarmeComoAmigo(this);
 	}
 	
-	public void removeAmigo(Usuario user){
+	private void eliminarmeComoAmigo(Usuario user){
 		this.amigos.remove(user);
 	}
 			
