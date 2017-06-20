@@ -1,26 +1,31 @@
 package mooviesTests;
 
 import static org.junit.Assert.*;
-import org.junit.Test;
+
 import org.junit.Before;
+import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import moovies.Pelicula;
 
+import static org.mockito.Mockito.*;
+
 
 public class PeliculaTest {
 
-	Pelicula peli1;
+	Pelicula peli1, peli2;
+	
 	ArrayList<String> generos;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
+		
 		generos = new ArrayList<String>();
 		generos.add("Drama");
 		generos.add("Suspenso");
 		LocalDate date = LocalDate.now();
-		peli1 = new Pelicula("El dia despues de maniana", date, "tt15276", generos);
+		peli1 = new Pelicula("Alien", date, "15276", generos);
 	}
 	
 	@Test

@@ -1,7 +1,6 @@
 package moovies;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -31,7 +30,7 @@ public class Moovies {
   private List<Pelicula> peliculas;
   
   //frMan
-  private FileReaderManager frMan;
+  private FileReaderManager manager;
   
   /*
    * 
@@ -55,7 +54,7 @@ public List<Usuario> getUsuarios(){
    */
   
   public Moovies(FileReaderManager frMan) {
-	this.frMan = frMan;
+	this.manager = frMan;
 	this.usuarios = new ArrayList<Usuario>();
 	this.peliculas = new ArrayList<Pelicula>();
 }
@@ -66,7 +65,15 @@ public List<Usuario> getUsuarios(){
    *  
    */
   
-  //retorna una colecci�n con las 10 pel�culas que tienen el 
+  public void addPelicula(Pelicula peli){
+	  this.peliculas.add(peli);
+  }
+  
+  public void addUsuario(Usuario user){
+	  this.usuarios.add(user);
+  }
+  
+  //retorna una coleccion con las 10 peliculas que tienen el 
   //promedio de rating mayor, ordenada en forma descendente
   public List<Pelicula> mejoresPeliculas(){
 	  //Crea una nueva lista para ordenar a las peliculas
@@ -90,8 +97,8 @@ public List<Usuario> getUsuarios(){
 	  
   }
 
-  //retorna una colecci�n con los 10 usuarios que han realizado 
-  //el mayor n�mero de clasificaciones de pel�culas, ordenada 
+  //retorna una coleccion con los 10 usuarios que han realizado 
+  //el mayor numero de clasificaciones de peliculas, ordenada 
   //en forma descendente
   public List<Usuario> usuariosMasActivos(){
 	  //Crea una nueva lista para ordenar a los usuarios
@@ -116,7 +123,7 @@ public List<Usuario> getUsuarios(){
   
   //Actualiza la informacion en Moovies
   public void actualizarInfo(){
-	  this.frMan.integrarEnMoovies(this);
+	  this.manager.integrarEnMoovies(this);
   }
 
 }

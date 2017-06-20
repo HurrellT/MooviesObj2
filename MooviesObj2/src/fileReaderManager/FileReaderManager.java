@@ -181,8 +181,14 @@ public class FileReaderManager {
 	public void integrarEnMoovies(Moovies mov) {
 		List<Pelicula> pelis = this.getPeliculas();
 		List<Usuario> users = this.getUsuarios();
-		mov.getPeliculas().addAll(pelis);
-		mov.getUsuarios().addAll(users);
+		for(int i=0; i < pelis.size(); i++){
+			mov.addPelicula(pelis.get(i));
+		}
+		for(int i=0; i < users.size(); i++){
+			mov.addUsuario(users.get(i));
+		}
+		//mov.getPeliculas().addAll(pelis);
+		//mov.getUsuarios().addAll(users);
 	}
 	
 }
