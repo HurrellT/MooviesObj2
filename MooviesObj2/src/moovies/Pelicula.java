@@ -29,7 +29,7 @@ public class Pelicula {
 	private String idmb;
 	
 	// generos
-	private List<String> generos;
+	private List<Genero> generos;
 	
 	// puntajes
 	private List<Calificacion> calificaciones;
@@ -44,7 +44,7 @@ public class Pelicula {
 	public Pelicula(String name,
 					LocalDate year,
 					String string, 
-					List<String> genres) {
+					List<Genero> genres) {
 		this.nombre = name;
 		this.anioDeEstreno = year;
 		this.idmb = string;
@@ -69,7 +69,7 @@ public class Pelicula {
 		return idmb;
 	}
 	
-	public List<String> getGeneros() {
+	public List<Genero> getGeneros() {
 		return generos;
 	}
 	
