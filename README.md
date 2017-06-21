@@ -3,7 +3,7 @@ Trabajo gral de la materia de Programacion con Objetos 2 UNQ
 
 TOMAS 16-6: Diego Torres me dijo que hay que hacer los ultimos 2 puntos (Suscripciones a géneros y subgéneros, Recomendaciones)
 
-BRIAN 20-6: Ya arreglé el MooviesTest. Lo unico, el test que ya estaba (que creaba peliculas y usuarios a partir de los archivos de prueba) lo deje comentado, no se si seria necesario. 
+BRIAN 20-6: Ya arreglé el MooviesTest. Lo unico, el test que ya estaba (que creaba peliculas y usuarios a partir de los archivos de prueba) lo deje comentado, no se si seria necesario. Ademas hice un nuevo branch (generos) donde esta la clase Genero (incompleta) y lo que se puede del PeliculaTest.
 
 Lo que falta:
 - Arreglar el error de PeliculaFileReader que no puede transformar el String en LocalDate.
