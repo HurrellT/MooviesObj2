@@ -1,6 +1,7 @@
 package moovies;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
@@ -44,12 +45,13 @@ public class Pelicula {
 	
 	public Pelicula(String name,
 					LocalDate year,
-					String string, 
+					String imdbScore, 
 					List<Genero> genres) {
-		this.nombre = name;
-		this.anioDeEstreno = year;
-		this.idmb = string;
-		this.generos = genres;
+		this.nombre 		= name;
+		this.anioDeEstreno 	= year;
+		this.idmb 			= imdbScore;
+		this.generos 		= genres;
+		this.calificaciones	= new ArrayList<>();
 	}
 	
 	/*
@@ -111,14 +113,13 @@ public class Pelicula {
 		return res;
 	}
 
-	//AGREGAR AL UML LO QUE ESTOY HACIENDO ACA
-	public boolean esRecomendacionPara(Usuario user, int puntajeDado, int condicionMinimaDeAmigos) {
+	public boolean esRecomendacionPara(Usuario user, int puntaje, int condicionMinimaDeAmigos) {
 		
-		Stream<Usuario> amigosQueRecomendaron = user.getAmigos().stream();
+		Stream<Usuario> amigosQueEvaluaron = user.getAmigos().stream();
 		
-		amigosQueRecomendaron.filter(a -> a.recomendo(this) && a.buscarCalificacion(this).getPuntaje() > puntajeDado);
+		amigosQueEvaluaron.filter(a -> a.evaluoLaPelicula(this) && a.buscarCalificacion(this).getPuntaje() >= puntaje);
 		
-		return amigosQueRecomendaron.count() > condicionMinimaDeAmigos;
+		return amigosQueEvaluaron.count() > condicionMinimaDeAmigos;
 	}
 	
 }

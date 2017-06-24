@@ -141,4 +141,13 @@ public class Usuario {
 		return res;
 	}
 
+	public boolean evaluoLaPelicula(Pelicula pelicula) {
+		return calificaciones.contains(pelicula);
+		//o return peliculasQueRecomendo.contains(pelicula); ?
+	}
+
+	public Calificacion buscarCalificacion(Pelicula pelicula) {
+		return calificaciones.get(calificaciones.indexOf(pelicula));
+	}
+
 }
