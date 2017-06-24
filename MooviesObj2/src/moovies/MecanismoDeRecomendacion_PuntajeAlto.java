@@ -1,42 +1,20 @@
 package moovies;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MecanismoDeRecomendacion_PuntajeAlto implements MecanismoDeRecomendacion {
 
 	@Override
-	public void recomendarPeliculaPara(Usuario user) {
+	public List<Pelicula> recomendarPeliculaPara(Usuario user,Moovies moovies) {
 		int condicionMinimaDeAmigos = user.getAmigos().size() / 2;
 		
-		//Obtengo los amigos del usuario
-		Stream<Usuario> amigos = user.getAmigos().stream();
+		Stream<Pelicula> peliculasPorAmigos = moovies.getPeliculas().stream();
+		peliculasPorAmigos	.filter(m -> m.esRecomendacionPara(user, 4, condicionMinimaDeAmigos));
 		
-		//Obtengo las calificaciones de cada amigo del usuario
-		List<Calificacion> calificaciones = new ArrayList<>();
-	
-		amigos.forEach(a -> calificaciones.addAll(a.getCalificaciones()));
-
-		//Obtengo las peliculas que fueron calificadas
-		//por igual o mas cantidad de usuarios que la condicion. 
-		Stream<Calificacion> cal 	= calificaciones.stream();
-//		cal	.map(c -> c.getPeli())
-//			.map(p -> p.getCalificaciones())
-//			.forEach(cp -> cp.removeIf(amigos.anyMatch(cp.)));
-		
-		
-		
-		
-		//Filtro las peliculas no calificadas por el usuario,
-		//y luego filtro las peliculas con puntaje igual o mayor a 4.
-		
-		cal	.filter(c -> c.getUsuario() != (user))
-			.filter(c -> c.getPuntaje() >= 4);
-		
-		//Se agregan las recomendaciones al usuario.
-		//Ejemplo, recibe una notificacion con las recomendaciones nuevas.
-//		cal.forEach(c -> user.agregarRecomendacion(c.getPeli()));
+		return peliculasPorAmigos.collect(Collectors.toList());
+		//RETOCAR EL UML
 	}
 
 }

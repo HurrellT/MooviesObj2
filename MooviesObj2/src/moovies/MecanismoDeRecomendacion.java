@@ -1,7 +1,9 @@
 package moovies;
 
+import java.util.List;
+
 public interface MecanismoDeRecomendacion {
 	
-	public void recomendarPeliculaPara(Usuario user);
+	public List<Pelicula> recomendarPeliculaPara(Usuario user, Moovies moovies);
 
 }

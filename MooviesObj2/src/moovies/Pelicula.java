@@ -3,6 +3,7 @@ package moovies;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /*
 * Clase que define una Pelicula.
@@ -108,6 +109,16 @@ public class Pelicula {
 			res = 1;
 		}
 		return res;
+	}
+
+	//AGREGAR AL UML LO QUE ESTOY HACIENDO ACA
+	public boolean esRecomendacionPara(Usuario user, int puntajeDado, int condicionMinimaDeAmigos) {
+		
+		Stream<Usuario> amigosQueRecomendaron = user.getAmigos().stream();
+		
+		amigosQueRecomendaron.filter(a -> a.recomendo(this) && a.buscarCalificacion(this).getPuntaje() > puntajeDado);
+		
+		return amigosQueRecomendaron.count() > condicionMinimaDeAmigos;
 	}
 	
 }
