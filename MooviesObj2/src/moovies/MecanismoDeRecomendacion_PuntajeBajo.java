@@ -14,7 +14,9 @@ public class MecanismoDeRecomendacion_PuntajeBajo implements MecanismoDeRecomend
 		Stream<Pelicula> mejoresPeliculas = moovies.mejoresPeliculas().stream();
 		
 		return mejoresPeliculas	.filter(p -> p.esRecomendacionPara(user, 0, condicionMinimaDeAmigos))
-								.collect(Collectors.toList());
+								.collect(Collectors.toList())
+//								.subList(0, 3)
+								;
 	}
 
 }
