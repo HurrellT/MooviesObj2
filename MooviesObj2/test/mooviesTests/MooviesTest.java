@@ -69,10 +69,26 @@ public class MooviesTest {
 		int total = 12;
 		assertEquals(mejores, moovie.mejoresPeliculas().size());
 		assertEquals(total, moovie.getPeliculas().size());
+		
+		assertEquals(peli1, moovie.mejoresPeliculas().get(0));
 	}
 	
 	@Test
-	public void test004_UnMooviesPuedeIndicarCualesSonLosUsuariosMasActivos() {
+	public void test004_UnMooviesIndicaCualesSonLasMejoresPeliculasCon4Peliculas() {
+		when(peli1.compareTo(peli2)).thenReturn(-1);
+		when(peli1.compareTo(peli3)).thenReturn(1);
+		when(peli1.compareTo(peli4)).thenReturn(-1);
+		
+		int mejores = 4;
+		int total = 4;
+		assertEquals(mejores, moovie.mejoresPeliculas().size());
+		assertEquals(total, moovie.getPeliculas().size());
+		
+		assertEquals(peli1, moovie.mejoresPeliculas().get(0));
+	}
+	
+	@Test
+	public void test005_UnMooviesPuedeIndicarCualesSonLosUsuariosMasActivos() {
 		moovie.addUsuario(user1); moovie.addUsuario(user2); moovie.addUsuario(user3);
 		moovie.addUsuario(user4); moovie.addUsuario(user1); moovie.addUsuario(user2);
 		moovie.addUsuario(user3); moovie.addUsuario(user4);
@@ -88,7 +104,7 @@ public class MooviesTest {
 	}
 	
 	/*@Test
-	public void test005_CuandoUnMooviesActualizaSuInfoTieneNuevosUsuariosYPeliculas() {
+	public void test006_CuandoUnMooviesActualizaSuInfoTieneNuevosUsuariosYPeliculas() {
 		frMan.procesarUsuario("c:\\Users\\brian\\Desktop\\Usuarios.csv");
 		frMan.procesarPelicula("c:\\Users\\brian\\Desktop\\Pelicula.csv");
 		frMan.procesarRatings("c:\\Users\\brian\\Desktop\\Rating.csv");

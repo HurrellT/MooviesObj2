@@ -23,6 +23,8 @@ import moovies.Calificacion;
 import moovies.Genero;
 import moovies.MecanismoDeRecomendacion;
 import moovies.MecanismoDeRecomendacion_PuntajeAlto;
+import moovies.MecanismoDeRecomendacion_PuntajeBajo;
+import moovies.MecanismoDeRecomendacion_PuntajeMedio;
 import moovies.Moovies;
 import moovies.Pelicula;
 import moovies.Usuario;
@@ -50,33 +52,28 @@ public class MecanismoDeRecomendacionTest {
 
 	@Test
 	public void test01UnRecomendadorDePuntajeAltoObtiene1PeliculaParaRecomendarAUnUsuario() {		
-		moovies.addPelicula(peli1);
-		moovies.addPelicula(peli2);
+		List<Pelicula> pelis = new ArrayList<>();
+		pelis.add(peli1); 
+		pelis.add(peli2);
+		when(moovies.getPeliculas()).thenReturn(pelis);
 		
-		moovies.addUsuario(user);
-		moovies.addUsuario(user2);
-		moovies.addUsuario(user3);
-		moovies.addUsuario(user4);
+		List<Usuario> users = new ArrayList<>();
+		users.add(user);users.add(user2);users.add(user3);users.add(user4);
+		when(moovies.getUsuarios()).thenReturn(users);
 		
-		user.agregarAmigo(user2);
-		user.agregarAmigo(user3);
-		user.agregarAmigo(user4);
+		List<Usuario> amigosDeUser = users;
+		amigosDeUser.remove(user);
+		when(user.getAmigos()).thenReturn(amigosDeUser);
+		when(peli1.esRecomendacionPara(user, 4, user.getAmigos().size() / 2)).thenReturn(true);
+		when(peli2.esRecomendacionPara(user, 4, user.getAmigos().size() / 2)).thenReturn(false);
 		
-		user2.calificarPelicula(5, peli1);
-		user2.calificarPelicula(5, peli2);
-		
-		user3.calificarPelicula(5, peli1);
-		user3.calificarPelicula(5, peli2);
-		
-		user4.calificarPelicula(5, peli1);
-		
-		assertEquals(2, recAlto.recomendarPeliculaPara(user, moovies).size());
+		assertEquals(1, recAlto.recomendarPeliculaPara(user, moovies).size());
 	}
 	*/
 	
 	FileReaderManager frMan;
 	Moovies moovies;
-	Usuario user, user2, user3, user4;
+	Usuario user, user2, user3, user4, user5;
 	Pelicula peli1, peli2;
 	MecanismoDeRecomendacion recAlto, recMedio, recBajo;
 	Genero genero1;
@@ -92,6 +89,7 @@ public class MecanismoDeRecomendacionTest {
 		user2	= new Usuario("B", 2, "B", 1);
 		user3	= new Usuario("C", 3, "C", 1);
 		user4	= new Usuario("D", 4, "D", 1);
+		user5	= new Usuario("E", 5, "E", 1);
 		
 		genero1 = mock(Genero.class);
 		genero2 = mock(Genero.class);
@@ -102,7 +100,9 @@ public class MecanismoDeRecomendacionTest {
 		peli1	= new Pelicula("A", date, "1", generos);
 		peli2	= new Pelicula("B", date, "2", generos);
 		
-		recAlto	= new MecanismoDeRecomendacion_PuntajeAlto();
+		recAlto		= new MecanismoDeRecomendacion_PuntajeAlto();
+		recMedio 	= new MecanismoDeRecomendacion_PuntajeMedio();
+		recBajo		= new MecanismoDeRecomendacion_PuntajeBajo();
 	}
 
 	@Test
@@ -114,25 +114,55 @@ public class MecanismoDeRecomendacionTest {
 		moovies.addUsuario(user2);
 		moovies.addUsuario(user3);
 		moovies.addUsuario(user4);
+		moovies.addUsuario(user5);
 		
 		user.agregarAmigo(user2);
 		user.agregarAmigo(user3);
 		user.agregarAmigo(user4);
+		user.agregarAmigo(user5);
 		
 		user2.calificarPelicula(5, peli1);
-		user2.calificarPelicula(3, peli2);
-		
 		user3.calificarPelicula(4, peli1);
-		user3.calificarPelicula(2, peli2);
-		
 		user4.calificarPelicula(5, peli1);
+		user5.calificarPelicula(5, peli1);
+		
+		user2.calificarPelicula(3, peli2);
+		user3.calificarPelicula(2, peli2);
+		user4.calificarPelicula(1, peli2);
 		
 		assertEquals(1, recAlto.recomendarPeliculaPara(user, moovies).size());
 	}
 	
 	@Test
-	public void test02UnRecomendadorDePuntajeMedioObtiene1PeliculaParaRecomendarAUnUsuario() {
-		
+	public void test02UnRecomendadorDePuntajeMedioObtiene__PeliculasParaRecomendarAUnUsuario() {
+		//TODO -- Ver lo de los Imdb
 	}
-
+	
+	@Test
+	public void test03UnRecomendadorDePuntajeBajoObtiene2PeliculasParaRecomendarAUnUsuario() {
+		moovies.addPelicula(peli1);
+		moovies.addPelicula(peli2);
+		
+		moovies.addUsuario(user);
+		moovies.addUsuario(user2);
+		moovies.addUsuario(user3);
+		moovies.addUsuario(user4);
+		moovies.addUsuario(user5);
+		
+		user.agregarAmigo(user2);
+		user.agregarAmigo(user3);
+		user.agregarAmigo(user4);
+		user.agregarAmigo(user5);
+		
+		user2.calificarPelicula(5, peli1);
+		user3.calificarPelicula(4, peli1);
+		user4.calificarPelicula(5, peli1);
+		user5.calificarPelicula(5, peli1);
+		
+		user2.calificarPelicula(3, peli2);
+		user3.calificarPelicula(2, peli2);
+		user4.calificarPelicula(1, peli2);
+		
+		assertEquals(2, recBajo.recomendarPeliculaPara(user, moovies).size());
+	}
 }

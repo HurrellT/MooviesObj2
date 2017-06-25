@@ -113,13 +113,14 @@ public class Pelicula {
 		return res;
 	}
 
-	public boolean esRecomendacionPara(Usuario user, int puntaje, int condicionMinimaDeAmigos) {
+	public boolean esRecomendacionPara(Usuario user, int puntajeMinimo, int condicionMinimaDeAmigos) {
 		
 		Stream<Usuario> amigosQueEvaluaron = user.getAmigos().stream();
 		
-		amigosQueEvaluaron.filter(a -> a.evaluoLaPelicula(this) && a.buscarCalificacion(this).getPuntaje() >= puntaje);
+		long res = amigosQueEvaluaron	.filter(a -> a.evaluoLaPelicula(this) && a.buscarCalificacion(this).getPuntaje() >= puntajeMinimo)
+										.count();
 		
-		return amigosQueEvaluaron.count() > condicionMinimaDeAmigos;
+		return res > condicionMinimaDeAmigos;
 	}
 	
 }
