@@ -1,10 +1,9 @@
 package moovies;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-public class Genero extends Observable{
+public abstract class Genero extends Observable{
 	
 	/*
  	* 
@@ -13,29 +12,13 @@ public class Genero extends Observable{
  	*/
 	
 	//Nombre del genero
-	private String nombre;
-	
-	//Lista de los subgeneros posibles
-	private List<Genero> subgeneros;
+	protected String nombre;
 	
 	//Genero al que pertenece este genero
-	private Genero supergenero;
+	//private Genero supergenero;
 	
 	//Peliculas que pertenecen a este genero
-	private List<Pelicula> peliculas;
-	
-	/*
- 	* 
- 	* Constructor de Genero
- 	*  
- 	*/
-	
-	public Genero(String nombre){
-		this.nombre = nombre;
-		subgeneros = new ArrayList<Genero>();
-		this.supergenero = this;
-		peliculas = new ArrayList<Pelicula>();
-	}
+	protected List<Pelicula> peliculas;
 	
 	/*
  	* 
@@ -47,21 +30,17 @@ public class Genero extends Observable{
 		return this.nombre;
 	}
 	
-	public String getNombreCompleto(){
-		String name = this.getNombre();
-		if(! (supergenero.getNombre() == this.nombre)){
-			name = name + supergenero.getNombreCompleto();
-		}
-		return name;
-	}
+	//public String getNombreCompleto(){
+	//	String name = this.getNombre();
+	//	if(! (supergenero.getNombre() == this.nombre)){
+	//		name = name + supergenero.getNombreCompleto();
+	//	}
+	//	return name;
+	//}
 	
-	public List<Genero> getSubgeneros(){
-		return this.subgeneros;
-	}
-	
-	public Genero getSupergenero(){
-		return this.supergenero;
-	}
+	//public Genero getSupergenero(){
+	//	return this.supergenero;
+	//}
 	
 	public List<Pelicula> getPeliculas(){
 		return this.peliculas;
@@ -73,17 +52,16 @@ public class Genero extends Observable{
 	*
 	*/
 	
-	public void addSubgenero(Genero genero){
-		subgeneros.add(genero);
-		genero.addSupergenero(this);
-	}
+	//public void addSupergenero(Genero genero){
+	//	supergenero = genero;
+	//}
 	
-	public void addSupergenero(Genero genero){
-		supergenero = genero;
-	}
-	
-	public void addPelicula(Pelicula pelicula){
+	public void agregarPelicula(Pelicula pelicula){
 		peliculas.add(pelicula);
+	}
+	
+	public void quitarPelicula(Pelicula pelicula){
+		peliculas.remove(pelicula);
 	}
 
 }
