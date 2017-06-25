@@ -3,7 +3,7 @@ package moovies;
 import java.util.List;
 import java.util.Observable;
 
-public abstract class Genero extends Observable{
+public abstract class Genero extends Observable {
 	
 	/*
  	* 

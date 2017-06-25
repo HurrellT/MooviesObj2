@@ -10,6 +10,7 @@ import moovies.Genero;
 import moovies.Genero_Especifico;
 import moovies.Genero_General;
 import moovies.Pelicula;
+import moovies.Usuario;
 
 public class GeneroTest {
 
@@ -17,6 +18,8 @@ public class GeneroTest {
 	Genero_General genero3;
 	
 	Pelicula peli1, peli2, peli3;
+	
+	Usuario user1, user2, user3;
 	
 	@Before
 	public void setUp() {
@@ -27,6 +30,10 @@ public class GeneroTest {
 		peli1 = mock(Pelicula.class);
 		peli2 = mock(Pelicula.class);
 		peli3 = mock(Pelicula.class);
+		
+		user1 = mock(Usuario.class);
+		user2 = mock(Usuario.class);
+		user3 = mock(Usuario.class);
 	}
 	
 	@Test
@@ -65,6 +72,13 @@ public class GeneroTest {
 		genero3.quitarSubgenero(genero2);
 		assertEquals(1, genero3.getSubgeneros().size());
 		assert(!genero3.getSubgeneros().contains(genero2));
+	}
+	
+	@Test
+	public void test004UnGeneroPuedeTenerVariosUsuariosSuscriptos() {
+		genero1.addObserver(user1);
+		genero1.addObserver(user2);
+		genero1.addObserver(user3);
 	}
 	
 	

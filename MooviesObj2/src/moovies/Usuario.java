@@ -3,6 +3,8 @@ package moovies;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 /*
 * Clase que define un Usuario.
@@ -11,7 +13,7 @@ import java.util.Map;
 * una lista de amigos y una lista de peliculas vistas. 
 */
 
-public class Usuario {
+public class Usuario implements Observer {
 	/*
 	*
 	* Colaboradores internos (variables de instancia) de la clase Usuario
@@ -139,6 +141,12 @@ public class Usuario {
 			res = 1;
 		}
 		return res;
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
