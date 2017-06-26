@@ -92,10 +92,10 @@ public class GeneroTest {
 		genero1.suscribirse(user1);
 		
 		genero1.agregarPelicula(peli2);
-		verify(user1).update(genero1, peli2);  //Me dice que no hubo interaccion cuando deberia haberla
+		verify(user1).update(genero1, peli2);  
 		
 		genero1.agregarPelicula(peli3);
-		verify(user1).update(genero1, peli3); //Me dice que no hubo interaccion cuando deberia haberla
+		verify(user1).update(genero1, peli3); 
 	}
 	
 	@Test

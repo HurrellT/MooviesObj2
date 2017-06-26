@@ -55,6 +55,7 @@ public abstract class Genero extends Observable {
 	
 	public void agregarPelicula(Pelicula pelicula){
 		peliculas.add(pelicula);
+		this.setChanged();
 		this.notifyObservers(pelicula);
 	}
 	
