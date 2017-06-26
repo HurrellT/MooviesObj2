@@ -79,6 +79,10 @@ public class GeneroTest {
 		genero1.addObserver(user1);
 		genero1.addObserver(user2);
 		genero1.addObserver(user3);
+		assertEquals(3, genero1.countObservers());
+		
+		genero1.deleteObserver(user3);
+		assertEquals(2, genero1.countObservers());
 	}
 	
 	
