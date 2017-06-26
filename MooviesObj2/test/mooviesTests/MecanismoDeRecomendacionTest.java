@@ -34,7 +34,7 @@ public class MecanismoDeRecomendacionTest {
 	FileReaderManager frMan;
 	Moovies moovies;
 	Usuario user, user2, user3, user4, user5;
-	Pelicula peli1, peli2;
+	Pelicula peli1, peli2, peli3;
 	MecanismoDeRecomendacion recAlto, recMedio, recBajo;
 	Genero genero1;
 	Genero genero2;
@@ -59,6 +59,7 @@ public class MecanismoDeRecomendacionTest {
 		
 		peli1	= new Pelicula("A", date, "1", generos);
 		peli2	= new Pelicula("B", date, "2", generos);
+		peli3	= new Pelicula("C", date, "3", generos);
 		
 		recAlto		= new MecanismoDeRecomendacion_PuntajeAlto();
 		recMedio 	= new MecanismoDeRecomendacion_PuntajeMedio();
@@ -86,7 +87,7 @@ public class MecanismoDeRecomendacionTest {
 	}
 	
 	@Test
-	public void test02UnRecomendadorDePuntajeMedioObtiene__PeliculasParaRecomendarAUnUsuario() {
+	public void test02UnRecomendadorDePuntajeMedioObtiene1PeliculasParaRecomendarAUnUsuario() {
 		moovies.addPelicula(peli1); moovies.addPelicula(peli2);
 		
 		moovies.addUsuario(user);	moovies.addUsuario(user2);	moovies.addUsuario(user3);
@@ -106,7 +107,32 @@ public class MecanismoDeRecomendacionTest {
 	}
 	
 	@Test
-	public void test03UnRecomendadorDePuntajeBajoObtiene2PeliculasParaRecomendarAUnUsuario() {
+	public void test03UnRecomendadorDePuntajeMedioObtiene3PeliculasParaRecomendarAUnUsuario() {
+		moovies.addPelicula(peli1); moovies.addPelicula(peli2); moovies.addPelicula(peli3);
+		
+		moovies.addUsuario(user);	moovies.addUsuario(user2);	moovies.addUsuario(user3);
+		moovies.addUsuario(user4);	moovies.addUsuario(user5);
+		
+		user.agregarAmigo(user2);	user.agregarAmigo(user3);	
+		user.agregarAmigo(user4);	user.agregarAmigo(user5);
+		
+		user2.calificarPelicula(5, peli1);	user3.calificarPelicula(5, peli1);
+		user4.calificarPelicula(2, peli1);	user5.calificarPelicula(5, peli1);
+		
+		user2.calificarPelicula(3, peli2);	user3.calificarPelicula(4, peli2);
+		user4.calificarPelicula(4, peli2);
+		
+		user2.calificarPelicula(4, peli3); user3.calificarPelicula(5, peli3);
+		user4.calificarPelicula(4, peli3);
+		
+		assertEquals(3, recMedio.recomendarPeliculaPara(user, moovies).size());
+		assertEquals(peli3, recMedio.recomendarPeliculaPara(user, moovies).get(0));
+		assertEquals(peli2, recMedio.recomendarPeliculaPara(user, moovies).get(1));
+		assertEquals(peli1, recMedio.recomendarPeliculaPara(user, moovies).get(2));
+	}
+	
+	@Test
+	public void test04UnRecomendadorDePuntajeBajoObtiene2PeliculasParaRecomendarAUnUsuario() {
 		moovies.addPelicula(peli1);	moovies.addPelicula(peli2);
 		
 		moovies.addUsuario(user);	moovies.addUsuario(user2);	moovies.addUsuario(user3);
