@@ -16,7 +16,7 @@ public abstract class Genero extends Observable {
 	protected String nombre;
 	
 	//Genero al que pertenece este genero
-	//private Genero supergenero;
+	protected Genero supergenero;
 	
 	//Peliculas que pertenecen a este genero
 	protected List<Pelicula> peliculas;
@@ -39,9 +39,9 @@ public abstract class Genero extends Observable {
 	//	return name;
 	//}
 	
-	//public Genero getSupergenero(){
-	//	return this.supergenero;
-	//}
+	public Genero getSupergenero(){
+		return this.supergenero;
+	}
 	
 	public List<Pelicula> getPeliculas(){
 		return this.peliculas;
@@ -53,9 +53,13 @@ public abstract class Genero extends Observable {
 	*
 	*/
 	
-	//public void addSupergenero(Genero genero){
-	//	supergenero = genero;
-	//}
+	public void addSupergenero(Genero genero){
+		this.supergenero = genero;
+	}
+	
+	public void removeSupergenero(){
+		this.supergenero = this;
+	}
 	
 	public void agregarPelicula(Pelicula pelicula){
 		peliculas.add(pelicula);
@@ -67,5 +71,13 @@ public abstract class Genero extends Observable {
 	}
 	
 	public abstract void suscribirse(Observer obj);
+	
+	public String generoCompleto(){
+		String res = this.nombre;
+		if(this.supergenero.nombre != this.nombre){
+			res = res + " - " + supergenero.generoCompleto();
+		}
+		return res;
+	}
 
 }

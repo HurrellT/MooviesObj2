@@ -14,6 +14,7 @@ public class Genero_Especifico extends Genero {
 	public Genero_Especifico(String nombre){
 		this.nombre = nombre;
 		this.peliculas = new ArrayList<Pelicula>();
+		this.supergenero = this;
 	}
 	
 	public void suscribirse(Observer obj){
