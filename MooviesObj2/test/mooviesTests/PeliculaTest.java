@@ -83,7 +83,7 @@ public class PeliculaTest {
 	
 	@Test
 	public void test005UnaPeliculaTieneVariasCalificaciones() {
-		peli1.addRating(calif1);
+		peli1.addRating(calif1); 
 		peli1.addRating(calif2);
 		peli1.addRating(calif3);
 		

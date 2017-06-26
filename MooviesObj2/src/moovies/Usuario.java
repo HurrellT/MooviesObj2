@@ -149,7 +149,7 @@ public class Usuario implements Observer {
 		if(this.pelisClasificadas() > user.pelisClasificadas()){
 			res = 1;
 		}
-		return res;
+		return res; 
 	}
 
 	@Override

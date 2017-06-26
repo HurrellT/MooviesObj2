@@ -100,7 +100,7 @@ public class Pelicula {
 	
 	public int compareTo(Pelicula movie){
 		int res = 0;
-		if(this.promedio() == movie.promedio()){
+		if(this.promedio() == movie.promedio()){ 
 			res = 0;
 		}
 		if(this.promedio() < movie.promedio()){

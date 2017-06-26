@@ -73,29 +73,30 @@ public List<Usuario> getUsuarios(){
 	  this.usuarios.add(user);
   }
   
-  //retorna una coleccion con las 10 peliculas que tienen el 
-  //promedio de rating mayor, ordenada en forma descendente
-  public List<Pelicula> mejoresPeliculas(){
-	  //Crea una nueva lista para ordenar a las peliculas
-	  //List<Pelicula> orderedList = peliculas;
-	  //establece la comparacion entre peliculas
-	  Comparator<Pelicula> comparator = new Comparator<Pelicula>() {
-	      @Override
-	      public int compare(Pelicula movie1, Pelicula movie2) {
-	          return movie1.compareTo(movie2); 
-	      }
-	  };
-	  //Ordena la lista de mayor a menor
-	  Collections.sort(peliculas, comparator); 
-	  int index = 10;
-	  List<Pelicula> finalList = new ArrayList<>();
-	  //Crea una nueva lista con las 10 primeras peliculas
-	  for(int i = 0; i < 10; i++){
-	    finalList.add(peliculas.get(index));
-	  }
-	  return finalList;
-	  
-  }
+ 
+  
+//retorna una coleccion con las 10 peliculas que tienen el 
+ //promedio de rating mayor, ordenada en forma descendente
+ public List<Pelicula> mejoresPeliculas(){
+ //Crea una nueva lista para ordenar a las peliculas
+ List<Pelicula> orderedList = peliculas;
+ //establece la comparacion entre peliculas
+ Comparator<Pelicula> comparator = new Comparator<Pelicula>() {
+     @Override
+     public int compare(Pelicula movie1, Pelicula movie2) {
+         return movie1.compareTo(movie2); 
+     }
+ };
+ //Ordena la lista de mayor a menor
+ Collections.sort(orderedList, comparator); 
+ List<Pelicula> finalList = new ArrayList<>();
+ //Crea una nueva lista con las 10 primeras peliculas
+ for(int i = 0; i < orderedList.size() && i < 10; i++){
+   finalList.add(orderedList.get(i));
+ }
+ return finalList;
+ 
+ }
 
   //retorna una coleccion con los 10 usuarios que han realizado 
   //el mayor numero de clasificaciones de peliculas, ordenada 
