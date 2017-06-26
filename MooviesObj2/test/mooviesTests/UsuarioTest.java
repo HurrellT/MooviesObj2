@@ -41,7 +41,7 @@ public class UsuarioTest {
 	}
 	
 	@Test
-	public void test01UnUsuarioLlamadoLucaHazucaTiene18AñosEsProgramadorYTieneElCodigoPostal1878() {
+	public void test01UnUsuarioLlamadoLucaHazucaTiene18AniosEsProgramadorYTieneElCodigoPostal1878() {
 		String 	name	= "Luca Hazuca";
 		int		edad	  = 18;
 		String	ocup	= "Programador";
