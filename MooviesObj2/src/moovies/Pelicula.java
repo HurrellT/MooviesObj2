@@ -15,11 +15,7 @@ import java.util.stream.Stream;
 
 public class Pelicula {
 	
-	/*
- 	* 
- 	* Colaboradores internos (variables de instancia) de la clase Pelicula
- 	*  
- 	*/
+	// Colaboradores internos (variables de instancia) de la clase Pelicula
 	
 	// nombre de la pelicula
 	private String nombre;
@@ -37,13 +33,9 @@ public class Pelicula {
 	private List<Calificacion> calificaciones;
 	
 	
-	/*
- 	* 
- 	* Constructor de Pelicula
- 	*  
- 	*/
+	//Constructor de Pelicula
 	
-	public Pelicula(String name,
+	public Pelicula(String name,  
 					LocalDate year,
 					String imdbScore, 
 					List<Genero> genres) {
@@ -54,11 +46,7 @@ public class Pelicula {
 		this.calificaciones	= new ArrayList<>();
 	}
 	
-	/*
- 	* 
- 	* Getters de Pelicula
- 	*  
- 	*/
+	// Getters de Pelicula
 	
 	public String getNombre(){
 		return nombre;
@@ -80,11 +68,7 @@ public class Pelicula {
 		return calificaciones;
 	}
 	
-	/*
-	*
-	* Otros metodos
-	*
-	*/
+	//Otros metodos
 	
 	public void addRating(Calificacion calif){
 		calificaciones.add(calif);	
@@ -101,7 +85,7 @@ public class Pelicula {
 	
 	public int compareTo(Pelicula movie){
 		int res = 0;
-		if(this.promedio() == movie.promedio()){
+		if(this.promedio() == movie.promedio()){ 
 			res = 0;
 		}
 		if(this.promedio() < movie.promedio()){

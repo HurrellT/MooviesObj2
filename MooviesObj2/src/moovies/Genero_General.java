@@ -2,6 +2,7 @@ package moovies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 public class Genero_General extends Genero {
 	
@@ -24,6 +25,7 @@ public class Genero_General extends Genero {
 		this.nombre = nombre;
 		this.peliculas = new ArrayList<Pelicula>();
 		this.subgeneros = new ArrayList<Genero>();
+		this.supergenero = this;
 	}
 
 	
@@ -44,16 +46,27 @@ public class Genero_General extends Genero {
 	*/
 	
 	public void agregarSubgenero(Genero genero){
-		subgeneros.add(genero);
-		//Y el supergenero?
+		this.subgeneros.add(genero);
+		genero.addSupergenero(this);
 	}
 	
 	public void quitarSubgenero(Genero genero){
-		subgeneros.remove(genero);
-		//Y el supergenero?
+		this.subgeneros.remove(genero);
+		genero.removeSupergenero();
 	}
 		
+	public void suscribirse(Observer obj){
+		this.addObserver(obj);
+		for(Genero genero : subgeneros){
+			genero.suscribirse(obj);
+		}
+	}
 	
-	
+	public void desuscribirse(Observer obj){
+		this.deleteObserver(obj);
+		for(Genero genero : subgeneros){
+			genero.desuscribirse(obj);
+		}
+	}	
 
 }

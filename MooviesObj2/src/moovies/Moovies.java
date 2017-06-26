@@ -17,11 +17,7 @@ import moovies.Pelicula;
 
 public class Moovies {
   
- /*
- * 
- * Colaboradores internos (variables de instancia) de la clase Moovies
- *  
- */
+ //Colaboradores internos (variables de instancia) de la clase Moovies
 	
   //lista de usuarios
   private List<Usuario> usuarios;
@@ -32,13 +28,9 @@ public class Moovies {
   //frMan
   private FileReaderManager manager;
   
-  /*
-   * 
-   * Getters
-   *  
-   */
- 
 
+  //Getters
+  
 public List<Usuario> getUsuarios(){
 	  return usuarios;
   }
@@ -47,11 +39,7 @@ public List<Usuario> getUsuarios(){
 	  return peliculas;
   }
   
-  /*
-   * 
-   * Constructor
-   *  
-   */
+  //Constructor
   
   public Moovies(FileReaderManager frMan) {
 	this.manager = frMan;
@@ -59,11 +47,7 @@ public List<Usuario> getUsuarios(){
 	this.peliculas = new ArrayList<Pelicula>();
 }
   
-  /*
-   * 
-   * Otros metodos
-   *  
-   */
+  //Otros metodos
   
   public void addPelicula(Pelicula peli){
 	  this.peliculas.add(peli);
@@ -125,15 +109,4 @@ public List<Usuario> getUsuarios(){
 	  this.manager.integrarEnMoovies(this);
   }
 
-}
-
-
-
-
-
-
-
-	
-
-	
-
+} 

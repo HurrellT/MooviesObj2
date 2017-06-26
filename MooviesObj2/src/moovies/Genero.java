@@ -2,8 +2,9 @@ package moovies;
 
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
-public abstract class Genero extends Observable{
+public abstract class Genero extends Observable {
 	
 	/*
  	* 
@@ -15,7 +16,7 @@ public abstract class Genero extends Observable{
 	protected String nombre;
 	
 	//Genero al que pertenece este genero
-	//private Genero supergenero;
+	protected Genero supergenero;
 	
 	//Peliculas que pertenecen a este genero
 	protected List<Pelicula> peliculas;
@@ -30,17 +31,9 @@ public abstract class Genero extends Observable{
 		return this.nombre;
 	}
 	
-	//public String getNombreCompleto(){
-	//	String name = this.getNombre();
-	//	if(! (supergenero.getNombre() == this.nombre)){
-	//		name = name + supergenero.getNombreCompleto();
-	//	}
-	//	return name;
-	//}
-	
-	//public Genero getSupergenero(){
-	//	return this.supergenero;
-	//}
+	public Genero getSupergenero(){
+		return this.supergenero;
+	}
 	
 	public List<Pelicula> getPeliculas(){
 		return this.peliculas;
@@ -52,16 +45,36 @@ public abstract class Genero extends Observable{
 	*
 	*/
 	
-	//public void addSupergenero(Genero genero){
-	//	supergenero = genero;
-	//}
+	public void addSupergenero(Genero genero){
+		this.supergenero = genero;
+	}
+	
+	public void removeSupergenero(){
+		this.supergenero = this;
+	}
 	
 	public void agregarPelicula(Pelicula pelicula){
 		peliculas.add(pelicula);
+		this.setChanged();
+		this.notifyObservers(pelicula);
 	}
 	
 	public void quitarPelicula(Pelicula pelicula){
 		peliculas.remove(pelicula);
 	}
+	
+	public abstract void suscribirse(Observer obj);
+	
+	public abstract void desuscribirse(Observer obj);
+	
+	public String generoCompleto(){
+		String name = this.nombre;
+		if(this.supergenero.nombre != this.nombre){
+			name = name + " - " + supergenero.generoCompleto();
+		}
+		return name;
+	}
+	
+
 
 }

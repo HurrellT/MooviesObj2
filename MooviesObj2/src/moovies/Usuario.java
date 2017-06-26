@@ -3,6 +3,8 @@ package moovies;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.stream.Stream;
 
 /*
@@ -12,14 +14,10 @@ import java.util.stream.Stream;
 * una lista de amigos y una lista de peliculas vistas. 
 */
 
-public class Usuario {
-	/*
-	*
-	* Colaboradores internos (variables de instancia) de la clase Usuario
-	*
-	*/
+public class Usuario implements Observer {
+	
+  // Colaboradores internos (variables de instancia) de la clase Usuario
 		
-
 	// nombre y apellido
 	private String nyap;
 		
@@ -41,26 +39,23 @@ public class Usuario {
 	//lista de calificaciones dadas a las peliculas
 	private List<Calificacion> calificaciones;
 	
-	/*
- 	* 
- 	* Constructor de Usuario
- 	*  
- 	*/
+	//nuevas peliculas de generos suscriptos
+	private List<Pelicula> nuevasRecomendaciones;
 	
+  
+	//Constructor de Usuario
 	public Usuario(String nyap, int edad, String ocupacion, int codPos) {
-		this.nyap 			= nyap;
-		this.edad 			= edad;
-		this.ocupacion 		= ocupacion;
-		this.codPos 		= codPos;
-		this.amigos			= new ArrayList<Usuario>();
-		this.calificaciones	= new ArrayList<Calificacion>();
+		this.nyap 			       = nyap;
+		this.edad 			       = edad;
+		this.ocupacion 		       = ocupacion;
+		this.codPos 		       = codPos;
+		this.amigos			       = new ArrayList<Usuario>();
+		this.calificaciones	       = new ArrayList<Calificacion>();
+		this.nuevasRecomendaciones = new ArrayList<Pelicula>();
 	}
 		
-	/*
-	*
-	* Getters de la clase Usuario. 
-	*
-	*/
+  
+	//Getters de la clase Usuario.
 		
 	//retorna el nombre y apellido
 	public String getNombre() {
@@ -91,12 +86,14 @@ public class Usuario {
 	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
-
-	/*
-	*
-	* Otros metodos
-	*
-	*/
+	
+	//retorna la lista de nuevas recomendaciones
+	public List<Pelicula> nuevasRecomendaciones(){
+		return nuevasRecomendaciones;
+	}
+	
+  
+	// Otros metodos
 		
 	//agrega la id de un usuario a la lista de amigos
 	public void agregarAmigo(Usuario user){
@@ -139,16 +136,20 @@ public class Usuario {
 		if(this.pelisClasificadas() > user.pelisClasificadas()){
 			res = 1;
 		}
-		return res;
+		return res; 
 	}
 
+	@Override
+	public void update(Observable genero, Object pelicula) {
+		this.nuevasRecomendaciones.add((Pelicula) pelicula);
+	} 
+  
 	public boolean evaluoLaPelicula(Pelicula pelicula) {
 		Stream<Calificacion> cal = calificaciones.stream();
 		return cal	.anyMatch(c -> c.getPeli().equals(pelicula));
 	}
 
 	public Calificacion buscarCalificacion(Pelicula pelicula) {
-//		return calificaciones.get(calificaciones.indexOf(pelicula));
 		Stream<Calificacion> cal = calificaciones.stream();
 		return cal	.filter(c -> c.getPeli().equals(pelicula))
 					.findFirst()
