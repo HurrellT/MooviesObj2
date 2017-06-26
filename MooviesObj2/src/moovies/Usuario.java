@@ -42,6 +42,9 @@ public class Usuario implements Observer {
 	//lista de calificaciones dadas a las peliculas
 	private List<Calificacion> calificaciones;
 	
+	//nuevas peliculas de generos suscriptos
+	private List<Pelicula> nuevasRecomendaciones;
+	
 	/*
  	* 
  	* Constructor de Usuario
@@ -49,12 +52,13 @@ public class Usuario implements Observer {
  	*/
 	
 	public Usuario(String nyap, int edad, String ocupacion, int codPos) {
-		this.nyap 			= nyap;
-		this.edad 			= edad;
-		this.ocupacion 		= ocupacion;
-		this.codPos 		= codPos;
-		this.amigos			= new ArrayList<Usuario>();
-		this.calificaciones	= new ArrayList<Calificacion>();
+		this.nyap 			       = nyap;
+		this.edad 			       = edad;
+		this.ocupacion 		       = ocupacion;
+		this.codPos 		       = codPos;
+		this.amigos			       = new ArrayList<Usuario>();
+		this.calificaciones	       = new ArrayList<Calificacion>();
+		this.nuevasRecomendaciones = new ArrayList<Pelicula>();
 	}
 		
 	/*
@@ -92,7 +96,12 @@ public class Usuario implements Observer {
 	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
 	}
-
+	
+	//retorna la lista de nuevas recomendaciones
+	public List<Pelicula> nuevasRecomendaciones(){
+		return nuevasRecomendaciones;
+	}
+	
 	/*
 	*
 	* Otros metodos
@@ -145,8 +154,7 @@ public class Usuario implements Observer {
 
 	@Override
 	public void update(Observable genero, Object pelicula) {
-		// TODO Auto-generated method stub
-		
+		this.nuevasRecomendaciones.add((Pelicula) pelicula);
 	}
 
 }
