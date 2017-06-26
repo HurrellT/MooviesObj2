@@ -2,6 +2,7 @@ package moovies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observer;
 
 public class Genero_General extends Genero {
 	
@@ -53,6 +54,12 @@ public class Genero_General extends Genero {
 		//Y el supergenero?
 	}
 		
+	public void suscribirse(Observer obj){
+		this.addObserver(obj);
+		for(Genero genero : subgeneros){
+			genero.suscribirse(obj);
+		}
+	}
 	
 	
 

@@ -76,22 +76,36 @@ public class GeneroTest {
 	
 	@Test
 	public void test004UnGeneroPuedeTenerVariosUsuariosSuscriptos() {
-		genero1.addObserver(user1);
-		genero1.addObserver(user2);
-		genero1.addObserver(user3);
+		genero1.suscribirse(user1);
+		genero1.suscribirse(user2);
+		genero1.suscribirse(user3);
 		assertEquals(3, genero1.countObservers());
 		
-		genero1.deleteObserver(user3);
+		genero1.deleteObserver(user3);  //Cambiar por el metodo desuscribirse
 		assertEquals(2, genero1.countObservers());
 	}
 	
 	@Test
 	public void test005UnUsuarioSuscriptoAUnGeneroRecibeLasNuevasPeliculasAgregadas() {
 		genero1.agregarPelicula(peli1);
-		genero1.addObserver(user1);
-		genero1.agregarPelicula(peli2);
+		genero1.suscribirse(user1);
 		
+		genero1.agregarPelicula(peli2);
 		verify(user1).update(genero1, peli2);  //Me dice que no hubo interaccion cuando deberia haberla
+		
+		genero1.agregarPelicula(peli3);
+		verify(user1).update(genero1, peli3); //Me dice que no hubo interaccion cuando deberia haberla
+	}
+	
+	@Test
+	public void test006UnUsuarioSuscriptoAUnGenero_GeneralTambienEstaSuscriptoASusSubgeneros() {
+		genero3.agregarSubgenero(genero1);
+		genero3.agregarSubgenero(genero2);
+		genero3.suscribirse(user1);
+		
+		assertEquals(1, genero3.countObservers());
+		assertEquals(1, genero1.countObservers());
+		assertEquals(1, genero2.countObservers());
 	}
 	
 	

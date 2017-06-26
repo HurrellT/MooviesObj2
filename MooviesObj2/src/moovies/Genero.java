@@ -2,6 +2,7 @@ package moovies;
 
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 public abstract class Genero extends Observable {
 	
@@ -64,5 +65,7 @@ public abstract class Genero extends Observable {
 	public void quitarPelicula(Pelicula pelicula){
 		peliculas.remove(pelicula);
 	}
+	
+	public abstract void suscribirse(Observer obj);
 
 }
