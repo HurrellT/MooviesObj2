@@ -82,6 +82,7 @@ public class MooviesTest {
 		
 		int mejores = 10;
 		assertEquals(mejores, moovie.mejoresPeliculas().size());
+
 		assertEquals(true, moovie.mejoresPeliculas().contains(peli3));
 		assertEquals(false, moovie.mejoresPeliculas().contains(peli11));  //La peli11 no esta, pero deberia
 	}
@@ -101,7 +102,7 @@ public class MooviesTest {
 	public void test005_UnMooviesPuedeIndicarCualesSonLosUsuariosMasActivos() {
 		moovie.addUsuario(user5); moovie.addUsuario(user6); moovie.addUsuario(user7);
 		moovie.addUsuario(user8); moovie.addUsuario(user9); moovie.addUsuario(user10);
-		moovie.addUsuario(user11); 
+		moovie.addUsuario(user11);
 		
 		when(user1.pelisClasificadas()).thenReturn(1); when(user2.pelisClasificadas()).thenReturn(2);
 		when(user3.pelisClasificadas()).thenReturn(3); when(user4.pelisClasificadas()).thenReturn(4);
@@ -116,7 +117,7 @@ public class MooviesTest {
 	}
 	
 	/*@Test
-	public void test005_CuandoUnMooviesActualizaSuInfoTieneNuevosUsuariosYPeliculas() {
+	public void test006_CuandoUnMooviesActualizaSuInfoTieneNuevosUsuariosYPeliculas() {
 		frMan.procesarUsuario("c:\\Users\\brian\\Desktop\\Usuarios.csv");
 		frMan.procesarPelicula("c:\\Users\\brian\\Desktop\\Pelicula.csv");
 		frMan.procesarRatings("c:\\Users\\brian\\Desktop\\Rating.csv");

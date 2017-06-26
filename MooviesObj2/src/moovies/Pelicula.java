@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /*
 * Clase que define una Pelicula.
@@ -14,11 +15,7 @@ import java.util.Map;
 
 public class Pelicula {
 	
-	/*
- 	* 
- 	* Colaboradores internos (variables de instancia) de la clase Pelicula
- 	*  
- 	*/
+	// Colaboradores internos (variables de instancia) de la clase Pelicula
 	
 	// nombre de la pelicula
 	private String nombre;
@@ -36,28 +33,20 @@ public class Pelicula {
 	private List<Calificacion> calificaciones;
 	
 	
-	/*
- 	* 
- 	* Constructor de Pelicula
- 	*  
- 	*/
+	//Constructor de Pelicula
 	
 	public Pelicula(String name,  
 					LocalDate year,
-					String string, 
+					String imdbScore, 
 					List<Genero> genres) {
-		this.nombre = name;
-		this.anioDeEstreno = year;
-		this.idmb = string;
-		this.generos = genres;
-		this.calificaciones = new ArrayList<Calificacion>();
+		this.nombre 		= name;
+		this.anioDeEstreno 	= year;
+		this.idmb 			= imdbScore;
+		this.generos 		= genres;
+		this.calificaciones	= new ArrayList<>();
 	}
 	
-	/*
- 	* 
- 	* Getters de Pelicula
- 	*  
- 	*/
+	// Getters de Pelicula
 	
 	public String getNombre(){
 		return nombre;
@@ -79,11 +68,7 @@ public class Pelicula {
 		return calificaciones;
 	}
 	
-	/*
-	*
-	* Otros metodos
-	*
-	*/
+	//Otros metodos
 	
 	public void addRating(Calificacion calif){
 		calificaciones.add(calif);	
@@ -110,6 +95,16 @@ public class Pelicula {
 			res = 1;
 		}
 		return res;
-	} 
+	}
+
+	public boolean esRecomendacionPara(Usuario user, int puntajeMinimo, int condicionMinimaDeAmigos) {
+		
+		Stream<Usuario> amigosQueEvaluaron = user.getAmigos().stream();
+		
+		long res = amigosQueEvaluaron	.filter(a -> a.evaluoLaPelicula(this) && a.buscarCalificacion(this).getPuntaje() >= puntajeMinimo)
+										.count();
+		
+		return res > condicionMinimaDeAmigos;
+	}
 	
 }

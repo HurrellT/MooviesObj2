@@ -12,6 +12,7 @@ import java.util.List;
 import moovies.Calificacion;
 import moovies.Genero;
 import moovies.Pelicula;
+import moovies.Usuario;
 
 import static org.mockito.Mockito.*;
 
@@ -25,6 +26,8 @@ public class PeliculaTest {
 	List<Genero> generosA, generosB;
 	
 	Calificacion calif1, calif2, calif3;
+  
+	Usuario user1, user2;
 	
 	@Before
 	public void setUp() {
@@ -47,6 +50,9 @@ public class PeliculaTest {
 		
 		peli1 = new Pelicula("Alien", fecha1, "15276", generosA);
 		peli2 = new Pelicula("Star Wars", fecha2, "27655", generosB);
+    
+		user1 = mock(Usuario.class);
+		user2 = mock(Usuario.class);
 	}
 	
 	@Test
@@ -69,6 +75,7 @@ public class PeliculaTest {
 	public void test003UnaPeliculaRecienCreadaTieneUnaIdDeIDMB() {
 		String idmb1 = "15276";
 		String idmb2 = "27655";
+    
 		assertEquals(idmb1, peli1.getIdmb());  
 		assertEquals(idmb2, peli2.getIdmb());  
 	}
@@ -86,7 +93,7 @@ public class PeliculaTest {
 		peli1.addRating(calif1); 
 		peli1.addRating(calif2);
 		peli1.addRating(calif3);
-		
+	  
 		assertEquals(3, peli1.getCalificaciones().size());
 	} 
 	
@@ -102,6 +109,20 @@ public class PeliculaTest {
 		
 		int promedio = 7;
 		assertEquals(promedio, peli1.promedio());
-	} 
+	}
+	
+	//Tests para metodos de recomendaciones
+	@Test
+	public void test07UnaPeliculaPuedeSerRecomendacionParaUnUsuarioConMasDe1Amigo() {
+		List<Usuario> amigosUser1 = new ArrayList<>();
+		amigosUser1.add(user2);
+		when(user1.getAmigos()).thenReturn(amigosUser1);
+		when(user2.evaluoLaPelicula(peli1)).thenReturn(true);
+		when(user2.buscarCalificacion(peli1)).thenReturn(calif1);
+		
+		when(calif1.getPuntaje()).thenReturn(3);
+		
+		assertTrue(peli1.esRecomendacionPara(user1, 2, 0));
+	}
 
 }

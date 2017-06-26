@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.stream.Stream;
 
 /*
 * Clase que define un Usuario.
@@ -14,13 +15,9 @@ import java.util.Observer;
 */
 
 public class Usuario implements Observer {
-	/*
-	*
-	* Colaboradores internos (variables de instancia) de la clase Usuario
-	*
-	*/
+	
+  // Colaboradores internos (variables de instancia) de la clase Usuario
 		
-
 	// nombre y apellido
 	private String nyap;
 		
@@ -45,12 +42,8 @@ public class Usuario implements Observer {
 	//nuevas peliculas de generos suscriptos
 	private List<Pelicula> nuevasRecomendaciones;
 	
-	/*
- 	* 
- 	* Constructor de Usuario
- 	*  
- 	*/
-	
+  
+	//Constructor de Usuario
 	public Usuario(String nyap, int edad, String ocupacion, int codPos) {
 		this.nyap 			       = nyap;
 		this.edad 			       = edad;
@@ -61,11 +54,8 @@ public class Usuario implements Observer {
 		this.nuevasRecomendaciones = new ArrayList<Pelicula>();
 	}
 		
-	/*
-	*
-	* Getters de la clase Usuario. 
-	*
-	*/
+  
+	//Getters de la clase Usuario.
 		
 	//retorna el nombre y apellido
 	public String getNombre() {
@@ -102,11 +92,8 @@ public class Usuario implements Observer {
 		return nuevasRecomendaciones;
 	}
 	
-	/*
-	*
-	* Otros metodos
-	*
-	*/
+  
+	// Otros metodos
 		
 	//agrega la id de un usuario a la lista de amigos
 	public void agregarAmigo(Usuario user){
@@ -156,5 +143,17 @@ public class Usuario implements Observer {
 	public void update(Observable genero, Object pelicula) {
 		this.nuevasRecomendaciones.add((Pelicula) pelicula);
 	} 
+  
+	public boolean evaluoLaPelicula(Pelicula pelicula) {
+		Stream<Calificacion> cal = calificaciones.stream();
+		return cal	.anyMatch(c -> c.getPeli().equals(pelicula));
+	}
+
+	public Calificacion buscarCalificacion(Pelicula pelicula) {
+		Stream<Calificacion> cal = calificaciones.stream();
+		return cal	.filter(c -> c.getPeli().equals(pelicula))
+					.findFirst()
+					.get();
+	}
 
 }
