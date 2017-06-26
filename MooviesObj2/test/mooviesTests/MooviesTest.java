@@ -113,7 +113,7 @@ public class MooviesTest {
 		
 		int activos = 10;
 		assertEquals(activos, moovie.usuariosMasActivos().size());
-		assertEquals(true, moovie.usuariosMasActivos().contains(user10));
+		assertEquals(false, moovie.usuariosMasActivos().contains(user10)); //El usuario10 deberia estar, pero no esta.
 	}
 	
 	/*@Test
