@@ -155,6 +155,6 @@ public class Usuario implements Observer {
 	@Override
 	public void update(Observable genero, Object pelicula) {
 		this.nuevasRecomendaciones.add((Pelicula) pelicula);
-	}
+	} 
 
 }

@@ -82,7 +82,7 @@ public class GeneroTest {
 		genero1.suscribirse(user3);
 		assertEquals(3, genero1.countObservers());
 		
-		genero1.deleteObserver(user3);  //Cambiar por el metodo desuscribirse
+		genero1.desuscribirse(user3); 
 		assertEquals(2, genero1.countObservers());
 	}
 	

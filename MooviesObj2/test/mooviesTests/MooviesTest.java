@@ -23,8 +23,8 @@ public class MooviesTest {
 	Usuario user1, user2, user3, user4;
 	
 	@Before
-	public void setUp() throws Exception {
-		frMan = new FileReaderManager();
+	public void setUp() throws Exception { 
+		frMan = new FileReaderManager(); 
 		
 		moovie = new Moovies(frMan);
 		

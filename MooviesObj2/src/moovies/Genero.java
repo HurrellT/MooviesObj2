@@ -65,6 +65,8 @@ public abstract class Genero extends Observable {
 	
 	public abstract void suscribirse(Observer obj);
 	
+	public abstract void desuscribirse(Observer obj);
+	
 	public String generoCompleto(){
 		String name = this.nombre;
 		if(this.supergenero.nombre != this.nombre){
@@ -72,5 +74,7 @@ public abstract class Genero extends Observable {
 		}
 		return name;
 	}
+	
+
 
 }

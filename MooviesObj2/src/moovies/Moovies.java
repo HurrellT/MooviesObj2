@@ -126,7 +126,7 @@ public List<Usuario> getUsuarios(){
 	  this.manager.integrarEnMoovies(this);
   }
 
-}
+} 
 
 
 

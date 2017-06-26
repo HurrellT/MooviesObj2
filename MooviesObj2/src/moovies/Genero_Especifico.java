@@ -20,5 +20,9 @@ public class Genero_Especifico extends Genero {
 	public void suscribirse(Observer obj){
 		this.addObserver(obj);
 	}
+	
+	public void desuscribirse(Observer obj){
+		this.deleteObserver(obj);
+	}
 
 }

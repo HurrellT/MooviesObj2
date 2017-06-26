@@ -1,6 +1,7 @@
 package moovies;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,7 @@ public class Pelicula {
  	*  
  	*/
 	
-	public Pelicula(String name,
+	public Pelicula(String name,  
 					LocalDate year,
 					String string, 
 					List<Genero> genres) {
@@ -49,6 +50,7 @@ public class Pelicula {
 		this.anioDeEstreno = year;
 		this.idmb = string;
 		this.generos = genres;
+		this.calificaciones = new ArrayList<Calificacion>();
 	}
 	
 	/*
@@ -108,6 +110,6 @@ public class Pelicula {
 			res = 1;
 		}
 		return res;
-	}
+	} 
 	
 }

@@ -62,6 +62,11 @@ public class Genero_General extends Genero {
 		}
 	}
 	
-	
+	public void desuscribirse(Observer obj){
+		this.deleteObserver(obj);
+		for(Genero genero : subgeneros){
+			genero.desuscribirse(obj);
+		}
+	}	
 
 }

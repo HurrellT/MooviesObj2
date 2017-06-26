@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import moovies.Calificacion;
+import moovies.Genero;
+import moovies.Genero_Especifico;
 import moovies.Pelicula;
 import moovies.Usuario;
 
@@ -18,6 +20,8 @@ public class UsuarioTest {
 	Pelicula peli, peli2;
 	
 	Calificacion cal, cal2;
+	
+	Genero gen1;
 		
 	@Before
 	public void setUp() {
@@ -32,6 +36,8 @@ public class UsuarioTest {
 		
 		cal		= mock(Calificacion.class);
 		cal2		= mock(Calificacion.class);
+		
+		gen1 = new Genero_Especifico("Vampiros");
 	}
 	
 	@Test
@@ -81,6 +87,15 @@ public class UsuarioTest {
 		luca.eliminarAmigo(esteban);
 		
 		assertEquals(0, luca.getAmigos().size());
+	}
+	
+	@Test
+	public void test05LucaTieneUnaListaDeNuevasPeliculasDeLosGenerosALOsQueSeSuscribio() {
+		gen1.suscribirse(luca);
+		gen1.agregarPelicula(peli);
+		
+		assert(luca.nuevasRecomendaciones().contains(peli));
+		
 	}
 	
 	//CompareTo debe cubrirse dentro de los Test de Moovies, al probar Mejores Peliculas
