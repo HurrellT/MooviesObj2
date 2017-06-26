@@ -77,7 +77,7 @@ public List<Usuario> getUsuarios(){
   //promedio de rating mayor, ordenada en forma descendente
   public List<Pelicula> mejoresPeliculas(){
 	  //Crea una nueva lista para ordenar a las peliculas
-	  //List<Pelicula> orderedList = peliculas;
+	  List<Pelicula> orderedList = peliculas;
 	  //establece la comparacion entre peliculas
 	  Comparator<Pelicula> comparator = new Comparator<Pelicula>() {
 	      @Override
@@ -86,12 +86,11 @@ public List<Usuario> getUsuarios(){
 	      }
 	  };
 	  //Ordena la lista de mayor a menor
-	  Collections.sort(peliculas, comparator); 
-	  int index = 10;
+	  Collections.sort(orderedList, comparator); 
 	  List<Pelicula> finalList = new ArrayList<>();
 	  //Crea una nueva lista con las 10 primeras peliculas
-	  for(int i = 0; i < 10; i++){
-	    finalList.add(peliculas.get(index));
+	  for(int i = 0; i < orderedList.size() && i < 10; i++){
+	    finalList.add(orderedList.get(i));
 	  }
 	  return finalList;
 	  

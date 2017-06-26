@@ -3,6 +3,7 @@ package moovies;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /*
 * Clase que define un Usuario.
@@ -139,6 +140,19 @@ public class Usuario {
 			res = 1;
 		}
 		return res;
+	}
+
+	public boolean evaluoLaPelicula(Pelicula pelicula) {
+		Stream<Calificacion> cal = calificaciones.stream();
+		return cal	.anyMatch(c -> c.getPeli().equals(pelicula));
+	}
+
+	public Calificacion buscarCalificacion(Pelicula pelicula) {
+//		return calificaciones.get(calificaciones.indexOf(pelicula));
+		Stream<Calificacion> cal = calificaciones.stream();
+		return cal	.filter(c -> c.getPeli().equals(pelicula))
+					.findFirst()
+					.get();
 	}
 
 }

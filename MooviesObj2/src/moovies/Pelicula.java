@@ -1,8 +1,10 @@
 package moovies;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /*
 * Clase que define una Pelicula.
@@ -43,12 +45,13 @@ public class Pelicula {
 	
 	public Pelicula(String name,
 					LocalDate year,
-					String string, 
+					String imdbScore, 
 					List<Genero> genres) {
-		this.nombre = name;
-		this.anioDeEstreno = year;
-		this.idmb = string;
-		this.generos = genres;
+		this.nombre 		= name;
+		this.anioDeEstreno 	= year;
+		this.idmb 			= imdbScore;
+		this.generos 		= genres;
+		this.calificaciones	= new ArrayList<>();
 	}
 	
 	/*
@@ -108,6 +111,16 @@ public class Pelicula {
 			res = 1;
 		}
 		return res;
+	}
+
+	public boolean esRecomendacionPara(Usuario user, int puntajeMinimo, int condicionMinimaDeAmigos) {
+		
+		Stream<Usuario> amigosQueEvaluaron = user.getAmigos().stream();
+		
+		long res = amigosQueEvaluaron	.filter(a -> a.evaluoLaPelicula(this) && a.buscarCalificacion(this).getPuntaje() >= puntajeMinimo)
+										.count();
+		
+		return res > condicionMinimaDeAmigos;
 	}
 	
 }
