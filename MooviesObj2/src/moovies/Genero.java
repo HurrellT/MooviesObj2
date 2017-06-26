@@ -31,14 +31,6 @@ public abstract class Genero extends Observable {
 		return this.nombre;
 	}
 	
-	//public String getNombreCompleto(){
-	//	String name = this.getNombre();
-	//	if(! (supergenero.getNombre() == this.nombre)){
-	//		name = name + supergenero.getNombreCompleto();
-	//	}
-	//	return name;
-	//}
-	
 	public Genero getSupergenero(){
 		return this.supergenero;
 	}
@@ -73,11 +65,11 @@ public abstract class Genero extends Observable {
 	public abstract void suscribirse(Observer obj);
 	
 	public String generoCompleto(){
-		String res = this.nombre;
+		String name = this.nombre;
 		if(this.supergenero.nombre != this.nombre){
-			res = res + " - " + supergenero.generoCompleto();
+			name = name + " - " + supergenero.generoCompleto();
 		}
-		return res;
+		return name;
 	}
 
 }
