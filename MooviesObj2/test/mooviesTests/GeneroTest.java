@@ -1,7 +1,7 @@
 package mooviesTests;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -83,6 +83,15 @@ public class GeneroTest {
 		
 		genero1.deleteObserver(user3);
 		assertEquals(2, genero1.countObservers());
+	}
+	
+	@Test
+	public void test005UnUsuarioSuscriptoAUnGeneroRecibeLasNuevasPeliculasAgregadas() {
+		genero1.agregarPelicula(peli1);
+		genero1.addObserver(user1);
+		genero1.agregarPelicula(peli2);
+		
+		verify(user1).update(genero1, peli2);  //Me dice que no hubo interaccion cuando deberia haberla
 	}
 	
 	
