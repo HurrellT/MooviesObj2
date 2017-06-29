@@ -3,7 +3,6 @@ package moovies;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 /*
@@ -80,7 +79,12 @@ public class Pelicula {
 		for (int i = 0; i < cant; i++) {
 		    total = total + calificaciones.get(i).getPuntaje();
 		    }
-		return (total / cant);
+		if (cant != 0) {
+			return (total / cant);			
+		}
+		else {
+			return total;
+		}
 	}
 	
 	public int compareTo(Pelicula movie){

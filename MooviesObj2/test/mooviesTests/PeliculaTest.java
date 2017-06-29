@@ -124,5 +124,31 @@ public class PeliculaTest {
 		
 		assertTrue(peli1.esRecomendacionPara(user1, 2, 0));
 	}
+	
+	//-----
+	
+	@Test
+	public void test08UnaPeliculaTieneIgualPromedioDePuntajesQueOtra() {
+		int igualPromedio = 0;
+		int mayorPromedio = 1;
+		int menorPromedio = -1;
+		
+		//Igual promedio
+		int res = peli1.compareTo(peli2);
+		assertEquals(igualPromedio, res);
+		
+		//Mayor promedio para la peli1
+		peli1.addRating(new Calificacion(user1, peli1, 4));
+		peli3 = mock(Pelicula.class);
+		when(peli3.promedio()).thenReturn(0);
+		res = peli1.compareTo(peli3);
+		assertEquals(mayorPromedio, res);
+		
+		//Menor promedio para la peli1
+		peli4 = mock(Pelicula.class);
+		when(peli4.promedio()).thenReturn(5);
+		res = peli1.compareTo(peli4);
+		assertEquals(menorPromedio, res);
+	}
 
 }

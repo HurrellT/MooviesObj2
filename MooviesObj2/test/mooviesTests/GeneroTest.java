@@ -6,7 +6,6 @@ import static org.mockito.Mockito.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import moovies.Genero;
 import moovies.Genero_Especifico;
 import moovies.Genero_General;
 import moovies.Pelicula;
@@ -53,13 +52,13 @@ public class GeneroTest {
 		genero1.agregarPelicula(peli1);
 		genero1.agregarPelicula(peli2);
 		assertEquals(2, genero1.getPeliculas().size());
-		assert(genero1.getPeliculas().contains(peli1));
-		assert(genero1.getPeliculas().contains(peli2));
-		assert(!genero1.getPeliculas().contains(peli3));
+		assertTrue(genero1.getPeliculas().contains(peli1));
+		assertTrue(genero1.getPeliculas().contains(peli2));
+		assertFalse(genero1.getPeliculas().contains(peli3));
 		
 		genero1.quitarPelicula(peli2);
 		assertEquals(1, genero1.getPeliculas().size());
-		assert(!genero1.getPeliculas().contains(peli2));
+		assertFalse(genero1.getPeliculas().contains(peli2));
 	}
 	
 	@Test
@@ -67,16 +66,16 @@ public class GeneroTest {
 		genero3.agregarSubgenero(genero1);
 		genero3.agregarSubgenero(genero2);
 		assertEquals(2, genero3.getSubgeneros().size());
-		assert(genero3.getSubgeneros().contains(genero1));
-		assert(genero3.getSubgeneros().contains(genero2));
+		assertTrue(genero3.getSubgeneros().contains(genero1));
+		assertTrue(genero3.getSubgeneros().contains(genero2));
 		
 		genero3.quitarSubgenero(genero2);
 		assertEquals(1, genero3.getSubgeneros().size());
-		assert(!genero3.getSubgeneros().contains(genero2));
+		assertFalse(genero3.getSubgeneros().contains(genero2));
 	}
 	
 	@Test
-	public void test004UnGeneroPuedeTenerVariosUsuariosSuscriptos() {
+	public void test004UnGeneroEspecificoPuedeTenerVariosUsuariosSuscriptos() {
 		genero1.suscribirse(user1);
 		genero1.suscribirse(user2);
 		genero1.suscribirse(user3);
@@ -131,6 +130,16 @@ public class GeneroTest {
 		assertEquals(generoCompletoB, genero2.generoCompleto());
 	}
 	
-	
+	@Test
+	public void test009UnGeneroGeneralPuedeTenerVariosUsuariosSuscriptos() {
+		genero3.suscribirse(user1);
+		genero3.suscribirse(user2);
+		genero3.suscribirse(user3);
+		genero3.agregarSubgenero(genero1);
+		assertEquals(3, genero3.countObservers());
+		
+		genero3.desuscribirse(user3); 
+		assertEquals(2, genero3.countObservers());
+	}
 
 }

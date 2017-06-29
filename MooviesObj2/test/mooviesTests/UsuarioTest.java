@@ -91,7 +91,7 @@ public class UsuarioTest {
 		gen1.suscribirse(luca);
 		gen1.agregarPelicula(peli);
 		
-		assert(luca.nuevasRecomendaciones().contains(peli));
+		assertTrue(luca.nuevasRecomendaciones().contains(peli));
 		
 	}
 	
@@ -117,6 +117,27 @@ public class UsuarioTest {
 		assertEquals(cal.getPeli(), actualCal.getPeli());
 		assertEquals(cal.getPuntaje(), actualCal.getPuntaje());
 		assertEquals(cal.getUsuario(), actualCal.getUsuario());
+	}
+	
+	@Test
+	public void test08LucaComparaLaCantidadDePeliculasCalificadasQueTieneConOtroUsuario() {
+		int res = luca.compareTo(esteban);
+		int igualCant = 0;
+		int LucaMayorCant = 1;
+		int LucaMenorCant = -1;
+		//Igual cantidad de peliculas calificadas
+		assertEquals(igualCant, res);
+		
+		//Menor cantidad de peliculas calificadas por Luca
+		esteban.calificarPelicula(2, peli2);
+		res = luca.compareTo(esteban);
+		assertEquals(LucaMenorCant, res);
+		
+		//Mayor cantidad de peliculas calificadas por Luca
+		luca.calificarPelicula(2, peli2);
+		luca.calificarPelicula(3, peli);
+		res = luca.compareTo(esteban);
+		assertEquals(LucaMayorCant, res);
 	}
 
 }

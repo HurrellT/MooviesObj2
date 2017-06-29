@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Spy;
 
 import fileReaderManager.FileReaderManager;
 import moovies.Moovies;
@@ -131,4 +132,15 @@ public class MooviesTest {
 		assertEquals(moovie.getUsuarios().size(), 34);
 		assertEquals(moovie.getPeliculas().size(), 34);
 	}*/
+	
+//	@Test
+//	public void test006UnSistemaMooviesActualizaSuInformacionYPasaATenerMasPeliculas() {
+//		assertEquals(4, moovie.getPeliculas());
+//		assertEquals(4, moovie.getUsuarios());
+//		moovie.actualizarInfo();
+//		//Leer un archivo de peliculas y/o usuarios
+//		assertEquals(6, moovie.getPeliculas());
+//		assertEquals(6, moovie.getUsuarios());
+//	}
+
 }
