@@ -64,6 +64,7 @@ public List<Usuario> getUsuarios(){
   
   public void addUsuario(Usuario user){
 	  this.usuarios.add(user);
+	  user.setMoovies(this);
   }
   
   //retorna una coleccion con las 10 peliculas que tienen el 

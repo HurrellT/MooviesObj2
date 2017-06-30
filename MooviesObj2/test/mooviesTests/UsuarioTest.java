@@ -5,39 +5,63 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import fileReaderManager.FileReaderManager;
 import moovies.Calificacion;
 import moovies.Genero;
 import moovies.Genero_Especifico;
+import moovies.MecanismoDeRecomendacion_PuntajeAlto;
+import moovies.MecanismoDeRecomendacion_PuntajeBajo;
+import moovies.MecanismoDeRecomendacion_PuntajeMedio;
+import moovies.Moovies;
 import moovies.Pelicula;
 import moovies.Usuario;
 
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UsuarioTest {
 
 	Usuario user, luca, esteban;
 	
-	Pelicula peli, peli2;
+	Pelicula peli, peli2, peli3, peli4, peli5, peli6;
 	
 	Calificacion cal, cal2;
 	
 	Genero gen1;
+	
+	MecanismoDeRecomendacion_PuntajeBajo bajo;
+	MecanismoDeRecomendacion_PuntajeMedio medio;
+	MecanismoDeRecomendacion_PuntajeAlto alto;
+	
+	Moovies moov;
 		
 	@Before
 	public void setUp() {
-		user  	= mock(Usuario.class);
-		luca	  = new Usuario("Luca Hazuca", 18, "Programador", 1878);
+		luca	= new Usuario("Luca Hazuca", 18, "Programador", 1878);
 		esteban	= new Usuario("Esteban Bedecarats", 21, "Programador", 1878);
 
 		luca.agregarAmigo(esteban);
 		
 		peli	= mock(Pelicula.class);
 		peli2	= mock(Pelicula.class);
+		peli3	= mock(Pelicula.class);
+		peli4	= mock(Pelicula.class);
+		peli5	= mock(Pelicula.class);
+		peli6	= mock(Pelicula.class);
 		
-		cal		  = mock(Calificacion.class);
-		cal2		= mock(Calificacion.class);
+		cal		= mock(Calificacion.class);
+		cal2	= mock(Calificacion.class);
 		
-		gen1 = new Genero_Especifico("Vampiros");
+		gen1 	= new Genero_Especifico("Vampiros");
+		
+		bajo = mock(MecanismoDeRecomendacion_PuntajeBajo.class);
+		medio = mock(MecanismoDeRecomendacion_PuntajeMedio.class);
+		alto = mock(MecanismoDeRecomendacion_PuntajeAlto.class);
+		
+		moov = mock(Moovies.class);
+
 	}
 	
 	@Test
@@ -131,6 +155,29 @@ public class UsuarioTest {
 		luca.calificarPelicula(3, peli);
 		res = luca.compareTo(esteban);
 		assertEquals(LucaMayorCant, res);
+	}
+	
+	@Test
+	public void test09LucaPuedeCambiarSuMecanismoDeRecomendacion() {
+		List<Pelicula> recomendadas1 = new ArrayList<>();
+		List<Pelicula> recomendadas2 = new ArrayList<>();
+		List<Pelicula> recomendadas3 = new ArrayList<>();
+		
+		recomendadas1.add(peli);
+		recomendadas2.add(peli2);
+		recomendadas2.add(peli3);
+		recomendadas3.add(peli4);
+		recomendadas3.add(peli5);
+		recomendadas3.add(peli6);
+		
+		when(bajo.recomendarPeliculaPara(luca, moov)).thenReturn(recomendadas1);
+		when(medio.recomendarPeliculaPara(luca, moov)).thenReturn(recomendadas2);
+		when(alto.recomendarPeliculaPara(luca, moov)).thenReturn(recomendadas3);
+		
+		luca.cambiarRecomendador(medio);
+		assertEquals(2, luca.recomendar().size());
+		luca.cambiarRecomendador(alto);
+		assertEquals(3, luca.recomendar().size());
 	}
 
 }

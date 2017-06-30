@@ -2,7 +2,6 @@ package moovies;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.stream.Stream;
@@ -30,9 +29,6 @@ public class Usuario implements Observer {
 	// codigo postal
 	private int codPos;
 		
-	// genero favorito
-	//private String generoFavorito;
-		
 	//amigos del usuarios
 	private List<Usuario> amigos;
 		
@@ -41,6 +37,12 @@ public class Usuario implements Observer {
 	
 	//nuevas peliculas de generos suscriptos
 	private List<Pelicula> nuevasRecomendaciones;
+	
+	//Un mecanismo de recomendacion
+	private MecanismoDeRecomendacion recomendador;
+	
+	//moovies
+	private Moovies moovies;
 	
   
 	//Constructor de Usuario
@@ -52,6 +54,7 @@ public class Usuario implements Observer {
 		this.amigos			       = new ArrayList<Usuario>();
 		this.calificaciones	       = new ArrayList<Calificacion>();
 		this.nuevasRecomendaciones = new ArrayList<Pelicula>();
+		this.recomendador		   = new MecanismoDeRecomendacion_PuntajeBajo();
 	}
 		
   
@@ -155,5 +158,20 @@ public class Usuario implements Observer {
 					.findFirst()
 					.get();
 	}
+	
+	public List<Pelicula> recomendar() {
+		return this.recomendador.recomendarPeliculaPara(this, moovies);
+	}
+
+
+	public void setMoovies(Moovies moovies) {
+		this.moovies = moovies;		
+	}
+	
+	public void cambiarRecomendador(MecanismoDeRecomendacion recomendador) {
+		this.recomendador = recomendador;
+	}
+	
+	
 
 }
