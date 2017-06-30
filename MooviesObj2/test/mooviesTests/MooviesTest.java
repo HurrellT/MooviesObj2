@@ -9,13 +9,14 @@ import org.junit.Test;
 import org.mockito.Spy;
 
 import fileReaderManager.FileReaderManager;
+import moovies.Genero;
 import moovies.Moovies;
 import moovies.Pelicula;
 import moovies.Usuario;
 
 public class MooviesTest {
 
-	Moovies moovie;
+	Moovies moovies;
 	
 	FileReaderManager frMan;
 	
@@ -23,15 +24,20 @@ public class MooviesTest {
 			 peli6, peli7, peli8, peli9, peli10,
 			 peli11;
 	
+	Genero 	gen1, gen2, gen3, gen4, gen5, gen6, gen7, gen8, gen9, gen10,
+			gen11, gen12, gen13, gen14, gen15, gen16, gen17, gen18, gen19;
+	
 	Usuario user1, user2, user3, user4, user5,
 			user6, user7, user8, user9, user10,
 			user11;
 	
 	@Before
 	public void setUp() throws Exception { 
-		frMan = new FileReaderManager(); 
+		frMan = new FileReaderManager();
 		
-		moovie = new Moovies(frMan);
+		moovies = new Moovies(frMan);
+		
+		frMan.addMoovies(moovies);
 		
 		peli1	= mock(Pelicula.class); peli2	= mock(Pelicula.class);
 		peli3	= mock(Pelicula.class); peli4	= mock(Pelicula.class);
@@ -40,6 +46,16 @@ public class MooviesTest {
 		peli9	= mock(Pelicula.class); peli10	= mock(Pelicula.class);
 		peli11	= mock(Pelicula.class);
 		
+		gen1	= mock(Genero.class); gen2	= mock(Genero.class);
+		gen3	= mock(Genero.class); gen4	= mock(Genero.class);
+		gen5	= mock(Genero.class); gen6	= mock(Genero.class);
+		gen7	= mock(Genero.class); gen8	= mock(Genero.class);
+		gen9	= mock(Genero.class); gen10	= mock(Genero.class);
+		gen11	= mock(Genero.class); gen12	= mock(Genero.class);
+		gen13	= mock(Genero.class); gen14	= mock(Genero.class);
+		gen15	= mock(Genero.class); gen16	= mock(Genero.class);
+		gen17	= mock(Genero.class); gen18	= mock(Genero.class);
+		gen19	= mock(Genero.class);
 		
 		user1	= mock(Usuario.class); user2	= mock(Usuario.class);
 		user3	= mock(Usuario.class); user4	= mock(Usuario.class);
@@ -48,31 +64,42 @@ public class MooviesTest {
 		user9	= mock(Usuario.class); user10	= mock(Usuario.class);
 		user11	= mock(Usuario.class);
 		
-		moovie.addPelicula(peli1); moovie.addPelicula(peli2);
-		moovie.addPelicula(peli3); moovie.addPelicula(peli4);
+		moovies.addPelicula(peli1); moovies.addPelicula(peli2);
+		moovies.addPelicula(peli3); moovies.addPelicula(peli4);
 		
-		moovie.addUsuario(user1); moovie.addUsuario(user2);
-		moovie.addUsuario(user3); moovie.addUsuario(user4);
+		moovies.addUsuario(user1); moovies.addUsuario(user2);
+		moovies.addUsuario(user3); moovies.addUsuario(user4);
+		
+		moovies.agregarGenero(gen1); moovies.agregarGenero(gen2);
+		moovies.agregarGenero(gen3); moovies.agregarGenero(gen4);
+		moovies.agregarGenero(gen5); moovies.agregarGenero(gen6);
+		moovies.agregarGenero(gen7); moovies.agregarGenero(gen8);
+		moovies.agregarGenero(gen9); moovies.agregarGenero(gen10);
+		moovies.agregarGenero(gen11); moovies.agregarGenero(gen12);
+		moovies.agregarGenero(gen13); moovies.agregarGenero(gen14);
+		moovies.agregarGenero(gen15); moovies.agregarGenero(gen16);
+		moovies.agregarGenero(gen17); moovies.agregarGenero(gen18);
+		moovies.agregarGenero(gen19);
 		
 	}
 	
 	@Test
 	public void test001_UnMooviesTieneUnaCiertaCantidadDePeliculas() {
 		int number = 4;
-		assertEquals(number, moovie.getPeliculas().size());
+		assertEquals(number, moovies.getPeliculas().size());
 	}
 	
 	@Test
 	public void test002_UnMooviesTieneUnaCiertaCantidadDeUsuarios() {
 		int number = 4;
-		assertEquals(number, moovie.getUsuarios().size()); 
+		assertEquals(number, moovies.getUsuarios().size()); 
 	}
 	
 	@Test
 	public void test003_UnMooviesPuedeIndicarCualesSonLasMejoresPeliculas() {
-		moovie.addPelicula(peli5); moovie.addPelicula(peli6); moovie.addPelicula(peli7); 
-		moovie.addPelicula(peli8); moovie.addPelicula(peli9); moovie.addPelicula(peli10);
-		moovie.addPelicula(peli11);
+		moovies.addPelicula(peli5); moovies.addPelicula(peli6); moovies.addPelicula(peli7); 
+		moovies.addPelicula(peli8); moovies.addPelicula(peli9); moovies.addPelicula(peli10);
+		moovies.addPelicula(peli11);
 		
 		when(peli1.promedio()).thenReturn(1); when(peli2.promedio()).thenReturn(2);
 		when(peli3.promedio()).thenReturn(3); when(peli4.promedio()).thenReturn(4);
@@ -82,10 +109,10 @@ public class MooviesTest {
 		when(peli11.promedio()).thenReturn(7);
 		
 		int mejores = 10;
-		assertEquals(mejores, moovie.mejoresPeliculas().size());
+		assertEquals(mejores, moovies.mejoresPeliculas().size());
 
-		assertEquals(true, moovie.mejoresPeliculas().contains(peli3));
-		assertEquals(false, moovie.mejoresPeliculas().contains(peli11));  //La peli11 no esta, pero deberia
+		assertEquals(true, moovies.mejoresPeliculas().contains(peli3));
+		assertEquals(false, moovies.mejoresPeliculas().contains(peli11));  //La peli11 no esta, pero deberia
 	}
 	
 	 @Test
@@ -93,17 +120,17 @@ public class MooviesTest {
 
 	 int mejores = 4;
 	 int total = 4;
-	 assertEquals(mejores, moovie.mejoresPeliculas().size());
-	 assertEquals(total, moovie.getPeliculas().size());
+	 assertEquals(mejores, moovies.mejoresPeliculas().size());
+	 assertEquals(total, moovies.getPeliculas().size());
 
-	 assertEquals(peli1, moovie.mejoresPeliculas().get(0));
+	 assertEquals(peli1, moovies.mejoresPeliculas().get(0));
 	 }
 	
 	@Test
 	public void test005_UnMooviesPuedeIndicarCualesSonLosUsuariosMasActivos() {
-		moovie.addUsuario(user5); moovie.addUsuario(user6); moovie.addUsuario(user7);
-		moovie.addUsuario(user8); moovie.addUsuario(user9); moovie.addUsuario(user10);
-		moovie.addUsuario(user11);
+		moovies.addUsuario(user5); moovies.addUsuario(user6); moovies.addUsuario(user7);
+		moovies.addUsuario(user8); moovies.addUsuario(user9); moovies.addUsuario(user10);
+		moovies.addUsuario(user11);
 		
 		when(user1.pelisClasificadas()).thenReturn(1); when(user2.pelisClasificadas()).thenReturn(2);
 		when(user3.pelisClasificadas()).thenReturn(3); when(user4.pelisClasificadas()).thenReturn(4);
@@ -113,34 +140,113 @@ public class MooviesTest {
 		when(user11.pelisClasificadas()).thenReturn(11);
 		
 		int activos = 10;
-		assertEquals(activos, moovie.usuariosMasActivos().size());
-		assertEquals(false, moovie.usuariosMasActivos().contains(user10)); //El usuario10 deberia estar, pero no esta.
+		assertEquals(activos, moovies.usuariosMasActivos().size());
+		assertEquals(false, moovies.usuariosMasActivos().contains(user10)); //El usuario10 deberia estar, pero no esta.
 	}
 	
-	/*@Test
+	@Test
 	public void test006_CuandoUnMooviesActualizaSuInfoTieneNuevosUsuariosYPeliculas() {
-		frMan.procesarUsuario("c:\\Users\\brian\\Desktop\\Usuarios.csv");
-		frMan.procesarPelicula("c:\\Users\\brian\\Desktop\\Pelicula.csv");
-		frMan.procesarRatings("c:\\Users\\brian\\Desktop\\Rating.csv");
-		frMan.procesarAmigos("c:\\Users\\brian\\Desktop\\Amigo.csv");
 		
-		assertEquals(moovie.getUsuarios().size(), 4);
-		assertEquals(moovie.getPeliculas().size(), 4);
+		when(gen1.getNombre()).thenReturn("unknown");
+		when(gen2.getNombre()).thenReturn("Action");
+		when(gen3.getNombre()).thenReturn("Adventure");
+		when(gen4.getNombre()).thenReturn("Animation");
+		when(gen5.getNombre()).thenReturn("Childrens");
+		when(gen6.getNombre()).thenReturn("Comedy");
+		when(gen7.getNombre()).thenReturn("Crime");
+		when(gen8.getNombre()).thenReturn("Documentary");
+		when(gen9.getNombre()).thenReturn("Drama");
+		when(gen10.getNombre()).thenReturn("Fantasy");
+		when(gen11.getNombre()).thenReturn("Film-Noir");
+		when(gen12.getNombre()).thenReturn("Horror");
+		when(gen13.getNombre()).thenReturn("Musical");
+		when(gen14.getNombre()).thenReturn("Mistery");
+		when(gen15.getNombre()).thenReturn("Romance");
+		when(gen16.getNombre()).thenReturn("Sci-Fi");
+		when(gen17.getNombre()).thenReturn("Thriller");
+		when(gen18.getNombre()).thenReturn("War");
+		when(gen19.getNombre()).thenReturn("Western");
 		
-		moovie.actualizarInfo();
+		frMan.procesarUsuario("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/UsuariosData.csv");
+		frMan.procesarPelicula("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/PeliculaData.csv");
+		frMan.procesarRatings("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/CalificacionesData.csv");
+		frMan.procesarAmigos("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/AmigosData.csv");
 		
-		assertEquals(moovie.getUsuarios().size(), 34);
-		assertEquals(moovie.getPeliculas().size(), 34);
-	}*/
+		assertEquals(moovies.getUsuarios().size(), 4);
+		assertEquals(moovies.getPeliculas().size(), 4);
+		
+		moovies.actualizarInfo();
+		
+		assertEquals(moovies.getUsuarios().size(), 55);
+		assertEquals(moovies.getPeliculas().size(), 19);
+	}
 	
-//	@Test
-//	public void test006UnSistemaMooviesActualizaSuInformacionYPasaATenerMasPeliculas() {
-//		assertEquals(4, moovie.getPeliculas());
-//		assertEquals(4, moovie.getUsuarios());
-//		moovie.actualizarInfo();
-//		//Leer un archivo de peliculas y/o usuarios
-//		assertEquals(6, moovie.getPeliculas());
-//		assertEquals(6, moovie.getUsuarios());
-//	}
+	@Test
+	public void test007LaPeliculaToyStoryTiene3GenerosQueSon() {
+		when(gen1.getNombre()).thenReturn("unknown");
+		when(gen2.getNombre()).thenReturn("Action");
+		when(gen3.getNombre()).thenReturn("Adventure");
+		when(gen4.getNombre()).thenReturn("Animation");
+		when(gen5.getNombre()).thenReturn("Childrens");
+		when(gen6.getNombre()).thenReturn("Comedy");
+		when(gen7.getNombre()).thenReturn("Crime");
+		when(gen8.getNombre()).thenReturn("Documentary");
+		when(gen9.getNombre()).thenReturn("Drama");
+		when(gen10.getNombre()).thenReturn("Fantasy");
+		when(gen11.getNombre()).thenReturn("Film-Noir");
+		when(gen12.getNombre()).thenReturn("Horror");
+		when(gen13.getNombre()).thenReturn("Musical");
+		when(gen14.getNombre()).thenReturn("Mistery");
+		when(gen15.getNombre()).thenReturn("Romance");
+		when(gen16.getNombre()).thenReturn("Sci-Fi");
+		when(gen17.getNombre()).thenReturn("Thriller");
+		when(gen18.getNombre()).thenReturn("War");
+		when(gen19.getNombre()).thenReturn("Western");
+		
+		frMan.procesarUsuario("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/UsuariosData.csv");
+		frMan.procesarPelicula("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/PeliculaData.csv");
+		frMan.procesarRatings("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/CalificacionesData.csv");
+		frMan.procesarAmigos("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/AmigosData.csv");
+		
+		moovies.actualizarInfo();
+		
+		Pelicula ts =  moovies.buscarPelicula("Toy Story (1995)");
+		
+		assertEquals("Toy Story (1995)", ts.getNombre());
+		
+	}
+	
+	@Test
+	public void asdasd() {
+		when(gen1.getNombre()).thenReturn("unknown");
+		when(gen2.getNombre()).thenReturn("Action");
+		when(gen3.getNombre()).thenReturn("Adventure");
+		when(gen4.getNombre()).thenReturn("Animation");
+		when(gen5.getNombre()).thenReturn("Childrens");
+		when(gen6.getNombre()).thenReturn("Comedy");
+		when(gen7.getNombre()).thenReturn("Crime");
+		when(gen8.getNombre()).thenReturn("Documentary");
+		when(gen9.getNombre()).thenReturn("Drama");
+		when(gen10.getNombre()).thenReturn("Fantasy");
+		when(gen11.getNombre()).thenReturn("Film-Noir");
+		when(gen12.getNombre()).thenReturn("Horror");
+		when(gen13.getNombre()).thenReturn("Musical");
+		when(gen14.getNombre()).thenReturn("Mistery");
+		when(gen15.getNombre()).thenReturn("Romance");
+		when(gen16.getNombre()).thenReturn("Sci-Fi");
+		when(gen17.getNombre()).thenReturn("Thriller");
+		when(gen18.getNombre()).thenReturn("War");
+		when(gen19.getNombre()).thenReturn("Western");
+		
+		frMan.procesarUsuario("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/UsuariosData.csv");
+		frMan.procesarPelicula("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/PeliculaData.csv");
+		frMan.procesarRatings("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/CalificacionesData.csv");
+		frMan.procesarAmigos("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/AmigosData.csv");
+		
+		moovies.actualizarInfo();
+		
+		assertEquals("Toy Story (1995)", moovies.getPeliculas().get(4).getNombre());
+		assertEquals(3, moovies.getPeliculas().get(4).getGeneros().size());
+	}
 
 }

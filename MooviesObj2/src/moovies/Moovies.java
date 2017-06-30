@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import fileReaderManager.FileReaderManager;
 import moovies.Usuario;
@@ -25,6 +26,9 @@ public class Moovies {
   //lista de peliculas
   private List<Pelicula> peliculas;
   
+  //Lista de generos
+  private List<Genero> generos;
+  
   //frMan
   private FileReaderManager manager;
   
@@ -42,9 +46,10 @@ public List<Usuario> getUsuarios(){
   //Constructor
   
   public Moovies(FileReaderManager frMan) {
-	this.manager = frMan;
-	this.usuarios = new ArrayList<Usuario>();
-	this.peliculas = new ArrayList<Pelicula>();
+	this.manager 	= frMan;
+	this.usuarios 	= new ArrayList<Usuario>();
+	this.peliculas 	= new ArrayList<Pelicula>();
+	this.generos	= new ArrayList<Genero>();
 }
   
   //Otros metodos
@@ -106,7 +111,34 @@ public List<Usuario> getUsuarios(){
   
   //Actualiza la informacion en Moovies
   public void actualizarInfo(){
-	  this.manager.integrarEnMoovies(this);
+	  this.manager.integrarEnMoovies();
+	  this.manager.registrarAmigos();
+	  this.manager.registrarRatings();
+	  
   }
+  
+  public void agregarGenero(Genero genero) {
+	  this.generos.add(genero);
+  }
+  
+  public void quitarGenero(Genero genero) {
+	  this.generos.remove(genero);
+  }
+  
+  public Genero buscarGenero(String nombreGenero) {
+	Stream<Genero> generoFinal = this.generos.stream();
+	
+	return generoFinal	.filter(g -> g.getNombre().equalsIgnoreCase(nombreGenero))
+						.findFirst().get();
+	//Nosotros asumimos que el genero que se recibe como parametro
+	//esta siempre en la lista de generos, y esta bien escrito.
+  }
+
+	public Pelicula buscarPelicula(String nombrePelicula) {
+		Stream<Pelicula> peliFinal = this.peliculas.stream();
+		
+		return peliFinal	.filter(p -> p.getNombre() == nombrePelicula)
+							.findFirst().get();
+	}
 
 } 

@@ -24,6 +24,8 @@ public class FileReaderManager {
 	private List<RatingData> ratingData;
 	
 	private List<AmigosData> friendsData;
+	
+	private Moovies moovies;
 
 	/*
 	 * Getters
@@ -79,7 +81,6 @@ public class FileReaderManager {
 	 */
 	
 	public void procesarUsuario(String filePath) {
-		//Crear un RatingFileReader
 		UsuarioFileReader usuarioReader = new UsuarioFileReader(filePath);
 		
 		//Guarda en su variable de instancia el
@@ -88,8 +89,7 @@ public class FileReaderManager {
 	}
 	
 	public void procesarPelicula(String filePath) {
-		//Crear un RatingFileReader
-		PeliculaFileReader peliculaReader = new PeliculaFileReader(filePath);
+		PeliculaFileReader peliculaReader = new PeliculaFileReader(filePath, moovies);
 		
 		//Guarda en su variable de instancia el
 		//reultado de procesar el archivo.
@@ -97,7 +97,6 @@ public class FileReaderManager {
 	}
 	
 	public void procesarRatings(String filePath) {
-		//Crear un RatingFileReader
 		RatingsFileReader ratingReader = new RatingsFileReader(filePath);
 		
 		//Guarda en su variable de instancia el
@@ -106,7 +105,6 @@ public class FileReaderManager {
 	}
 	
 	public void procesarAmigos(String filePath) {
-		//Crear un RatingFileReader
 		AmigosFileReader amigosReader = new AmigosFileReader(filePath);
 		
 		//Guarda en su variable de instancia el
@@ -118,8 +116,8 @@ public class FileReaderManager {
 	 * Otros metodos
 	 */
 	
-	public void registrarRatings() {
 	//Precondicion: Ya se cargaron los datos.
+	public void registrarRatings() {
 		int index = 0;
 		for (int i = 0; i < ratingData.size(); i++) {			
 			//Guardar info
@@ -141,6 +139,7 @@ public class FileReaderManager {
 		
 	}
 	
+	//Precondicion: La pelicula debe estar
 	public PeliculaData findPeliculaData(int id){
 		int index = 0;
 		PeliculaData movie = movieData.get(index);
@@ -151,8 +150,8 @@ public class FileReaderManager {
 		return movie;
 	}
 
+	//Precondicion: Ya se cargaron los datos.
 	public void registrarAmigos() {
-		//Precondicion: Ya se cargaron los datos.
 		int index = 0;
 		for (int i = 0; i < friendsData.size(); i++) {			
 			//Guardar info
@@ -178,17 +177,21 @@ public class FileReaderManager {
 		return user;
 	}
 	
-	public void integrarEnMoovies(Moovies mov) {
+	public void integrarEnMoovies() {
 		List<Pelicula> pelis = this.getPeliculas();
 		List<Usuario> users = this.getUsuarios();
 		for(int i=0; i < pelis.size(); i++){
-			mov.addPelicula(pelis.get(i));
+			this.moovies.addPelicula(pelis.get(i));
 		}
 		for(int i=0; i < users.size(); i++){
-			mov.addUsuario(users.get(i));
+			this.moovies.addUsuario(users.get(i));
 		}
 		//mov.getPeliculas().addAll(pelis);
 		//mov.getUsuarios().addAll(users);
+	}
+
+	public void addMoovies(Moovies moovies) {
+		this.moovies = moovies;		
 	}
 	
 }
