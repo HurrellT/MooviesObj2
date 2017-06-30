@@ -111,9 +111,9 @@ public class MooviesTest {
 		int mejores = 10;
 		assertEquals(mejores, moovies.mejoresPeliculas().size());
 
-		assertEquals(true, moovies.mejoresPeliculas().contains(peli3));
-		assertEquals(false, moovies.mejoresPeliculas().contains(peli11));  //La peli11 no esta, pero deberia
-	}
+		assertTrue(moovies.mejoresPeliculas().contains(peli3));
+		assertFalse(moovies.mejoresPeliculas().contains(peli11));
+}
 	
 	 @Test
 	 public void test004_UnMooviesIndicaCualesSonLasMejoresPeliculasCon4Peliculas() {
@@ -141,7 +141,7 @@ public class MooviesTest {
 		
 		int activos = 10;
 		assertEquals(activos, moovies.usuariosMasActivos().size());
-		assertEquals(false, moovies.usuariosMasActivos().contains(user10)); //El usuario10 deberia estar, pero no esta.
+		assertFalse(moovies.usuariosMasActivos().contains(user10));
 	}
 	
 	@Test

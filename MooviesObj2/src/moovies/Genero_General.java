@@ -23,7 +23,6 @@ public class Genero_General extends Genero {
 	
 	public Genero_General(String nombre){
 		this.nombre = nombre;
-		this.peliculas = new ArrayList<Pelicula>();
 		this.subgeneros = new ArrayList<Genero>();
 		this.supergenero = this;
 	}

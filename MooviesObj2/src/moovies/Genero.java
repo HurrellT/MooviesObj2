@@ -1,6 +1,5 @@
 package moovies;
 
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,9 +17,6 @@ public abstract class Genero extends Observable {
 	//Genero al que pertenece este genero
 	protected Genero supergenero;
 	
-	//Peliculas que pertenecen a este genero
-	protected List<Pelicula> peliculas;
-	
 	/*
  	* 
  	* Getters de Genero
@@ -33,10 +29,6 @@ public abstract class Genero extends Observable {
 	
 	public Genero getSupergenero(){
 		return this.supergenero;
-	}
-	
-	public List<Pelicula> getPeliculas(){
-		return this.peliculas;
 	}
 	
 	/*
@@ -54,13 +46,8 @@ public abstract class Genero extends Observable {
 	}
 	
 	public void agregarPelicula(Pelicula pelicula){
-		peliculas.add(pelicula);
 		this.setChanged();
 		this.notifyObservers(pelicula);
-	}
-	
-	public void quitarPelicula(Pelicula pelicula){
-		peliculas.remove(pelicula);
 	}
 	
 	public abstract void suscribirse(Observer obj);

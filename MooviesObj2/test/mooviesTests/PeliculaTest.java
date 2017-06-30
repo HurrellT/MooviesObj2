@@ -111,7 +111,6 @@ public class PeliculaTest {
 		assertEquals(promedio, peli1.promedio());
 	}
 	
-	//Tests para metodos de recomendaciones
 	@Test
 	public void test07UnaPeliculaPuedeSerRecomendacionParaUnUsuarioConMasDe1Amigo() {
 		List<Usuario> amigosUser1 = new ArrayList<>();
@@ -124,8 +123,6 @@ public class PeliculaTest {
 		
 		assertTrue(peli1.esRecomendacionPara(user1, 2, 0));
 	}
-	
-	//-----
 	
 	@Test
 	public void test08UnaPeliculaTieneIgualPromedioDePuntajesQueOtra() {

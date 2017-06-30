@@ -48,21 +48,7 @@ public class GeneroTest {
 	}
 	
 	@Test
-	public void test002VariasPeliculasPuedenPertenecerAUnGenero() {
-		genero1.agregarPelicula(peli1);
-		genero1.agregarPelicula(peli2);
-		assertEquals(2, genero1.getPeliculas().size());
-		assertTrue(genero1.getPeliculas().contains(peli1));
-		assertTrue(genero1.getPeliculas().contains(peli2));
-		assertFalse(genero1.getPeliculas().contains(peli3));
-		
-		genero1.quitarPelicula(peli2);
-		assertEquals(1, genero1.getPeliculas().size());
-		assertFalse(genero1.getPeliculas().contains(peli2));
-	}
-	
-	@Test
-	public void test003UnGenero_GeneralPuedeTenerVariosSubgeneros() {
+	public void test002UnGenero_GeneralPuedeTenerVariosSubgeneros() {
 		genero3.agregarSubgenero(genero1);
 		genero3.agregarSubgenero(genero2);
 		assertEquals(2, genero3.getSubgeneros().size());
@@ -75,7 +61,7 @@ public class GeneroTest {
 	}
 	
 	@Test
-	public void test004UnGeneroEspecificoPuedeTenerVariosUsuariosSuscriptos() {
+	public void test003UnGeneroEspecificoPuedeTenerVariosUsuariosSuscriptos() {
 		genero1.suscribirse(user1);
 		genero1.suscribirse(user2);
 		genero1.suscribirse(user3);
@@ -86,7 +72,7 @@ public class GeneroTest {
 	}
 	
 	@Test
-	public void test005UnUsuarioSuscriptoAUnGeneroRecibeLasNuevasPeliculasAgregadas() {
+	public void test004UnUsuarioSuscriptoAUnGeneroRecibeLasNuevasPeliculasAgregadas() {
 		genero1.agregarPelicula(peli1);
 		genero1.suscribirse(user1);
 		
@@ -98,7 +84,7 @@ public class GeneroTest {
 	}
 	
 	@Test
-	public void test006UnUsuarioSuscriptoAUnGenero_GeneralTambienEstaSuscriptoASusSubgeneros() {
+	public void test005UnUsuarioSuscriptoAUnGenero_GeneralTambienEstaSuscriptoASusSubgeneros() {
 		genero3.agregarSubgenero(genero1);
 		genero3.agregarSubgenero(genero2);
 		genero3.suscribirse(user1);
@@ -109,7 +95,7 @@ public class GeneroTest {
 	}
 	
 	@Test
-	public void test007UnSubgeneroPuedeTenerUnSupergeneroMasGeneral() {
+	public void test006UnSubgeneroPuedeTenerUnSupergeneroMasGeneral() {
 		genero3.agregarSubgenero(genero1);
 		genero3.agregarSubgenero(genero2);
 		
@@ -118,20 +104,20 @@ public class GeneroTest {
 	}
 	
 	@Test
-	public void test008APartirDeUnGeneroPuedeRecuperarseLaInformacionDeTodosSusSupergeneros() {
+	public void test007APartirDeUnGeneroPuedeRecuperarseLaInformacionDeTodosSusSupergeneros() {
 		genero3.agregarSubgenero(genero4);
 		genero4.agregarSubgenero(genero1);
 		genero4.agregarSubgenero(genero2);
 		
-		String generoCompletoA = "Vampiros - Mounstruos - Terror";  //Hay problema con que devuelva un String?
-		String generoCompletoB = "Fantasmas - Mounstruos - Terror";  //Hay problema con que devuelva un String?
+		String generoCompletoA = "Vampiros - Mounstruos - Terror";
+		String generoCompletoB = "Fantasmas - Mounstruos - Terror";
 		
 		assertEquals(generoCompletoA, genero1.generoCompleto());
 		assertEquals(generoCompletoB, genero2.generoCompleto());
 	}
 	
 	@Test
-	public void test009UnGeneroGeneralPuedeTenerVariosUsuariosSuscriptos() {
+	public void test008UnGeneroGeneralPuedeTenerVariosUsuariosSuscriptos() {
 		genero3.suscribirse(user1);
 		genero3.suscribirse(user2);
 		genero3.suscribirse(user3);

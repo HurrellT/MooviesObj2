@@ -47,12 +47,6 @@ public class UsuarioTest {
 		String	ocup	= "Programador";
 		int		codPos	= 1878;
 		
-		//Mock
-		//No sirve para cubrir los constructores.
-		when(user.getNombre()).thenReturn(name);
-		assertEquals(name, user.getNombre());
-		
-		//Normal
 		assertEquals(name, luca.getNombre());
 		assertEquals(edad, luca.getEdad());
 		assertEquals(ocup, luca.getOcupacion());
@@ -94,8 +88,7 @@ public class UsuarioTest {
 		assertTrue(luca.nuevasRecomendaciones().contains(peli));
 		
 	}
-	
-	//Tests para metodos utilizados para recomendaciones
+
 	@Test
 	public void test06LucaEvaluoLaPeliculaPeli2ConUnPuntajeDe3() {
 		luca.calificarPelicula(3, peli2);
