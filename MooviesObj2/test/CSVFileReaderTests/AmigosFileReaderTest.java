@@ -17,7 +17,7 @@ public class AmigosFileReaderTest {
 	@Before
     public void setUp(){
         // Inicializamos la clase con la ubicacion del archivo
-        reader = new AmigosFileReader("/home/tomas/Escritorio/Objetos 2/Trabajos Obj2/Archivos para FileReader/u.connection.csv"); //el parametro de UsuarioFileReader es el string con la ubicacion del archivo
+        reader = new AmigosFileReader("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/AmigosData.csv"); //el parametro de UsuarioFileReader es el string con la ubicacion del archivo
     }
 	
 	@Test

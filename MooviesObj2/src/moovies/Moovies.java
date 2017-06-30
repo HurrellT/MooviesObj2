@@ -43,6 +43,10 @@ public List<Usuario> getUsuarios(){
 	  return peliculas;
   }
   
+  public List<Genero> getGeneros() {
+	  return generos;
+  }
+  
   //Constructor
   
   public Moovies(FileReaderManager frMan) {
@@ -128,7 +132,7 @@ public List<Usuario> getUsuarios(){
   public Genero buscarGenero(String nombreGenero) {
 	Stream<Genero> generoFinal = this.generos.stream();
 	
-	return generoFinal	.filter(g -> g.getNombre().equalsIgnoreCase(nombreGenero))
+	return generoFinal	.filter(g -> g.getNombre() == nombreGenero)
 						.findFirst().get();
 	//Nosotros asumimos que el genero que se recibe como parametro
 	//esta siempre en la lista de generos, y esta bien escrito.
@@ -140,5 +144,7 @@ public List<Usuario> getUsuarios(){
 		return peliFinal	.filter(p -> p.getNombre() == nombrePelicula)
 							.findFirst().get();
 	}
+
+
 
 } 

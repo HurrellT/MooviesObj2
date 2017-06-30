@@ -83,5 +83,11 @@ public class PeliculaFileReaderTest {
         assertEquals(expectedSize, peliculas.size());
     }
 
+	@Test
+	public void test002ElGeneroComediaEstaAsociadoAlNumero5(){
+		String genero = "Comedy";
+		
+		assertEquals(genero, ((PeliculaFileReader) reader).procesarGeneros(5));
+	}
 
 }

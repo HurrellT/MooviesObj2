@@ -35,7 +35,7 @@ public class PeliculaFileReader extends CSVFileReader<PeliculaData> {
     /*
      * Metodo a corregir por no poder partir bien el array string
      */ 
-    private String procesarGeneros(int posicion) {
+    public String procesarGeneros(int posicion) {
 		List<String> generos = new ArrayList<String>();
 		
 		generos.add(0, "unknown");

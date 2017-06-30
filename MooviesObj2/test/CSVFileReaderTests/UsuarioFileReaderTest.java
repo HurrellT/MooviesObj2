@@ -16,7 +16,7 @@ public class UsuarioFileReaderTest {
 	@Before
     public void setUp(){
         // Inicializamos la clase con la ubicacion del archivo
-        reader = new UsuarioFileReader("c:\\Users\\mega_\\UNQUI\\Objetos 2\\Trabajos Obj2\\Archivos para FileReader\\u.userB.csv"); //el parametro de UsuarioFileReader es el string con la ubicacion del archivo
+        reader = new UsuarioFileReader("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/UsuariosData.csv"); //el parametro de UsuarioFileReader es el string con la ubicacion del archivo
     }
 	
 	@Test

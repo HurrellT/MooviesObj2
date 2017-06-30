@@ -17,7 +17,7 @@ public class RatingsFileReaderTest {
     @Before
     public void setUp(){
         // Inicializamos la clase con la ubicacion del archivo
-        reader = new RatingsFileReader("C:\\Users\\mega_\\UNQUI\\Objetos 2\\Trabajos Obj2\\Archivos para FileReader\\u.data.new.csv");
+        reader = new RatingsFileReader("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/CalificacionesData.csv");
     }
 
     @Test

@@ -62,20 +62,27 @@ public class FileReaderManagerTest {
 		frMan.procesarRatings("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/CalificacionesData.csv");
 		frMan.procesarAmigos("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/AmigosData.csv");
 
+		moovies.actualizarInfo();
 	}
 	
 	@Test
 	public void test001_UnUsuarioYUnaPeliculaTieneUnRating() {
-		moovies.actualizarInfo();
 		RatingData esperado = new RatingData(196, 242, 3);
 		assertEquals(esperado.getMovieId(), frMan.getRatingData().get(0).getMovieId());
 	}
 	
 	@Test
-	public void test002_LaPeliculaMightyAphroditeEsDeComedia() {
+	public void test002_UnaPeliculaSeLlamaMightyAphrodite() {
 		PeliculaData mighty = frMan.findPeliculaData(13);
 				
 		assertEquals("Mighty Aphrodite (1995)", mighty.getMovie().getNombre());
 	}
-
+	
+	@Test
+	public void test003_LaPeliculaMightyAphroditeEsDeComedia() {
+		PeliculaData mighty = frMan.findPeliculaData(13);
+		
+		assertEquals(3, mighty.getMovie().getGeneros().size());
+//		assertEquals("Comedy", actual);
+	}
 }
