@@ -118,19 +118,13 @@ public class FileReaderManager {
 	
 	//Precondicion: Ya se cargaron los datos.
 	public void registrarRatings() {
-		int index = 0;
 		for (int i = 0; i < ratingData.size(); i++) {			
 			//Guardar info
-			int userId 	= ratingData.get(index).getUserId();
-			int movieId = ratingData.get(index).getMovieId();
-			int score 	= ratingData.get(index).getRating();
+			int userId 	= ratingData.get(i).getUserId();
+			int movieId = ratingData.get(i).getMovieId();
+			int score 	= ratingData.get(i).getRating();
 			//Buscar usuario
-			int indexU = 0;
-			UsuarioData user = userData.get(indexU);
-			while (! (user.getId() == userId)) {
-				indexU++;
-				user = userData.get(indexU);
-			}
+			UsuarioData user = findUsuarioData(userId);
 			//Buscar pelicula
 			PeliculaData movie = this.findPeliculaData(movieId);
 			//Registrar la calificacion del usuario
@@ -141,22 +135,21 @@ public class FileReaderManager {
 	
 	//Precondicion: La pelicula debe estar
 	public PeliculaData findPeliculaData(int id){
-		int index = 0;
-		PeliculaData movie = movieData.get(index);
-		while (! (movie.getId() == id)) {
-			index++;
-			movie = movieData.get(index);
+		PeliculaData movie = movieData.get(0);
+		for (int i = 0; i < movieData.size(); i++) {
+			if (movieData.get(i).getId() == id) {
+				movie = movieData.get(i);
+			}
 		}
 		return movie;
 	}
 
 	//Precondicion: Ya se cargaron los datos.
 	public void registrarAmigos() {
-		int index = 0;
 		for (int i = 0; i < friendsData.size(); i++) {			
 			//Guardar info
-			int user1Id = friendsData.get(index).getAmigoId1();
-			int user2Id = friendsData.get(index).getAmigoId2();
+			int user1Id = friendsData.get(i).getAmigoId1();
+			int user2Id = friendsData.get(i).getAmigoId2();
 			//Buscar primer usuario
 			UsuarioData user1 = this.findUsuarioData(user1Id);
 			//Buscar segundo usuario
@@ -168,12 +161,13 @@ public class FileReaderManager {
 	}
 	
 	public UsuarioData findUsuarioData(int id){
-		int index = 0;
-		UsuarioData user = userData.get(index);
-		while (! (user.getId() == id)) {
-			index++;
-			user = userData.get(index);
+		UsuarioData user = userData.get(0);
+		for (int i = 0; i < userData.size(); i++) {
+			if (userData.get(i).getId() == id) {
+				user = userData.get(i);
+			}
 		}
+		
 		return user;
 	}
 	

@@ -28,7 +28,7 @@ public class FileReaderManagerTest {
 	@Before
 	public void setUp() {
 		
-frMan = new FileReaderManager();
+		frMan = new FileReaderManager();
 		
 		moovies = new Moovies(frMan);
 		
@@ -67,9 +67,8 @@ frMan = new FileReaderManager();
 	@Test
 	public void test001_UnUsuarioYUnaPeliculaTieneUnRating() {
 		moovies.actualizarInfo();
-		RatingData esperado = new RatingData(196,242,3);
-				
-		assert(frMan.getRatingData().contains(esperado));
+		RatingData esperado = new RatingData(196, 242, 3);
+		assertEquals(esperado.getMovieId(), frMan.getRatingData().get(0).getMovieId());
 	}
 	
 	@Test
