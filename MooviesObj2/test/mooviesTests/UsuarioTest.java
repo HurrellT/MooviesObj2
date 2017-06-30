@@ -156,28 +156,5 @@ public class UsuarioTest {
 		res = luca.compareTo(esteban);
 		assertEquals(LucaMayorCant, res);
 	}
-	
-	@Test
-	public void test09LucaPuedeCambiarSuMecanismoDeRecomendacion() {
-		List<Pelicula> recomendadas1 = new ArrayList<>();
-		List<Pelicula> recomendadas2 = new ArrayList<>();
-		List<Pelicula> recomendadas3 = new ArrayList<>();
-		
-		recomendadas1.add(peli);
-		recomendadas2.add(peli2);
-		recomendadas2.add(peli3);
-		recomendadas3.add(peli4);
-		recomendadas3.add(peli5);
-		recomendadas3.add(peli6);
-		
-		when(bajo.recomendarPeliculaPara(luca, moov)).thenReturn(recomendadas1);
-		when(medio.recomendarPeliculaPara(luca, moov)).thenReturn(recomendadas2);
-		when(alto.recomendarPeliculaPara(luca, moov)).thenReturn(recomendadas3);
-		
-		luca.cambiarRecomendador(medio);
-		assertEquals(2, luca.recomendar().size());
-		luca.cambiarRecomendador(alto);
-		assertEquals(3, luca.recomendar().size());
-	}
 
 }
