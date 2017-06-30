@@ -182,43 +182,7 @@ public class MooviesTest {
 	}
 	
 	@Test
-	public void test007LaPeliculaToyStoryTiene3GenerosQueSon() {
-		when(gen1.getNombre()).thenReturn("unknown");
-		when(gen2.getNombre()).thenReturn("Action");
-		when(gen3.getNombre()).thenReturn("Adventure");
-		when(gen4.getNombre()).thenReturn("Animation");
-		when(gen5.getNombre()).thenReturn("Childrens");
-		when(gen6.getNombre()).thenReturn("Comedy");
-		when(gen7.getNombre()).thenReturn("Crime");
-		when(gen8.getNombre()).thenReturn("Documentary");
-		when(gen9.getNombre()).thenReturn("Drama");
-		when(gen10.getNombre()).thenReturn("Fantasy");
-		when(gen11.getNombre()).thenReturn("Film-Noir");
-		when(gen12.getNombre()).thenReturn("Horror");
-		when(gen13.getNombre()).thenReturn("Musical");
-		when(gen14.getNombre()).thenReturn("Mistery");
-		when(gen15.getNombre()).thenReturn("Romance");
-		when(gen16.getNombre()).thenReturn("Sci-Fi");
-		when(gen17.getNombre()).thenReturn("Thriller");
-		when(gen18.getNombre()).thenReturn("War");
-		when(gen19.getNombre()).thenReturn("Western");
-		
-		frMan.procesarUsuario("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/UsuariosData.csv");
-		frMan.procesarPelicula("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/PeliculaData.csv");
-		frMan.procesarRatings("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/CalificacionesData.csv");
-		frMan.procesarAmigos("/home/tomas/UNQUI/Objetos 2/Trabajos Obj2/Archivos para FileReader/AmigosData.csv");
-		
-		moovies.actualizarInfo();
-		
-		Pelicula ts =  moovies.buscarPelicula("Toy Story (1995)");
-		
-		assertEquals("Toy Story (1995)", ts.getNombre());
-		assertEq
-		
-	}
-	
-	@Test
-	public void test008_UnMooviesPuedeQuitarUnGeneroDeSuListaDeGeneros(){
+	public void test007_UnMooviesPuedeQuitarUnGeneroDeSuListaDeGeneros(){
 		assertEquals(19, moovies.getGeneros().size());
 		assertTrue(moovies.getGeneros().contains(gen15));
 		
@@ -229,7 +193,7 @@ public class MooviesTest {
 	}
 	
 	@Test
-	public void test009_UnMooviesPuedeBuscarUnGenero(){
+	public void test008_UnMooviesPuedeBuscarUnGenero(){
 		when(gen3.getNombre()).thenReturn("Adventure");
 		
 		assertEquals(gen3, moovies.buscarGenero("Adventure"));

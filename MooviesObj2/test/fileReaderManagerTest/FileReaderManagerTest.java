@@ -19,6 +19,7 @@ import moovies.Usuario;
 public class FileReaderManagerTest {
 
 	FileReaderManager frMan;
+	
 	Moovies moovies;
 
 	Genero 	gen1, gen2, gen3, gen4, gen5, gen6, gen7, gen8, gen9, gen10,
@@ -76,13 +77,5 @@ public class FileReaderManagerTest {
 		PeliculaData mighty = frMan.findPeliculaData(13);
 				
 		assertEquals("Mighty Aphrodite (1995)", mighty.getMovie().getNombre());
-	}
-	
-	@Test
-	public void test003_LaPeliculaMightyAphroditeEsDeComedia() {
-		PeliculaData mighty = frMan.findPeliculaData(13);
-		
-		assertEquals(3, mighty.getMovie().getGeneros().size());
-//		assertEquals("Comedy", actual);
 	}
 }
