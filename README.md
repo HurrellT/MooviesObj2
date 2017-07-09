@@ -2,6 +2,7 @@
 Trabajo general de la materia Programacion con Objetos 2 UNQ
 -----------------------------------------------------------------------------------------------------------------------------------
   Este trabajo consistió en implementar un sistema de informacion de peliculas, donde se pueden suscribir usuarios, agregar peliculas, e importar informacion sobre ellas de Imdb, mediante archivos CSV.
+  
   A su vez, los usuarios tienen la capacidad de realizar distintas acciones dentro del sistema, como suscribirse a generos de peliculas para enterarse de nuevas peliculas que entran en dicho genero, recomendar peliculas a sus amigos mediante diferentes criterios de puntuacion, entre otras funciones mas basicas.
   
 -----------------------------------------------------------------------------------------------------------------------------------
